@@ -26,6 +26,8 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.sidebar button:hover {
+  background-color: lightcyan;
 .sidebar {
     height: 100%;
   width: 200px;
@@ -33,7 +35,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: lightgrey;
+  background-color: lightcyan;
   overflow-x: hidden;
 } 
 

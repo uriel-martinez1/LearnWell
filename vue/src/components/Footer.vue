@@ -14,7 +14,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: lightslategrey;
+    background-color: rgb(104, 25, 104);
     color: black;
     text-align: center;
   }

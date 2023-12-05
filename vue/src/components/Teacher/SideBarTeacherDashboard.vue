@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="sidebar">
         <h1>Learn Well</h1>
         <h2>Teacher Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button v-on:click="expandCourseList()" type="button">Courses</button>
+        <button v-on:click="" type="button">Courses</button>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
@@ -11,11 +11,6 @@
 </template>
 
 <script>
-  methods: {
-    expandCourseList() {
-      ;
-    }
-  }
   
 </script>
 
@@ -34,6 +29,9 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.sidebar button:hover {
+  background-color: lightcyan;
+}
 .sidebar {
     height: 100%;
   width: 200px;
@@ -41,7 +39,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: lightgrey;
+  background-color: lightcyan;
   overflow-x: hidden;
 }
 </style>
