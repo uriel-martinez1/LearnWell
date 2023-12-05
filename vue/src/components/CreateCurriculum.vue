@@ -97,7 +97,7 @@
             </div>
             
         </form>
-<!--missing the variables that hold the uploads from the instructor :(-->
+
         <div v-if="isCurriculumCreated">
             <h2>Curriculum Created!</h2>
             <p><strong>Curriculum Name:</strong> {{ curriculumName }}</p>
@@ -125,6 +125,7 @@ export default {
     methods: {
         createCurriculum() {
             return this.curriculumName, this.curriculumDescription,
+            this.dailyInstructions, this.assignment,
                 this.isCurriculumCreated = true,
                 this.isCurriculumActive = true;
         }
