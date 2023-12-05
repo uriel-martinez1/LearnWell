@@ -5,35 +5,58 @@
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" v-model="user.firstName" required autofocus />
+      <div class="field">
+        <label for="first-name"></label>
+        <input class="input" type="text" id="first-name" placeholder="First Name" v-model="user.firstName" required
+          autofocus />
       </div>
-      <div class="form-input-group">
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" v-model="user.lastName" required autofocus />
+      <div class="field">
+        <label for="last-name"></label>
+        <input class="input" type="text" id="last-name" placeholder="Last Name" v-model="user.lastName" required
+          autofocus />
       </div>
-      <div class="form-input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="user.email" required autofocus />
+      <div class="field">
+        <label for="email"></label>
+        <input class="input is-success" type="email" id="email" placeholder="Email Address" v-model="user.email" required
+          autofocus />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
       </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+      <div class="field">
+        <label for="username"></label>
+        <input class="input is-success" type="text" id="username" placeholder="Create your username"
+          v-model="user.username" required autofocus />
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
       </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+      <div class="field">
+        <label for="password"></label>
+        <input type="password" id="password" placeholder="Create your password" v-model="user.password" required />
+        <span class="icon is-small is-left">
+          <i class="fas fa-key"></i>
+        </span>
       </div>
-      <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+      <div class="field">
+        <label for="confirmPassword"></label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" v-model="user.confirmPassword"
+          required />
+        <span class="icon is-small is-left">
+          <i class="fas fa-key"></i>
+        </span>
       </div>
-      <input name="isTeacher" type="radio" id="teacher-yes" v-model="user.teacher" v-bind:value="true"/>
+      <input name="isTeacher" type="radio" id="teacher-yes" v-model="user.teacher" v-bind:value="true" />
       <label for="teacher-yes">Teacher</label>
-      <input name="isTeacher" type="radio" id="teacher-no" v-model="user.teacher" v-bind:value="false"/>
+      <input name="isTeacher" type="radio" id="teacher-no" v-model="user.teacher" v-bind:value="false" />
       <label for="teacher-no">Student</label>
-      <button type="submit">Create Account</button>
+      <div v-show="user.teacher" class="field">
+        <label class="label"></label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Enter your teacher key">
+        </div>
+      </div>
+      <button class="button is-link" type="submit">Register Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -53,6 +76,7 @@ export default {
         password: '',
         confirmPassword: '',
         teacher: false,
+        teacherKey: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -60,7 +84,7 @@ export default {
   },
   computed: {
     userRole() {
-      if(!this.user.teacher){
+      if (!this.user.teacher) {
         return 'student'
       }
       return 'teacher'
@@ -104,6 +128,7 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }
