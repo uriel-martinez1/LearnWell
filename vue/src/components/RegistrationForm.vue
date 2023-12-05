@@ -15,12 +15,12 @@
                 </div>
             </div>
 
-            <div class="field">
+            <!-- <div class="field">
                 <label class="label"></label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Pronouns">
                 </div>
-            </div>
+            </div> -->
 
             <div class="field">
                 <label class="label"></label>
@@ -115,7 +115,6 @@ export default {
         return {
             firstName: "",
             lastName: "",
-            pronouns: "",
             username: "",
             emailAddress: "",
             isTeacher: false,
@@ -129,7 +128,7 @@ export default {
     },
     methods: {
         registerUser() {
-            return this.firstName, this.lastName, this.pronouns,
+            return this.firstName, this.lastName,
                 this.username, this.emailAddress,
                 this.isUserRegistered = true, this.isUserActive = true;
         }
