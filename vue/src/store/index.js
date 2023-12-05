@@ -158,6 +158,6 @@ export function createStore(currentToken, currentUser) {
         axios.defaults.headers.common = {};
       }
     },
-  });
+  })
   return store;
 }
