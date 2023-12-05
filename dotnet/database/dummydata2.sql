@@ -1,10 +1,10 @@
--- Set identity insert on for users
+﻿-- Set identity insert on for users
 SET IDENTITY_INSERT users ON;
 
 INSERT INTO users (user_id, first_name, last_name, username, password_hash, salt, user_role, isTeacher, isAdmin, isActive, created_date, last_updated)
 VALUES
-(1, 'John', 'Doe', 'john.doe', 'hashed_password', 'salt_value', 'admin', 0, 1, 1, GETUTCDATE(), NULL),
-(2, 'Jane', 'Doe', 'jane.doe', 'hashed_password', 'salt_value', 'teacher', 1, 0, 1, GETUTCDATE(), NULL),
+(1, 'John', 'Doe', 'john.doe', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin', 0, 1, 1, GETUTCDATE(), NULL),
+(2, 'Jane', 'Doe', 'jane.doe', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'teacher', 1, 0, 1, GETUTCDATE(), NULL),
 (3, 'Alice', 'Johnson', 'alice.j', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL),
 (4, 'Bob', 'Smith', 'bob.smith', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL);
 
@@ -64,7 +64,7 @@ VALUES
 
 -- Questions for Calculus Homework 1
 ('Find the limit as x approaches 0 for (sin(x)/x).', 'text', NULL, NULL, NULL, NULL, NULL, GETUTCDATE(), NULL, 1),
-('Evaluate the definite integral: ?(x^2)dx from 0 to 2.', 'text', NULL, NULL, NULL, NULL, NULL, GETUTCDATE(), NULL, 1),
+('Evaluate the definite integral: ∫(x^2)dx from 0 to 2.', 'text', NULL, NULL, NULL, NULL, NULL, GETUTCDATE(), NULL, 1),
 
 -- Questions for Calculus Quiz 2
 ('What is the solution to the differential equation dy/dx = 2x?', 'text', NULL, NULL, NULL, NULL, NULL, GETUTCDATE(), NULL, 1),

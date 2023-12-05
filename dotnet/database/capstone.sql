@@ -102,7 +102,7 @@ CREATE TABLE assignments (
 	isActive BIT DEFAULT 1,
 	CONSTRAINT PK_assignment_id PRIMARY KEY (assignment_id),
 	CONSTRAINT FK_assignments_curriculum_element_id FOREIGN KEY (curriculum_element_id) REFERENCES curriculum_elements(curriculum_element_id),
-	CONSTRAINT CHK_type CHECK (assignment_type = 'homework' OR assignment_type = 'quiz' OR assignment_type = 'test' OR assignment_type = 'extra')
+	CONSTRAINT CHK_type CHECK (assignment_type = 'homework' OR assignment_type = 'quiz' OR assignment_type = 'test' OR assignment_type = 'extra' OR assignment_type = 'essay')
 )
 
 GO
@@ -143,7 +143,7 @@ CREATE TABLE submitted_assignments(
 	student_id int NOT NULL,
 	teacher_id int NOT NULL,
 	course_id int NOT NULL,
-	score int DEFAULT 0,
+	score int DEFAULT 0 NOT NULL,
 	graded_date DATETIME NULL,
 	created_date DATETIME DEFAULT GETUTCDATE(),
 	CONSTRAINT PK_submitted_assignment_id PRIMARY KEY (submitted_assignment_id),
@@ -187,12 +187,3 @@ CREATE TABLE comments(
 
 GO
 --populate default data
-
-BEGIN TRANSACTION 
-
-INSERT INTO users (first_name, last_name, username, password_hash, salt, user_role) VALUES ('john', 'smith','student','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','student');
-INSERT INTO users (first_name, last_name, isAdmin, username, password_hash, salt, user_role) VALUES ('henry', 'edwards', 1, 'admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-INSERT INTO users (first_name, last_name, isTeacher, username, password_hash, salt, user_role) VALUES ('marry', 'baker', 1,'teacher','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','teacher');
-
-COMMIT TRANSACTION
-
