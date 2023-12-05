@@ -52,7 +52,7 @@
             </div>
 
             <div class="field">
-                <label class="label">I am a</label>
+                <label class="label">User Role</label>
                 <div class="control">
                     <div class="select">
                         <select>
@@ -117,6 +117,7 @@ export default {
             lastName: "",
             username: "",
             emailAddress: "",
+            userRole: "",
             isTeacher: false,
             teacherKey: "",
             isUserRegistered: false,
@@ -129,7 +130,7 @@ export default {
     methods: {
         registerUser() {
             return this.firstName, this.lastName,
-                this.username, this.emailAddress,
+                this.username, this.emailAddress, this.userRole,
                 this.isUserRegistered = true, this.isUserActive = true;
         }
 
