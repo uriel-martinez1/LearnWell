@@ -19,6 +19,7 @@ CREATE TABLE users (
 	user_id int IDENTITY(1,1) NOT NULL,
 	first_name nvarchar(50) NOT NULL,
 	last_name nvarchar(50) NOT NULL,
+	email nvarchar(500) NOT NULL,
 	username nvarchar(50) NOT NULL UNIQUE,
 	password_hash nvarchar(200) NOT NULL,
 	salt nvarchar(200) NOT NULL,
@@ -186,4 +187,10 @@ CREATE TABLE comments(
 )
 
 GO
---populate default data
+
+CREATE TABLE teacher_keys(
+	key_id int IDENTITY (1,1) NOT NULL,
+	teacher_key uniqueidentifier NOT NULL DEFAULT newid(),
+	username nvarchar(50) NOT NULL,
+	CONSTRAINT PK_teacher_keys_key_id PRIMARY KEY (key_id),
+)

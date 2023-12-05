@@ -1,12 +1,12 @@
 ﻿-- Set identity insert on for users
 SET IDENTITY_INSERT users ON;
 
-INSERT INTO users (user_id, first_name, last_name, username, password_hash, salt, user_role, isTeacher, isAdmin, isActive, created_date, last_updated)
+INSERT INTO users (user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher, isAdmin, isActive, created_date, last_updated)
 VALUES
-(1, 'John', 'Doe', 'john.doe', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin', 0, 1, 1, GETUTCDATE(), NULL),
-(2, 'Jane', 'Doe', 'jane.doe', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'teacher', 1, 0, 1, GETUTCDATE(), NULL),
-(3, 'Alice', 'Johnson', 'alice.j', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL),
-(4, 'Bob', 'Smith', 'bob.smith', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL);
+(1, 'John', 'Doe', 'john.doe@email.com', 'john.doe', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin', 0, 1, 1, GETUTCDATE(), NULL),
+(2, 'Jane', 'Doe', 'jane.doe@email.com', 'jane.doe', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'teacher', 1, 0, 1, GETUTCDATE(), NULL),
+(3, 'Alice', 'Johnson', 'alice.j@email.com', 'alice.j', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL),
+(4, 'Bob', 'Smith', 'bob.smith@email.com', 'bob.smith', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL);
 
 SET IDENTITY_INSERT users OFF;
 
@@ -202,3 +202,8 @@ VALUES
 -- Comments for Romantic Poetry Essay
 (7, 2, 'Well-researched comparison of Wordsworth and Keats.', GETUTCDATE(), NULL, 0),
 (7, 2, 'Your exploration of the historical context is noteworthy.', GETUTCDATE(), NULL, 0);
+
+-- Insert teacher_keys
+INSERT INTO teacher_keys (teacher_key, username)
+VALUES
+(NEWID(), 'jane.doe')
