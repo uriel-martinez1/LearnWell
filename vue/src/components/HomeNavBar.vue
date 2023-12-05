@@ -1,19 +1,15 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fa-regular fa-graduation-cap" width="112" height="28"></i>
-                </span>
-                <span>LEARN WELL</span>
-            </span>    
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
-                </a>
-            </div>
+            <a class="navbar-item" href="https://bulam.io">
+                <img class="icon" src="../icon/noun-learning-5514059.png" width="112" height="28">
+                <p><strong>LIVE WELL</strong></p>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
 
         <div class="navbar-end">
@@ -29,9 +25,13 @@
             </div>
         </div>
     </nav>
-
 </template>
 
 <script></script>
 
-<style></style>
+<style>
+.icon{
+    width: 100%;
+    height: auto,
+}
+</style>
