@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using Capstone.Exceptions;
 using Capstone.Models;
@@ -22,7 +23,7 @@ namespace Capstone.DAO
         {
             IList<User> users = new List<User>();
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users";
+            string sql = "SELECT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users";
 
             try
             {
@@ -52,7 +53,7 @@ namespace Capstone.DAO
         {
             User user = null;
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE user_id = @user_id";
+            string sql = "SELECT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users WHERE user_id = @user_id";
 
             try
             {
@@ -82,7 +83,7 @@ namespace Capstone.DAO
         {
             User user = null;
 
-            string sql = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
+            string sql = "SELECT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users WHERE username = @username";
 
             try
             {
@@ -108,16 +109,50 @@ namespace Capstone.DAO
             return user;
         }
 
-        public User CreateUser(string username, string password, string role)
+        public User CreateUser(string firstName, string lastName, string email, string username, string password, string role, string teacherKey )
         {
+
+            string teacherKeyActual = "";
+
+            if (!String.IsNullOrEmpty(teacherKey))
+            {
+
+                string teacherSql = "SELECT teacher_key FROM teacher_keys WHERE username = @username;";
+
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(teacherSql, conn);
+                        cmd.Parameters.AddWithValue("@username", username);
+
+                        teacherKeyActual = Convert.ToString(cmd.ExecuteScalar());
+
+                        if (String.IsNullOrEmpty(teacherKeyActual))
+                        {
+                            throw new DaoException("You are not authorized to register as a teacher");
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+
+                    throw new DaoException("SQL exception occurred", ex);
+                }
+
+            }
+
+
             User newUser = null;
 
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
 
-            string sql = "INSERT INTO users (username, password_hash, salt, user_role) " +
+            string userSql = "INSERT INTO users (first_name, last_name, email, username, password_hash, salt, user_role, isTeacher, isAdmin, isActive) " +
                          "OUTPUT INSERTED.user_id " +
-                         "VALUES (@username, @password_hash, @salt, @user_role)";
+                         "VALUES (@first_name, @last_name, @email, @username, @password_hash, @salt, @user_role, @isTeacher, 0, 1)";
 
             int newUserId = 0;
             try
@@ -126,11 +161,21 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand(userSql, conn);
+                    cmd.Parameters.AddWithValue("@first_name", firstName);
+                    cmd.Parameters.AddWithValue("@last_name", lastName);
+                    cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                     cmd.Parameters.AddWithValue("@salt", hash.Salt);
                     cmd.Parameters.AddWithValue("@user_role", role);
+                    if (!String.IsNullOrEmpty(teacherKeyActual))
+                    {
+                        cmd.Parameters.AddWithValue("@isTeacher", 1);
+                    }
+                    cmd.Parameters.AddWithValue("@isTeacher", 0);
+
+
 
                     newUserId = Convert.ToInt32(cmd.ExecuteScalar());
                     
@@ -149,6 +194,9 @@ namespace Capstone.DAO
         {
             User user = new User();
             user.UserId = Convert.ToInt32(reader["user_id"]);
+            user.FirstName = Convert.ToString(reader["first_name"]);
+            user.LastName = Convert.ToString(reader["last_name"]);
+            user.Email = Convert.ToString(reader["email"]);
             user.Username = Convert.ToString(reader["username"]);
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);

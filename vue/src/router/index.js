@@ -20,6 +20,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
+    //META TAG adds an authorization requirement
     meta: {
       requiresAuth: true
     }

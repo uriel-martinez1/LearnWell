@@ -81,7 +81,7 @@ namespace Capstone.Controllers
             User newUser;
             try
             {
-                newUser = userDao.CreateUser(userParam.Username, userParam.Password, userParam.Role);
+                newUser = userDao.CreateUser(userParam.FirstName, userParam.LastName, userParam.Email, userParam.Username, userParam.Password, userParam.Role, userParam.TeacherKey);
             }
             catch (DaoException)
             {

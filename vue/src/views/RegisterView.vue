@@ -6,6 +6,18 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" v-model="user.firstName" required autofocus />
+      </div>
+      <div class="form-input-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" v-model="user.lastName" required autofocus />
+      </div>
+      <div class="form-input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" v-model="user.email" required autofocus />
+      </div>
+      <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
@@ -17,6 +29,10 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
+      <input name="isTeacher" type="radio" id="teacher-yes" v-model="user.teacher" v-bind:value="true"/>
+      <label for="teacher-yes">Teacher</label>
+      <input name="isTeacher" type="radio" id="teacher-no" v-model="user.teacher" v-bind:value="false"/>
+      <label for="teacher-no">Student</label>
       <button type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
@@ -30,14 +46,25 @@ export default {
   data() {
     return {
       user: {
+        firstName: '',
+        lastName: '',
+        email: '',
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        teacher: false,
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };
+  },
+  computed: {
+    userRole() {
+      if(!this.user.teacher){
+        return 'student'
+      }
+      return 'teacher'
+    }
   },
   methods: {
     register() {
@@ -45,6 +72,7 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
+        this.user.role = this.userRole
         authService
           .register(this.user)
           .then((response) => {
