@@ -13,7 +13,7 @@ export function createStore(currentToken, currentUser) {
         lastName: 'smith',
         userName: 'bobbys',
         isTeacher: true,
-        isAdmin: true,
+        isAdmin: false,
         userRole: 'teacher',
         isActive: true,
         courses: [
@@ -79,37 +79,48 @@ export function createStore(currentToken, currentUser) {
 
                   },
                 ],
-                submittedAssignment: [
-                  {
-                    submittedAssignmentId: 1,
-                    assignmentId: 1,
-                    studentId: 2,
-                    teacherId: 1,
-                    courseId: 1,
-                    score: 0,
-                    submissionTime: '2022-09-25',
-                    gradedDate: null,
-                    lastEdited: null,
-                    lastUpdated: null,
-                    numberOfEdits: 0,
-                    comments: [
-                      {
-                        commentId: 1,
-                        submittedAssignmentId: 1,
-                        createdBy: 2,
-                        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                        createdAt: '2022-09-26',
-                        lastEdited: null,
-                        numberOfEdits: 0,
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           },
         ],
       },
+      submittedAssignments: [
+        {
+          submittedAssignmentId: 1,
+          assignmentId: 1,
+          studentId: 2,
+          teacherId: 1,
+          courseId: 1,
+          score: 0,
+          submissionTime: '2022-09-25',
+          gradedDate: null,
+          lastEdited: null,
+          lastUpdated: null,
+          numberOfEdits: 0,
+          comments: [
+            {
+              commentId: 1,
+              submittedAssignmentId: 1,
+              createdBy: 2,
+              comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+              createdAt: '2022-09-26',
+              lastEdited: null,
+              numberOfEdits: 0,
+            }
+          ],
+          answers: [
+            {
+              answersId: 1,
+              submittedAssignmentId: 1,
+              type: 'Text',
+              answerChoice: null,
+              answerText: null,
+              answerExternal: null,
+              isCorrect: false,
+            }
+          ]
+        }
+      ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

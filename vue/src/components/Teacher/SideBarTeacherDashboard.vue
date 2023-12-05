@@ -4,7 +4,7 @@
         <h2>Teacher Dashboard</h2>
         <button type="button">Dashboard</button>
         <button v-on:click="Showcourses" type="button">Courses</button>
-          <button >{{ this.$store.state }}</button>
+          <button >{{ this.$store.state.user }}</button>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
