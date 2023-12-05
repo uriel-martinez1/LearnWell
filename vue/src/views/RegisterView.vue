@@ -50,7 +50,7 @@
       <label for="teacher-yes">Teacher</label>
       <input name="isTeacher" type="radio" id="teacher-no" v-model="user.teacher" v-bind:value="false" />
       <label for="teacher-no">Student</label>
-      <div v-show="!teacher" class="field">
+      <div v-show="user.teacher" class="field">
         <label class="label"></label>
         <div class="control">
           <input class="input" type="text" placeholder="Enter your teacher key">
@@ -76,6 +76,7 @@ export default {
         password: '',
         confirmPassword: '',
         teacher: false,
+        teacherKey: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
