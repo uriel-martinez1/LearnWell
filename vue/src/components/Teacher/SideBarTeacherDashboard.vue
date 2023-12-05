@@ -3,14 +3,21 @@
         <h1>Learn Well</h1>
         <h2>Teacher Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button type="button">Courses</button>
+        <button v-on:click="expandCourseList()" type="button">Courses</button>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
     </div>
 </template>
 
-<script></script>
+<script>
+  methods: {
+    expandCourseList() {
+      ;
+    }
+  }
+  
+</script>
 
 <style>
     .sidebar button {
@@ -24,6 +31,7 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
+  border-radius: 8px;
   cursor: pointer;
 }
 .sidebar {
