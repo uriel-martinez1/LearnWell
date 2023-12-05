@@ -16,6 +16,6 @@
     width: 100%;
     background-color: rgb(104, 25, 104);
     color: black;
-    text-align: center;
+    text-align: left;
   }
 </style>

@@ -3,13 +3,15 @@
         <h1>Learn Well</h1>
         <h2>Student Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button type="button">View Assignments</button>
+        <button v-on:click="" type="button">View Assignments</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
     </div>
 </template>
 
-<script></script>
+<script>
+  
+</script>
 
 <style>
    .sidebar button {
