@@ -7,3 +7,4 @@
     <router-view />
   </div>
 </template>
+<!-- create component using above to go on other views; use this id- "nav" -->

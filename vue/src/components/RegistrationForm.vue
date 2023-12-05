@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <form @submit.prevent="registerUser">
+        <form @submit.prevent="register">
             <div class="field">
                 <label class="label"></label>
                 <div class="control">
@@ -25,7 +25,7 @@
             <div class="field">
                 <label class="label"></label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Username" value="bulma">
+                    <input class="input is-success" type="text" placeholder="Username">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -40,7 +40,7 @@
             <div class="field">
                 <label class="label"></label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                    <input class="input is-danger" type="email" placeholder="Email input">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div v-show="!isTeacher" class="field">
                 <label class="label"></label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Enter your teacher key">
@@ -128,7 +128,7 @@ export default {
 
     },
     methods: {
-        registerUser() {
+        register() {
             return this.firstName, this.lastName,
                 this.username, this.emailAddress, this.userRole,
                 this.isUserRegistered = true, this.isUserActive = true;
