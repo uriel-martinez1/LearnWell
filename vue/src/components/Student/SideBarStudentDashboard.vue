@@ -3,13 +3,15 @@
         <h1>Learn Well</h1>
         <h2>Student Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button type="button">View Assignments</button>
+        <button v-on:click="" type="button">View Assignments</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
     </div>
 </template>
 
-<script></script>
+<script>
+  
+</script>
 
 <style>
    .sidebar button {
@@ -26,6 +28,8 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.sidebar button:hover {
+  background-color: lightcyan;
 .sidebar {
     height: 100%;
   width: 200px;
@@ -33,7 +37,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: lightgrey;
+  background-color: lightcyan;
   overflow-x: hidden;
 } 
 
