@@ -30,6 +30,7 @@
 }
 .sidebar button:hover {
   background-color: lightcyan;
+}
 .sidebar {
     height: 100%;
   width: 200px;
