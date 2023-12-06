@@ -15,9 +15,8 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'register'}"><strong>Register</strong></router-link></a>
-                    <a class="button is-white"><router-link v-bind:to="{name: 'login'}"><strong>Login</strong></router-link></a>
-                    
+                    <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'home'}"><strong>Home</strong></router-link></a>
+                                        
                 </div>
             </div>
         </div>
@@ -30,5 +29,4 @@
 .icon{
     height: auto,
 }
-
 </style>

@@ -1,5 +1,8 @@
 <template>
   <div id="app" class="text-center">
+    <div class="header">
+      <register-login-nav-bar></register-login-nav-bar>
+    </div>
     <form class="box" v-on:submit.prevent="register">
       <h1 class="title is-4">Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -66,7 +69,7 @@
         <label class="label"></label>
         <div class="control">
           <div class="control has-icons-right">
-            <input class="input" type="text" placeholder="Enter your teacher key">
+            <input class="input" type="text" placeholder="Enter your teacher key" v-model="user.teacherKey">
             <span class="icon is-small is-right">
               <i class="fas fa-key"></i>
             </span>
@@ -74,10 +77,13 @@
         </div>
       </div>
       <div>
-        <button class="button is-link is-outlined my-5 has-text-primary" type="submit">Register</button>
+        <button class="button is-link is-outlined" type="submit"><strong>Register</strong></button>
       </div>
       <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
+  </div>
+  <div class="footer">
+    <footer>Created by Learn Well. © 2023</footer>
   </div>
 </template>
 
@@ -85,8 +91,15 @@
 
 <script>
 import authService from '../services/AuthService';
+import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
+import footer from '../components/Footer.vue';
 
 export default {
+
+  components:{
+    RegisterLoginNavBar,
+    footer,
+  },
   data() {
     return {
       user: {
@@ -115,7 +128,7 @@ export default {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        alert('Password & Confirm Password do not match.');
       } else {
         this.user.role = this.userRole
         authService
@@ -132,9 +145,14 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              alert('Invalid information entered');
+            } else if (response.status === 500){
+              alert('Invalid teacher key entered')
+              // this.$router.push({name: 'home'})
             }
+            
           });
+          this.clearErrors();
       }
     },
     clearErrors() {
@@ -166,16 +184,16 @@ label {
   max-width: 70%;
 
   margin: 0 auto;
-  background-color: #ebc2f2;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
 }
 
-.error-message {
+/* .error-message {
   color: #ff3860;
   margin-bottom: 10px;
-}
+} */
 
 .button-is-link-is-outlined-my-5 {
   accent-color: rgb(15, 167, 15);
