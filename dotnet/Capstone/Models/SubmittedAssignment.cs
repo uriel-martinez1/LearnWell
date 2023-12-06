@@ -11,9 +11,9 @@ namespace Capstone.Models
         public int TeacherId { get; set; }
         public int CourseId { get; set; }
         public int Score { get; set; }
-        public DateTime GradedDate { get; set; }
+        public DateTime? GradedDate { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime LastEdited { get; set; }
+        public DateTime? LastEdited { get; set; }
         public int NumberOfEdits { get; set; }
         public List<Answer> Answers { get; set; } = new List<Answer>();
         public List<Comment> Comments { get; set; } = new List<Comment>();
