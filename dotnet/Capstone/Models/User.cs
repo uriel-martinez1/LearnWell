@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Capstone.Models
 {
@@ -8,6 +9,8 @@ namespace Capstone.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "The field `Username` must not be blank.")]
         public string Username { get; set; }
         //TODO if using JsonIgnore, we need to update the returning object
         //[JsonIgnore]
