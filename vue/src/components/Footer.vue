@@ -14,8 +14,8 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(104, 25, 104);
-    color: black;
+    background-color: rgb(16, 24, 40,1);
+    color: white;
     text-align: left;
   }
 </style>
