@@ -46,6 +46,7 @@ CREATE TABLE courses (
 	last_updated DATETIME NULL,
 	isActive BIT DEFAULT 1,
 	CONSTRAINT PK_course PRIMARY KEY (course_id),
+	CONSTRAINT FK_courses_teacher_user_id FOREIGN KEY (teacher_id) REFERENCES users(user_id),
 	CONSTRAINT CHK_difficulty CHECK (difficulty >=1 AND difficulty <= 10),
 )
 
@@ -147,6 +148,8 @@ CREATE TABLE submitted_assignments(
 	score int DEFAULT 0 NOT NULL,
 	graded_date DATETIME NULL,
 	created_date DATETIME DEFAULT GETUTCDATE(),
+	last_updated DATETIME NULL,
+	number_of_edits int DEFAULT 0,
 	CONSTRAINT PK_submitted_assignment_id PRIMARY KEY (submitted_assignment_id),
 	CONSTRAINT FK_submitted_assignments_assignment_id FOREIGN KEY (assignment_id) REFERENCES assignments(assignment_id),
 	CONSTRAINT FK_submitted_assignments_student_id FOREIGN KEY (student_id) REFERENCES users(user_id),
