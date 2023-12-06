@@ -22,7 +22,7 @@
       
     },
     computed: {
-      
+
     },
     methods: {
       showCourses() {
@@ -33,7 +33,8 @@
 </script>
 
 <style>
-    .sidebar button {
+
+.sidebar button {
   background-color: #04AA6D;
   border: none;
   color: white;
@@ -51,7 +52,7 @@
   background-color: lightcyan;
 }
 .sidebar {
-    height: 100%;
+  height: 100%;
   width: 200px;
   position: fixed;
   z-index: 1;

@@ -13,7 +13,7 @@
         <div>
             <footer>
             <p>
-                Copyright ©-All rights are reserved
+                Copyright ©-All rights are reserved 
             </p>
             </footer>
         </div>
@@ -21,12 +21,12 @@
   
   <script>
   import SideBarTeacherDashboard from '../components/Teacher/SideBarTeacherDashboard.vue'
-  //import pageFooter from '../components/Footer.vue'
+  import pageFooter from '../components/Footer.vue'
   
   export default {
     components: {
-      SideBarTeacherDashboard,
-      //pageFooter
+      SideBarTeacherDashboard, 
+      
     }
   };
   </script>
