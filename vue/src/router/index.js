@@ -6,6 +6,7 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import TeacherDashboardView from '../views/TeacherDashboardView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -50,14 +51,14 @@ const routes = [
       requiresAuth: false
     }
   },
-//   {
-//   path: '/teacher',
-//   component: TeacherDashboardView,
-//   name: 'TeacherDashboardView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  {
+    path: "/teacher",
+    name: "TeacherDashboardView",
+    component: TeacherDashboardView,
+    meta: {
+      requiresAuth: true
+    }
+  },
 // {
 //   path: '/teacher/courses',
 //   component: TeacherCoursesView,
