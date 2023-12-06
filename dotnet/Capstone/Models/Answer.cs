@@ -11,7 +11,7 @@ namespace Capstone.Models
         public string AnswerText { get; set; }
         public string AnswerExternal { get; set; }
         public bool IsCorrect { get; set; }
-        public DateTime LastUpdated { get; set; }
+        public DateTime? LastUpdated { get; set; }
         public int NubmerOfEdits { get; set;  }
     }
 }

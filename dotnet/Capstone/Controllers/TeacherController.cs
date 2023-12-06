@@ -118,9 +118,16 @@
 //    //        }
 //    //    }
 
+<<<<<<< HEAD
+    }
+}
+//{
+//path: '/teacher/courses?action=create',
+=======
 //    //}
 ////{
 ////path: '/teacher/courses?action=create',
+>>>>>>> 2bd836975705f1b05500c859f207647dac6a9cbd
 
 ////path: '/teacher/courses/:courseId?action=edit',
 
