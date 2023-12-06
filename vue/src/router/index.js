@@ -52,8 +52,8 @@ const routes = [
   },
 //   {
 //   path: '/teacher',
-//   component: TeacherView,
-//   name: 'TeacherView',
+//   component: TeacherDashboardView,
+//   name: 'TeacherDashboardView',
 //   meta: {
 // 	requiresAuth: true
 // 	}
