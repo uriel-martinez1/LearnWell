@@ -3,8 +3,8 @@
         <h1>Learn Well</h1>
         <h2>Teacher Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button v-on:click="Showcourses" type="button">Courses</button>
-          <button >{{ this.$store.state.user }}</button>
+        <button v-on:click="showCourses()" type="button">Courses</button>
+          <button >{{ this.$store.state.user.courses }}</button>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
@@ -19,10 +19,15 @@
       }
     },
     props: {
-
+      
     },
     computed: {
+      
+    },
+    methods: {
+      showCourses() {
 
+      }
     }
   }
 </script>
