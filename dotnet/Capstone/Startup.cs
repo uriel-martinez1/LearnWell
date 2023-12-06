@@ -65,6 +65,18 @@ namespace Capstone
             services.AddSingleton<ITokenGenerator>(tk => new JwtGenerator(Configuration["JwtSecret"]));
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDao>(m => new UserSqlDao(connectionString));
+            services.AddTransient<ISubmittedAssignmentDao>(sub => new SubmittedAssignmentSqlDao(connectionString));
+            services.AddTransient<ISourceDao>(s => new SourceSqlDao(connectionString));
+            services.AddTransient<IQuestionDao>(q => new QuestionSqlDao(connectionString));
+            services.AddTransient<ICurriculumElementDao>(cu => new CurriculumElementSqlDao(connectionString));
+            services.AddTransient<ICourseDao>(co => new CourseSqlDao(connectionString));
+            services.AddTransient<ICommentDao>(c => new CommentSqlDao(connectionString));
+            services.AddTransient<IAssignmentDao>(am => new AssignmentSqlDao(connectionString));
+            services.AddTransient<IAnswerDao>(a => new AnswerSqlDao(connectionString));
+            //services.AddTransient<ITeacherKeyDao>(tk => new TeacherKeySqlDao(connectionString));
+            //services.AddTransient<ITeacherDashboardDao>(td => new TeacherDashboardSqlDao(connectionString));
+            //services.AddTransient<INotificationDao>(n => new NotificationSqlDao(connectionString));
+            //services.AddTransient<IStudentDashboardDao>(sd => new StudentDashboardSqlDao(connectionString));
 
             // Swagger set up
             services.AddSwaggerGen(s => {
