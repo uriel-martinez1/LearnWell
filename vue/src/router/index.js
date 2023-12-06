@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import TeacherDashboardView from '../views/TeacherDashboardView.vue';
+import CreateCourseView from '../views/CreateCourseView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -59,232 +60,232 @@ const routes = [
       requiresAuth: true
     }
   },
-// {
-//   path: '/teacher/courses',
-//   component: TeacherCoursesView,
-//   name: 'TeacherCoursesView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/courses/:courseId',
-//   component: TeacherCoursesView,
-//   name: 'TeacherCoursesView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path:'/teacher/courses?action=create',
-//   component: AddCourseView,
-//   name: 'AddCourseForm',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/courses/:courseId?action=edit',
-//   component: EditCourseView,
-//   name: 'EditCourseView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path: '/teacher/courses',
+  //   component: TeacherCoursesView,
+  //   name: 'TeacherCoursesView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/teacher/courses/:courseId',
+  //   component: TeacherCoursesView,
+  //   name: 'TeacherCoursesView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  {
+    path: '/teacher/courses?action=create',
+    component: CreateCourseView,
+    name: 'CreateCourseView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+  // {
+  //   path: '/teacher/courses/:courseId?action=edit',
+  //   component: EditCourseView,
+  //   name: 'EditCourseView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
 
-// {
-//   path: '/teacher/courses/:courseId/curriculum-elements',
-//   component: CourseView,
-//   name: 'CourseView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments',
-//   component: ElementView,
-//   name: 'ElementView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments/:assignmentId',
-//   component: AssignmentView,
-//   name: 'AssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignment?action=create',
-//   component: AddAssignmentView,
-//   name: 'AddAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path: '/teacher/courses/:courseId/curriculum-elements',
+  //   component: CourseView,
+  //   name: 'CourseView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments',
+  //   component: ElementView,
+  //   name: 'ElementView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments/:assignmentId',
+  //   component: AssignmentView,
+  //   name: 'AssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/teacher/courses/:courseId/curriculum-elements/:curriculum-element-id/assignment?action=create',
+  //   component: AddAssignmentView,
+  //   name: 'AddAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
 
-        // {
-        //   path: '/teacher/courses/:courseId/assignment',
-        //   component: AssignmentView,
-        //   name: 'AssignmentView',
-        //   meta: {
-        // 	requiresAuth: true
-        // 	}
-        // },
-
-
-
-// {
-//   path: '/teacher/courses/:courseId/assignment?action=edit',
-//   component: EditAssigmentView,
-//   name: 'EditAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-
-// {
-//   path: '/teacher/submitted-assignments',
-//   component: SubmittedAssignmentsView,
-//   name: 'SubmittedAssignmentsView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/teacher/submitted-assignment/:studentId',
-//   component: SubmittedAssignmentView,
-//   name: 'SubmittedAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-
-// {
-//   path:'/teacher/students',
-//   component: TeacherStudentView,
-//   name: 'TeacherStudentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path:'/teacher/students/:id',
-//   component: TeacherStudentView,
-//   name: 'TeacherStudentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-
-// {
-//   path:'/teacher/notifications',
-//   component: TeacherNotificationView,
-//   name: 'TeacherNotificationView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path: '/teacher/courses/:courseId/assignment',
+  //   component: AssignmentView,
+  //   name: 'AssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
 
 
-// {
-//   path:'/student',
-//   component: StudentView,
-//   name: 'StudentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path:'/student/courses',
-//   component: StudentCourseView,
-//   name: 'StudentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path:'/student/course/:CourseId',
-//   component: StudentCourseView,
-//   name: 'StudentCourseView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path: '/teacher/courses/:courseId/assignment?action=edit',
+  //   component: EditAssigmentView,
+  //   name: 'EditAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
-// {
-//   path: '/student/courses/:courseId/curriculum-elements',
-//   component: CourseView,
-//   name: 'CourseView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments',
-//   component: ElementView,
-//   name: 'ElementView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments/:assignmentId',
-//   component: AssignmentView,
-//   name: 'AssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path: '/teacher/submitted-assignments',
+  //   component: SubmittedAssignmentsView,
+  //   name: 'SubmittedAssignmentsView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/teacher/submitted-assignment/:studentId',
+  //   component: SubmittedAssignmentView,
+  //   name: 'SubmittedAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
-// {
-//   path: '/student/submitted-assignment',
-//   component: SubmittedAssignmentView,
-//   name: 'SubmittedAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path:'/teacher/students',
+  //   component: TeacherStudentView,
+  //   name: 'TeacherStudentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path:'/teacher/students/:id',
+  //   component: TeacherStudentView,
+  //   name: 'TeacherStudentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
-// {
-//   path: '/student/submitted-assignment',
-//   component: SubmittedAssignmentView,
-//   name: 'SubmittedAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+  // {
+  //   path:'/teacher/notifications',
+  //   component: TeacherNotificationView,
+  //   name: 'TeacherNotificationView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 
-// {
-//   path: '/student/submitted-assignment?action=create',
-//   component: SubmittedAssignmentView,
-//   name: 'SubmittedAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
 
-// {
-//   path:'/student/course/:CourseId/assignment/:AssignmentId',
-//   component: StudentAssignmentView,
-//   name: 'StudentAssignmentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
-// {
-//   path:'/student/course/:CourseId/assigment/:AssignmentId?Action=edit',
-//   component: StudentView,
-//   name: 'StudentView',
-//   meta: {
-// 	requiresAuth: true
-// 	}
-// },
+
+  // {
+  //   path:'/student',
+  //   component: StudentView,
+  //   name: 'StudentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path:'/student/courses',
+  //   component: StudentCourseView,
+  //   name: 'StudentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path:'/student/course/:CourseId',
+  //   component: StudentCourseView,
+  //   name: 'StudentCourseView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+
+  // {
+  //   path: '/student/courses/:courseId/curriculum-elements',
+  //   component: CourseView,
+  //   name: 'CourseView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments',
+  //   component: ElementView,
+  //   name: 'ElementView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments/:assignmentId',
+  //   component: AssignmentView,
+  //   name: 'AssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+
+  // {
+  //   path: '/student/submitted-assignment',
+  //   component: SubmittedAssignmentView,
+  //   name: 'SubmittedAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+
+  // {
+  //   path: '/student/submitted-assignment',
+  //   component: SubmittedAssignmentView,
+  //   name: 'SubmittedAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+
+  // {
+  //   path: '/student/submitted-assignment?action=create',
+  //   component: SubmittedAssignmentView,
+  //   name: 'SubmittedAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+
+  // {
+  //   path:'/student/course/:CourseId/assignment/:AssignmentId',
+  //   component: StudentAssignmentView,
+  //   name: 'StudentAssignmentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
+  // {
+  //   path:'/student/course/:CourseId/assigment/:AssignmentId?Action=edit',
+  //   component: StudentView,
+  //   name: 'StudentView',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
 ];
 
 // Create the router
@@ -303,7 +304,7 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
   }
   // Otherwise, do nothing and they'll go to their next destination
 });
