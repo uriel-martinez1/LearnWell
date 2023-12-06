@@ -10,7 +10,7 @@
         <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'TeacherDashboardView'}"><strong>Get Started</strong></router-link></a>
       </div>
     </div>  -->
-        <div>
+        <div class="footer">
             <footer>
             <p>
                 Copyright ©-All rights are reserved 
@@ -30,3 +30,15 @@
     }
   };
   </script>
+  <style>
+
+.footer {
+    /* position: 10%; */
+    left: 200px;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(16, 24, 40,1);
+    color: white;
+    text-align: left;
+  }
+</style>
