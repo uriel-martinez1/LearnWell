@@ -68,7 +68,7 @@ namespace Capstone.DAO
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         Course nextCourse = MapRowToCourse(reader);
                         courses.Add(nextCourse);
@@ -84,6 +84,38 @@ namespace Capstone.DAO
             return courses;
         }
 
+        public Course GetCourseByCourseId(int id)
+        {
+            Course course = new Course();
+
+            string sql = "SELECT course_id, teacher_id, course_name, description, difficulty, cost, created_date, last_updated FROM courses WHERE course_id = @id";
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        course = MapRowToCourse(reader);
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return course;
+        }
 
         public Course MapRowToCourse(SqlDataReader reader)
         {
