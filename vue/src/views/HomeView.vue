@@ -23,7 +23,7 @@
   <div class="footer">
     <footer>
       <p>
-        Copyright ©-All rights are reserved
+        Created by Learn Well. © 2023
       </p>
     </footer>
   </div>
