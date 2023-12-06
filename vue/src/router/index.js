@@ -21,8 +21,9 @@ const routes = [
     name: 'home',
     component: HomeView,
     //META TAG adds an authorization requirement
+    // This was originally true but should allow access to main
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
