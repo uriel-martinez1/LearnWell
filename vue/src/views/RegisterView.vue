@@ -54,6 +54,7 @@
       </div>
       <div class="field">
         <label for="confirmPassword"></label>
+
         <input type="password" id="confirmPassword" placeholder="Confirm your password" v-model="user.confirmPassword"
           required />
       </div>
@@ -79,6 +80,8 @@
     </form>
   </div>
 </template>
+
+
 
 <script>
 import authService from '../services/AuthService';
