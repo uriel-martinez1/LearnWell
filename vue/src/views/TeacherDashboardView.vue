@@ -32,10 +32,10 @@
   </script>
   <style>
 
-.footer {
-    /* position: 10%; */
-    left: 200px;
-    bottom: 0;
+div .footer {
+    margin: auto;
+    left: 0;
+    bottom: 50px;
     width: 100%;
     background-color: rgb(16, 24, 40,1);
     color: white;
