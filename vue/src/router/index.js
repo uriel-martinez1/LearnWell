@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import TeacherDashboardView from '../views/TeacherDashboardView.vue';
 import CreateCourseView from '../views/CreateCourseView.vue';
+import TeacherCoursesView from '../views/TeacherCoursesView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -60,14 +61,14 @@ const routes = [
       requiresAuth: true
     }
   },
-  // {
-  //   path: '/teacher/courses',
-  //   component: TeacherCoursesView,
-  //   name: 'TeacherCoursesView',
-  //   meta: {
-  // 	requiresAuth: true
-  // 	}
-  // },
+  {
+    path: '/teacher/courses',
+    component: TeacherCoursesView,
+    name: 'TeacherCoursesView',
+    meta: {
+      requiresAuth: true
+    }
+  },
   // {
   //   path: '/teacher/courses/:courseId',
   //   component: TeacherCoursesView,
@@ -76,14 +77,14 @@ const routes = [
   // 	requiresAuth: true
   // 	}
   // },
-  {
-    path: '/teacher/courses?action=create',
-    component: CreateCourseView,
-    name: 'CreateCourseView',
-    meta: {
-      requiresAuth: true
-    }
-  },
+  // {
+  //   path:'/teacher/courses?action=create',
+  //   component: AddCourseView,
+  //   name: 'AddCourseForm',
+  //   meta: {
+  // 	requiresAuth: true
+  // 	}
+  // },
   // {
   //   path: '/teacher/courses/:courseId?action=edit',
   //   component: EditCourseView,
