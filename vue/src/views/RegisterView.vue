@@ -8,25 +8,25 @@
       <div class="field">
         <label for="first-name"></label>
         <div class="control has-icons-left">
-        <input class="input is-success" type="text" id="first-name" placeholder="First Name" v-model="user.firstName" required
-          autofocus />
+          <input class="input is-success" type="text" id="first-name" placeholder="First Name" v-model="user.firstName"
+            required autofocus />
           <span class="icon is-small is-left">
             <i class="fa-regular fa-user"></i>
           </span>
+        </div>
       </div>
-    </div>
 
-    <div class="field">
+      <div class="field">
         <label for="last-name"></label>
         <div class="control has-icons-left">
-        <input class="input is-success" type="text" id="last-name" placeholder="Last Name" v-model="user.lastName" required
-          autofocus />
+          <input class="input is-success" type="text" id="last-name" placeholder="Last Name" v-model="user.lastName"
+            required autofocus />
           <span class="icon is-small is-left">
             <i class="fa-regular fa-user"></i>
           </span>
+        </div>
       </div>
-    </div>
-      
+
       <div class="field">
         <label for="email"></label>
         <div class="control has-icons-left">
@@ -51,16 +51,12 @@
         <label for="password"></label>
 
         <input type="password" id="password" placeholder="Create your password" v-model="user.password" required />
-
-
       </div>
       <div class="field">
         <label for="confirmPassword"></label>
 
         <input type="password" id="confirmPassword" placeholder="Confirm your password" v-model="user.confirmPassword"
           required />
-
-
       </div>
       <input name="isTeacher" type="radio" id="teacher-yes" v-model="user.teacher" v-bind:value="true" />
       <label for="teacher-yes">Teacher</label>
@@ -78,7 +74,7 @@
         </div>
       </div>
       <div>
-        <button class="button is-link is-outlined my-5 has-text-primary"  type="submit">Register</button>
+        <button class="button is-link is-outlined my-5 has-text-primary" type="submit">Register</button>
       </div>
       <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
@@ -166,20 +162,22 @@ label {
   width: 55%;
 }
 
-  .box { 
-    max-width: 70%; 
-    
-  margin: 0 auto; 
-  background-color: #ebc2f2; 
-  padding: 20px; 
-  border-radius: 8px; 
-  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1); 
+.box {
+  max-width: 70%;
+
+  margin: 0 auto;
+  background-color: #ebc2f2;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
 }
-   .error-message { color: #ff3860; margin-bottom: 10px; 
-  }
-  
-  .button-is-link-is-outlined-my-5{
-    accent-color: rgb(15, 167, 15);
-  }
-  
+
+.error-message {
+  color: #ff3860;
+  margin-bottom: 10px;
+}
+
+.button-is-link-is-outlined-my-5 {
+  accent-color: rgb(15, 167, 15);
+}
 </style>
