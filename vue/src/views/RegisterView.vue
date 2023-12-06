@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="text-center">
     <form class="box" v-on:submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1 class="title is-4">Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -77,8 +77,10 @@
           </div>
         </div>
       </div>
-      <button class="button is-link is-outlined" type="submit">Register Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <div>
+        <button class="button is-link is-outlined my-5 has-text-primary"  type="submit">Register</button>
+      </div>
+      <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
@@ -161,17 +163,23 @@ label {
 }
 
 .field {
-  width: 50%;
+  width: 55%;
 }
 
-  .registration-form { 
-    max-width: 400px; 
+  .box { 
+    max-width: 70%; 
+    
   margin: 0 auto; 
-  background-color: #fff; 
+  background-color: #ebc2f2; 
   padding: 20px; 
   border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1); 
 }
-   .error-message { color: #ff3860; margin-bottom: 10px; } 
+   .error-message { color: #ff3860; margin-bottom: 10px; 
+  }
+  
+  .button-is-link-is-outlined-my-5{
+    accent-color: rgb(15, 167, 15);
+  }
   
 </style>
