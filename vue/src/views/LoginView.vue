@@ -1,5 +1,8 @@
 <template>
   <div id="login">
+    <div class="header">
+      <register-login-nav-bar></register-login-nav-bar>
+    </div>
     <form class="box" v-on:submit.prevent="login">
       <h1 class="title is-4">Please Log In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -18,18 +21,27 @@
         <input class="input is-success" type="password" id="password" placeholder="Enter your password"
          v-model="user.password" required autofocus/>
       </div>
-      <button class="button is-link is-outlined my-5 has-text-primary"  type="submit">Log in</button>
+      <button class="button is-link is-outlined" type="submit"><strong>Log in</strong></button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Register here!</router-link></p>
     </form>
   </div>
+    <div class="footer">
+    <footer>Created by Learn Well. © 2023</footer>
+  </div>
+  
 </template>
 
 <script>
 import authService from "../services/AuthService";
+import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
+import footer from '../components/Footer.vue';
 
 export default {
-  components: {},
+  components: {
+    RegisterLoginNavBar,
+    footer,
+  },
   data() {
     return {
       user: {
@@ -81,7 +93,7 @@ label {
     max-width: 50%; 
     
   margin: 0 auto; 
-  background-color: #ebc2f2; 
+  background-color: #ffffff; 
   padding: 20px; 
   border-radius: 8px; 
   box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1); 
