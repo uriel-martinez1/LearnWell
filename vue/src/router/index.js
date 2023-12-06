@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import TeacherDashboardView from '../views/TeacherDashboardView.vue';
+import CreateCourseView from '../views/CreateCourseView.vue';
 import TeacherCoursesView from '../views/TeacherCoursesView.vue';
 
 /**
