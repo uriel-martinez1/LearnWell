@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulam.io">
-                <img class="icon" src="../icon/noun-learning-5514059.png" width="112" height="28">
+            <a class="navbar-item">
+                <img class="icon" src="../icon/icons8-books-64.png">
                 <p><strong>LIVE WELL</strong></p>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -18,8 +18,8 @@
                     <a class="button is-link is-outlined">
                         <strong>Register</strong>
                     </a>
-                    <a class="button is-link">
-                        Log In
+                    <a class="button is-link" href="{name}">
+                        Login
                     </a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
 
 <style>
 .icon{
-    width: 100%;
     height: auto,
 }
+
 </style>
