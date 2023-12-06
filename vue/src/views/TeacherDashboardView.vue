@@ -3,7 +3,7 @@
       <side-bar-teacher-dashboard></side-bar-teacher-dashboard>
     </div>
     <div class="grid-container">
-      <h1>Lets make learning easier for all</h1>
+      <h1>Welcome to Your Teacher Dashboard!</h1>
       <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
         easy access to homework, submission, and teacher communication.</P>
       <div class="buttons">
@@ -11,11 +11,11 @@
       </div>
     </div>
         <div>
-      <footer>
-        <p>
-        Copyright ©-All rights are reserved
-      </p>
-      </footer>
+            <footer>
+            <p>
+                Copyright ©-All rights are reserved
+            </p>
+            </footer>
         </div>
   </template>
   
