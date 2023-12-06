@@ -7,9 +7,7 @@
     <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
       easy access to homework, submission, and teacher communication.</P>
     <div class="buttons">
-      <a class="button is-link is-outlined">
-        <strong>Get Started</strong>
-      </a>
+      <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'register'}"><strong>Get Started</strong></router-link></a>
     </div>
   </div>
   <div class="footer">
