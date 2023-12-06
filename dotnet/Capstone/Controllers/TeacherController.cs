@@ -17,7 +17,7 @@ namespace Capstone.Controllers
         private readonly IAssignmentDao assignmentDao;
         private readonly ICourseDao courseDao;
         private readonly INotificationDao notificationDao;
-        public StudentController(ICourseDao courseDao, IassignmentDao asignmentDao, IUserDao userDao)
+        public TeacherController(ICourseDao courseDao, IAssignmentDao asignmentDao, IUserDao userDao)
         {
             //this.dashboardDao = dashboardDao;
             this.userDao = userDao;
@@ -49,7 +49,7 @@ namespace Capstone.Controllers
         {
             try
             {
-                Course output = CourseDao.GetCoursesByCourseId(courseId);
+                Course output = CourseDao.GetCourseByCourseId(courseId);
                 return Ok(output);
 
             }
@@ -59,7 +59,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpGet("students")]
-        public ActionResult<List<User>> GetUsersByTeacherId(int teacherId)
+        public ActionResult<List<User>> GetStudentsByTeacherId(int teacherId)
         {
             try
             {
@@ -72,26 +72,28 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-        [HttpGet("notifications")]
-        public ActionResult<List<Notification>> GetNotificationsByUserId(int UserId)
-        {
-            try
-            {
-                List<Notification> outputList = NotificationDao.GetNotificationsById(UserId);
-                return Ok(outputList);
 
-            }
-            catch (System.Exception)
-            {
-                return NotFound();
-            }
-        }
+        //[HttpGet("notifications")]
+        //public ActionResult<List<Notification>> GetNotificationsByUserId(int UserId)
+        //{
+        //    try
+        //    {
+        //        List<Notification> outputList = NotificationDao.GetNotificationsById(UserId);
+        //        return Ok(outputList);
+
+        //    }
+        //    catch (System.Exception)
+        //    {
+        //        return NotFound();
+        //    }
+        //}
+
         [HttpGet("students/{studentId}")]
-        public ActionResult<Course> GetStudentByStudentId(int studentId)
+        public ActionResult<User> GetStudentByStudentId(int studentId)
         {
             try
             {
-                Course output = UserDao.GetCoursesByCourseId(studentId);
+                User output = UserDao.GetStudentByStudentId(studentId);
                 return Ok(output);
 
             }
@@ -100,6 +102,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        //Change route to curriculm element or something like that
         [HttpGet("courses/{courseId}/assignments")]
         public ActionResult<List<Assignment>> GetAssignmentsByCourseId(int courseId)
         {
