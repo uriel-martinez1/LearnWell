@@ -119,6 +119,7 @@ namespace Capstone.Controllers
         }
 
     }
+}
 //{
 //path: '/teacher/courses?action=create',
 
