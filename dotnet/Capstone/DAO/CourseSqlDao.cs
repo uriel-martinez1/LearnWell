@@ -1,4 +1,5 @@
-﻿using Capstone.Exceptions;
+﻿using Capstone.DAO.SqlDaoInterfaces;
+using Capstone.Exceptions;
 using Capstone.Models;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class CourseSqlDao
+    public class CourseSqlDao : ICourseDao
     {
 
         private readonly string connectionString;
