@@ -15,6 +15,7 @@ namespace Capstone.Models
         //[JsonIgnore]
         public string Salt { get; set; }
         public string Role { get; set; }
+        public bool isTeacher { get; set; }
     }
 
     /// <summary>

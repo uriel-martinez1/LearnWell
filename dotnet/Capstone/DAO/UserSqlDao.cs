@@ -50,6 +50,41 @@ namespace Capstone.DAO
             return users;
         }
 
+        public List<User> GetStudentsByTeacherId(int id)
+        {
+            List<User> students = new List<User>();
+
+            string sql = "SELECT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users " +
+                "JOIN courses_students ON courses_students.student_id = users.user_id " +
+                "WHERE courses_students.course_id IN (SELECT course_id FROM courses WHERE teacher_id = @id)";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        User student = MapRowToUser(reader);
+                        students.Add(student);
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return students;
+        }
+
         public User GetUserById(int userId)
         {
             User user = null;
@@ -191,7 +226,7 @@ namespace Capstone.DAO
             return newUser;
         }
 
-        private User MapRowToUser(SqlDataReader reader)
+        public User MapRowToUser(SqlDataReader reader)
         {
             User user = new User();
             user.UserId = Convert.ToInt32(reader["user_id"]);
@@ -202,6 +237,7 @@ namespace Capstone.DAO
             user.PasswordHash = Convert.ToString(reader["password_hash"]);
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);
+            user.isTeacher = Convert.ToBoolean(reader["isTeacher"]);
             return user;
         }
     }
