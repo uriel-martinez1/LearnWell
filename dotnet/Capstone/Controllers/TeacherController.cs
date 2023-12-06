@@ -17,7 +17,7 @@ namespace Capstone.Controllers
         private readonly IAssignmentDao assignmentDao;
         private readonly ICourseDao courseDao;
         private readonly INotificationDao notificationDao;
-        public StudentController(ICourseDao courseDao, IAssignmentDao asignmentDao, IUserDao userDao)
+        public TeacherController(ICourseDao courseDao, IAssignmentDao asignmentDao, IUserDao userDao)
         {
             //this.dashboardDao = dashboardDao;
             this.userDao = userDao;
@@ -59,7 +59,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpGet("students")]
-        public ActionResult<List<User>> GetUsersByTeacherId(int teacherId)
+        public ActionResult<List<User>> GetStudentsByTeacherId(int teacherId)
         {
             try
             {
