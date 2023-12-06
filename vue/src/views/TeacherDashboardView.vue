@@ -34,7 +34,7 @@
 
 .footer {
     /* position: 10%; */
-    left: 0;
+    left: 200px;
     bottom: 0;
     width: 100%;
     background-color: rgb(16, 24, 40,1);
