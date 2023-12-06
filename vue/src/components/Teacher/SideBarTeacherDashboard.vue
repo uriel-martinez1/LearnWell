@@ -22,7 +22,7 @@
       
     },
     computed: {
-
+      
     },
     methods: {
       showCourses() {
