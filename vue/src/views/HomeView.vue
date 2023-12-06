@@ -6,7 +6,7 @@
     <div class="tile is-ancestor">
 
       <div class="tile is-4 is-vertical is-parent">
-        <h1 class="title is-1">Lets make learning easier for all</h1>
+        <h1 class="title is-1">Let's make learning easier for all</h1>
         <P class="subtitle is-5">LearnWell streamlines course organization and assignment management for teachers, while
           providing students with
           easy access to homework, submission, and teacher communication.</P>
@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import HomeNavBar from '../components/HomeNavBar.vue'
-import Footer from '../components/Footer.vue'
+import HomeNavBar from '../components/HomeNavBar.vue';
+import Footer from '../components/Footer.vue';
 
 export default {
   components: {
