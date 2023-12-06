@@ -28,15 +28,15 @@ namespace Capstone.Controllers
         //public ActionResult<Dashboard> GetDashboardByUser()
         //{
 
-        //}
+    //    //}
 
-        [HttpGet("courses")]
-        public ActionResult<List<Course>> GetCoursesByUsername()
-        {
-            try
-            {
-                List<Course> outputList = CourseDao.GetCoursesByUserName(User.Identity.Name);
-                return Ok(outputList);
+    //    [HttpGet("courses")]
+    //    public ActionResult<List<Course>> GetCoursesByUsername()
+    //    {
+    //        try
+    //        {
+    //            List<Course> outputList = CourseDao.GetCoursesByUserName(User.Identity.Name);
+    //            return Ok(outputList);
 
             }
             catch (System.Exception)
@@ -52,19 +52,19 @@ namespace Capstone.Controllers
                 Course output = CourseDao.GetCourseByCourseId(courseId);
                 return Ok(output);
 
-            }
-            catch (System.Exception)
-            {
-                return NotFound();
-            }
-        }
-        [HttpGet("students")]
-        public ActionResult<List<User>> GetUsersByTeacherId(int teacherId)
-        {
-            try
-            {
-                List<User> Listoutput = userDao.GetUsersByTeacherId(teacherId);
-                return Ok(Listoutput);
+    //        }
+    //        catch (System.Exception)
+    //        {
+    //            return NotFound();
+    //        }
+    //    }
+    //    [HttpGet("students")]
+    //    public ActionResult<List<User>> GetUsersByTeacherId(int teacherId)
+    //    {
+    //        try
+    //        {
+    //            List<User> Listoutput = userDao.GetUsersByTeacherId(teacherId);
+    //            return Ok(Listoutput);
 
             }
             catch (System.Exception)
@@ -111,14 +111,14 @@ namespace Capstone.Controllers
                 List<Assignment> outputList = AssignmentDao.GetAssignmentsByCourseId(courseId);
                 return Ok(outputList);
 
-            }
-            catch (System.Exception)
-            {
-                return NotFound();
-            }
-        }
+    //        }
+    //        catch (System.Exception)
+    //        {
+    //            return NotFound();
+    //        }
+    //    }
 
-    }
+    //}
 //{
 //path: '/teacher/courses?action=create',
 
