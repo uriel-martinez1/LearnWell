@@ -46,7 +46,8 @@ namespace Capstone.DAO
             }
 
             return comments;
-        }  public List<Comment> GetCommentsByUserId(int studentId, int teacherId)
+        } 
+        public List<Comment> GetCommentsByUserId(int studentId, int teacherId)
         {
             List<Comment> comments = new List<Comment>();
 
@@ -80,7 +81,7 @@ namespace Capstone.DAO
             return comments;
         }
       
-        private Comment MapRowToComment(SqlDataReader reader)
+        public Comment MapRowToComment(SqlDataReader reader)
         {
             Comment comment = new Comment();
             comment.CommentId = Convert.ToInt32(reader["comment_id"]);

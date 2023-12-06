@@ -50,7 +50,7 @@ namespace Capstone.DAO
             return answers;
         }
 
-        private Answer MapRowToAnswer(SqlDataReader reader)
+        public Answer MapRowToAnswer(SqlDataReader reader)
         {
             Answer answer = new Answer();
             answer.AnswerId = Convert.ToInt32(reader["answer_id"]);

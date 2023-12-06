@@ -19,7 +19,7 @@ namespace Capstone.DAO
             List<CurriculumElement> curriculum = new List<CurriculumElement>();
 
             string sql = "select curriculum_element_id, course_id, course_order, description, lecture_content, " +
-                "created_date, last_updated, isActive"
+                "created_date, last_updated "
                     + " from curriculum_elements where course_id = @courseId";
 
             try

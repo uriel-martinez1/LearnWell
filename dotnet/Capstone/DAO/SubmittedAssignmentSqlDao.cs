@@ -50,7 +50,7 @@ namespace Capstone.DAO
 
             return submittedAssignments;
         }
-            public SubmittedAssignment MapRowToSubmittedAssignment(SqlDataReader reader)
+        public SubmittedAssignment MapRowToSubmittedAssignment(SqlDataReader reader)
         {
             SubmittedAssignment assignment = new SubmittedAssignment();
             assignment.SubmittedAssignmentId = Convert.ToInt32(reader["submitted_assignment_id"]);
