@@ -3,8 +3,8 @@
         <h1>Learn Well</h1>
         <h2>Teacher Dashboard</h2>
         <button type="button">Dashboard</button>
-        <button v-on:click="Showcourses" type="button">Courses</button>
-          <button >{{ this.$store.state.user }}</button>
+        <button v-on:click="showCourses()" type="button">Courses</button>
+          <button >{{ this.$store.state.user.courses }}</button>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
         <button type="button">Logout</button>
@@ -19,16 +19,22 @@
       }
     },
     props: {
-
+      
     },
     computed: {
 
+    },
+    methods: {
+      showCourses() {
+
+      }
     }
   }
 </script>
 
 <style>
-    .sidebar button {
+
+.sidebar button {
   background-color: #04AA6D;
   border: none;
   color: white;
@@ -46,7 +52,7 @@
   background-color: lightcyan;
 }
 .sidebar {
-    height: 100%;
+  height: 100%;
   width: 200px;
   position: fixed;
   z-index: 1;
