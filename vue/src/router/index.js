@@ -145,6 +145,24 @@ const routes = [
 // 	requiresAuth: true
 // 	}
 // },
+
+// {
+//   path: '/teacher/submitted-assignments',
+//   component: SubmittedAssignmentsView,
+//   name: 'SubmittedAssignmentsView',
+//   meta: {
+// 	requiresAuth: true
+// 	}
+// },
+// {
+//   path: '/teacher/submitted-assignment/:studentId',
+//   component: SubmittedAssignmentView,
+//   name: 'SubmittedAssignmentView',
+//   meta: {
+// 	requiresAuth: true
+// 	}
+// },
+
 // {
 //   path:'/teacher/students',
 //   component: TeacherStudentView,
@@ -222,10 +240,29 @@ const routes = [
 // 	requiresAuth: true
 // 	}
 // },
+
 // {
-//   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignment?action=create',
-//   component: AddAssignmentView,
-//   name: 'AddAssignmentView',
+//   path: '/student/submitted-assignment',
+//   component: SubmittedAssignmentView,
+//   name: 'SubmittedAssignmentView',
+//   meta: {
+// 	requiresAuth: true
+// 	}
+// },
+
+// {
+//   path: '/student/submitted-assignment',
+//   component: SubmittedAssignmentView,
+//   name: 'SubmittedAssignmentView',
+//   meta: {
+// 	requiresAuth: true
+// 	}
+// },
+
+// {
+//   path: '/student/submitted-assignment?action=create',
+//   component: SubmittedAssignmentView,
+//   name: 'SubmittedAssignmentView',
 //   meta: {
 // 	requiresAuth: true
 // 	}
