@@ -39,10 +39,12 @@ import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
 import footer from '../components/Footer.vue';
 
 
+
 export default {
   components: {
     RegisterLoginNavBar,
     footer,
+    
     
   },
   data() {
@@ -105,4 +107,5 @@ label {
   border-radius: 8px;
   box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
 }
+
 </style>

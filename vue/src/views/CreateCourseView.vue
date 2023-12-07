@@ -4,15 +4,18 @@
         <div class="sidebar">
             <side-bar-teacher-dashboard></side-bar-teacher-dashboard> 
         </div>
-        <form @submit.prevent="createCourse">
+        <div class="create-course">
+            <create-course> </create-course>
+        </div>
+        <!-- <form @submit.prevent="createCourse">
             <label for="courseName">Course Name</label>
             <input v-model="courseName" type="text" placeholder="Type the name of the course here" id="courseName"
                 name="courseName" required>
 
             <label for="difficulty">Difficulty</label>
             <select v-model="difficulty" id="difficulty" name="difficulty" required>
-                <option value="beginner">Beginner</option> <!--if this is an int in our db? -->
-                <option value="intermediate">Intermediate</option>
+                <option value="beginner">Beginner</option> <//if this is an int in our db? 
+                 <option value="intermediate">Intermediate</option>
                 <option value="advanced">Advanced</option>
             </select>
 
@@ -27,43 +30,45 @@
 
             <input type="submit" value="Create Course">
 
-        </form>
+        </form> --> 
 
-        <div v-if="isCourseCreated">
+        <!-- <div v-if="isCourseCreated">
             <h2>Course Created!</h2>
             <p><strong>Course Name:</strong> {{ courseName }}</p>
             <p><strong>Difficulty:</strong> {{ difficulty }}</p>
             <p><strong>Cost:</strong> {{ cost }}</p>
             <p><strong>Course Description:</strong> {{ courseDescription }}</p>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
-import SideBarTeacherDashboard from '../components/Teacher/SideBarTeacherDashboard.vue'
+import sideBarTeacherDashboard from '../components/Teacher/SideBarTeacherDashboard.vue'
+import createCourse from '../components/CreateCourse.vue'
 
 export default {
     components:{
-        SideBarTeacherDashboard
+        sideBarTeacherDashboard,
+        createCourse,
     },
     data() {
-        return {
+        // return {
 
-            courseName: "",
-            difficulty: "",
-            cost: "free",
-            courseDescription: "",
-            isCourseCreated: false,
-            isCourseActive: false,
-        };
+        //     courseName: "",
+        //     difficulty: "",
+        //     cost: "free",
+        //     courseDescription: "",
+        //     isCourseCreated: false,
+        //     isCourseActive: false,
+        // };
 
     },
     methods: {
-        createCourse() {
-            return this.courseName, this.difficulty, this.cost, this.courseDescription,
-                this.isCourseCreated = true,
-                this.isCourseActive = true;
-        }
+        // createCourse() {
+        //     return this.courseName, this.difficulty, this.cost, this.courseDescription,
+        //         this.isCourseCreated = true,
+        //         this.isCourseActive = true;
+        // }
     }
 }
 </script>

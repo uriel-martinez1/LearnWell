@@ -7,7 +7,7 @@
             <div class="field">
                 <label class="label">Course Name</label>
                 <div class="control">
-                    <input class="input is-success" type="text" placeholder="Type the name of the course here"
+                    <input class="input is-success" v-model="courseName" type="text" placeholder="Type the name of the course here"
                         id="courseName" name="courseName" required>
                 </div>
             </div>
@@ -106,8 +106,6 @@ label {
   border-radius: 8px;
   box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
 }
-
-
 
 </style>
 
