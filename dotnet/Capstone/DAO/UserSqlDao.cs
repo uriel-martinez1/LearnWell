@@ -229,6 +229,7 @@ namespace Capstone.DAO
         public User MapRowToUser(SqlDataReader reader)
         {
             User user = new User();
+
             user.UserId = Convert.ToInt32(reader["user_id"]);
             user.FirstName = Convert.ToString(reader["first_name"]);
             user.LastName = Convert.ToString(reader["last_name"]);
@@ -238,6 +239,7 @@ namespace Capstone.DAO
             user.Salt = Convert.ToString(reader["salt"]);
             user.Role = Convert.ToString(reader["user_role"]);
             user.isTeacher = Convert.ToBoolean(reader["isTeacher"]);
+
             return user;
         }
     }
