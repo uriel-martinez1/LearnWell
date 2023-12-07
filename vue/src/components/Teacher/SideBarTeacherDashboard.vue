@@ -52,6 +52,7 @@
 }
 .sidebar button:hover {
   background-color: lightcyan;
+  color: blueviolet;
 }
 #courseButton {
   background-color: rgb(128, 31, 128);
@@ -83,6 +84,7 @@
   padding-left: 15px;
   padding-bottom: 10px;
   font-size: 25px;
+  top:0;
 }
 .navbar-item {
   text-align: left;
@@ -96,16 +98,17 @@
 .logoutButton {
   position: fixed;
   margin-left: 0;
+  margin-bottom: 10px;
   width: 200px;
   bottom: 0;
   color: white;
   text-align: center;
 }
 .logoutButton button {
-  background-color: rgb(150, 146, 146);
+  background-color: rgb(184, 179, 179);
   border: none;
   color: black;
-  padding: 15px 15px;
+  padding: 5px 5px;
   text-align: center;
   width: 100px;
   text-decoration: none;
