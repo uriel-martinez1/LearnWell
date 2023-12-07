@@ -94,7 +94,12 @@
         </div>
       </div>
       <div>
-        <button class="button is-link is-outlined" type="submit"><strong>Register</strong></button>
+        <button class="button is-link is-outlined" type="submit" v-if="!user.teacher"><strong>Register</strong></button>
+        <button class="button is-link is-outlined" type="submit" v-else
+          v-bind:disabled="!user.teacherKey"><strong>Register</strong></button>
+        <div>
+
+        </div>
       </div>
       <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
@@ -139,17 +144,26 @@ export default {
       }
       return 'teacher'
     },
-    buttonLabel(){
-      return(this.showPassword) ? "Hide" : "Show";
-    }
+    buttonLabel() {
+      return (this.showPassword) ? "Hide" : "Show";
+    },
 
   },
   methods: {
+    buttonAccess(tKey) {
+      return tKey.length === 0
+    },
     register() {
+      if (this.user.role == 'teacher' && this.user.teacherKey == '') {
+        this.registrationErrors = true;
+        // alert('Please enter a valid teacher key')
+      }
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        alert('Password & Confirm Password do not match.');
-      } else {
+        // alert('Password & Confirm Password do not match.');
+      }
+
+      else {
         this.user.role = this.userRole
         authService
           .register(this.user)
@@ -165,24 +179,37 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              alert('Invalid information entered');
+              this.registrationErrors = 'Invalid information entered';
             } else if (response.status === 500) {
-              alert('Invalid teacher key entered')
-              // this.$router.push({name: 'home'})
+              this.registrationErrors = 'Invalid teacher key entered';
             }
 
           });
-        this.clearErrors();
+
+        this.user = {
+          firstName: '',
+          lastName: '',
+          email: '',
+          username: '',
+          password: '',
+          confirmPassword: '',
+          teacher: false,
+          teacherKey: ''
+        }
+
+        setTimeout(() => {
+          this.clearErrors();
+        }, 5000);
       }
     },
     clearErrors() {
+      this.registrationErrorMsg = '';
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'Please try again or email help@LearnWell if you are still having trouble logging in..';
     },
     toggleShow() {
-       this.showPassword = !this.showPassword;
+      this.showPassword = !this.showPassword;
     },
-    
+
   }
 };
 </script>
@@ -218,4 +245,7 @@ label {
   accent-color: rgb(15, 167, 15);
 }
 
+button:disabled {
+  opacity: 50%;
+}
 </style>

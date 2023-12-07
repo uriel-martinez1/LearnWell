@@ -29,19 +29,22 @@
     <div class="footer">
     <footer>Created by Learn Well. © 2023</footer>
   </div>
-  <!-- <create-course></create-course> -->
+  <create-course></create-course>
+  <create-curriculum></create-curriculum>
 </template>
 
 <script>
 import authService from "../services/AuthService";
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
-// import createCourse from '../components/CreateCourse.vue'
+import createCourse from '../components/CreateCourse.vue'
+import createCurriculum from '../components/CreateCurriculum.vue'
 // import footer from '../components/Footer.vue';
 
 export default {
   components: {
     RegisterLoginNavBar,
-    // createCourse,
+    createCourse,
+    createCurriculum,
     // footer,
   },
   data() {
