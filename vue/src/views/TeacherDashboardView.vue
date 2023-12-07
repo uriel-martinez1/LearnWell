@@ -44,10 +44,6 @@
   margin-left: 20%;
   text-align: left;
 }
-.grid-container h2 {
-  /* margin-top: 30px;
-  margin-bottom: 50px; */
-}
 .todayDate {
   display: flex;
   justify-content: space-between;
