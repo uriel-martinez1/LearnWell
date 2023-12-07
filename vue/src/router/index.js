@@ -56,17 +56,17 @@ const routes = [
     path: "/teacher/:id",
     name: "TeacherDashboardView",
     component: TeacherDashboardView,
-    // meta: {
-    //   requiresAuth: true,
-    // },
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/teacher/courses",
     name: "TeacherCoursesView",
     component: TeacherCoursesView,
-    // meta: {
-    //   requiresAuth: true,
-    // },
+    meta: {
+      requiresAuth: true,
+    },
   },
   // {
   //   path: '/teacher/courses/:courseId',
@@ -178,12 +178,12 @@ const routes = [
   // 	}
   // },
   // {
-  //   path:'/teacher/students/:id',
-  //   component: TeacherStudentView,
+  //   path: '/teacher/:id/students',
+  //   component: TeacherDashboardView,
   //   name: 'TeacherStudentView',
   //   meta: {
-  // 	requiresAuth: true
-  // 	}
+  //     requiresAuth: true
+  //   }
   // },
 
   // {

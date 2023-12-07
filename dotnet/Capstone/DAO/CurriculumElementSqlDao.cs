@@ -29,7 +29,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@course_id", courseId);
+                    cmd.Parameters.AddWithValue("@courseId", courseId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

@@ -10,19 +10,21 @@ namespace Capstone.Controllers
 {
     [Route("teacher")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class TeacherController : ControllerBase
     {
         private readonly IUserDao UserDao;
         //private readonly IAssignmentDao AssignmentDao;
-        //private readonly ICourseDao CourseDao;
+        private readonly ICourseDao CourseDao;
+        private readonly ICurriculumElementDao CurriculumElementDao;
         //private readonly INotificationDao NotificationDao;
-        public TeacherController(IUserDao userDao)
+        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao)
         {
             //this.dashboardDao = dashboardDao;
             this.UserDao = userDao;
             //this.AssignmentDao = assignmentDao;
-            //this.CourseDao = courseDao;
+            this.CourseDao = courseDao;
+            this.CurriculumElementDao = curriculumElementDao;
             //this.NotificationDao = notificationDao;
 
         }
@@ -55,37 +57,55 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("students/{username}/courses")]
+        public ActionResult<List<Course>> GetCoursesByUsername(string username)
+        {
+            try
+            {
+                List<Course> outputList = CourseDao.GetCoursesByUserName(username);
+                return Ok(outputList);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("{id}/courses")]
+        public ActionResult<List<Course>> GetCoursesByTeacherId(int id)
+        {
+            try
+            {
+                List<Course> outputList = CourseDao.GetCoursesByUserId(id);
+                return Ok(outputList);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("courses/{id}/curriculum")]
+        public ActionResult<List<CurriculumElement>> GetCurriculumByCourseId(int id)
+        {
+            try
+            {
+                List<CurriculumElement> output = CurriculumElementDao.GetCurriculumElementsByCourse(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
     }
 }
 
-//[HttpGet("courses")]
-//    public ActionResult<List<Course>> GetCoursesByUsername()
-//    {
-//        try
-//        {
-//            List<Course> outputList = CourseDao.GetCoursesByUserName(User.Identity.Name);
-//            return Ok(outputList);
 
-//        }
-//        catch (System.Exception)
-//        {
-//            return NotFound();
-//        }
-//    }
-//    [HttpGet("courses/{courseId}")]
-//    public ActionResult<Course> GetCourseByCourseId(int courseId)
-//    {
-//        try
-//        {
-//            Course output = CourseDao.GetCourseByCourseId(courseId);
-//            return Ok(output);
-
-//        }
-//        catch (System.Exception)
-//        {
-//            return NotFound();
-//        }
-//    }
 
 //    [HttpGet("notifications")]
 //    public ActionResult<List<Notification>> GetNotificationsByUserId(int UserId)

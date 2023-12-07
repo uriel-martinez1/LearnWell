@@ -26,7 +26,7 @@ namespace Capstone.DAO
             try
             {
 
-                using (SqlConnection conn = new SqlConnection())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -51,16 +51,21 @@ namespace Capstone.DAO
             return courses;
         }
 
+        //TODO fix this to acutally use the username
         public List<Course> GetCoursesByUserName(string username)
         {
             List<Course> courses = new List<Course>();
 
-            string sql = "SELECT course_id, teacher_id, course_name, description, difficulty, cost, created_date, last_updated FROM courses WHERE teacher_id = @username";
+            string sql = "SELECT courses.course_id, teacher_id, course_name, description, difficulty, cost, courses.created_date, courses.last_updated " +
+                "FROM courses " +
+                "JOIN courses_students ON courses_students.course_id = courses.course_id " +
+                "JOIN users ON courses_students.student_id = users.user_id " +
+                "WHERE users.username = @username;";
 
             try
             {
 
-                using (SqlConnection conn = new SqlConnection())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -94,7 +99,7 @@ namespace Capstone.DAO
             try
             {
 
-                using (SqlConnection conn = new SqlConnection())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
