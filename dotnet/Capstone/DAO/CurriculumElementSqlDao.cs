@@ -18,9 +18,9 @@ namespace Capstone.DAO
         {
             List<CurriculumElement> curriculum = new List<CurriculumElement>();
 
-            string sql = "select curriculum_element_id, course_id, course_order, description, lecture_content, " +
+            string sql = "SELECT curriculum_element_id, course_id, course_order, description, lecture_content, " +
                 "created_date, last_updated "
-                    + " from curriculum_elements where course_id = @courseId";
+                    + " FROM curriculum_elements WHERE course_id = @courseId;";
 
             try
             {

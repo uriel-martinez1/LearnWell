@@ -36,16 +36,14 @@
 <script>
 import authService from "../services/AuthService";
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
-import footer from '../components/Footer.vue';
+// import footer from '../components/Footer.vue';
 
 
 
 export default {
   components: {
     RegisterLoginNavBar,
-    footer,
-    
-    
+    // footer,
   },
   data() {
     return {
@@ -68,7 +66,7 @@ export default {
             if (response.data.user.role === "student") {
               this.$router.push("/student");
             } else {
-              this.$router.push("/teacher");
+              this.$router.push(`/teacher/${response.data.user.userId}`);
             }
           }
         })

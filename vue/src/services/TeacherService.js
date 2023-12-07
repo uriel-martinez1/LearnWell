@@ -6,6 +6,10 @@ export default {
     return axios.get('/courses');
   },
 
+  getTeacherData(id){
+    return axios.get(`/teacher/${id}`)
+  }
+
   // getCourse(courseId) {
   //   return axios.get(`/courses/${courseId}`)
   // },

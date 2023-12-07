@@ -18,8 +18,8 @@ namespace Capstone.DAO
         {
             List<Source> sources = new List<Source>();
 
-            string sql = "select source_id, curriculum_element_id, source_url, created_date, last_updated "
-                    + " from sources where curriculum_element_id = @curriculum_element_id";
+            string sql = "SELECT source_id, curriculum_element_id, source_url, created_date, last_updated "
+                    + "FROM sources WHERE curriculum_element_id = @curriculum_element_id;";
 
             try
             {

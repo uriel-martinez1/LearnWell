@@ -5,8 +5,8 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      //user: //currentUser || {}
-      user:
+      user: currentUser || {},
+      users:
       {
         userid: 1,
         firstName: 'bobby',
