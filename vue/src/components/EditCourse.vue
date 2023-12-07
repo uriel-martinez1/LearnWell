@@ -1,14 +1,14 @@
 
 <template>
     <div id="app">
-        <form class="box" @submit.prevent="createCourse">
+        <form class="box" @submit.prevent="editCourse">
 
-            <h1 class="title is-4">Create a Course</h1>
+            <h1 class="title is-4">Edit Course</h1>
             <div class="field">
                 <label class="label">Course Name</label>
                 <div class="control">
                     <input class="input is-success" v-model="courseName" type="text" placeholder="Type the name of the course here"
-                        id="courseName" name="courseName" required>
+                        id="courseName" name="courseName">
                 </div>
             </div>
 
@@ -16,7 +16,7 @@
                 <label class="label">Difficulty</label>
                 <div class="control">
                     <div class="select">
-                        <select v-model="difficulty" id="difficulty" name="difficulty" required>
+                        <select v-model="difficulty" id="difficulty" name="difficulty">
                             <option>Beginner</option>
                             <option>Intermediate</option>
                             <option>Advanced</option>
@@ -29,7 +29,7 @@
                 <label class="label">Cost</label>
                 <div class="control">
                     <div class="select">
-                        <select v-model="cost" id="cost" name="cost" required>
+                        <select v-model="cost" id="cost" name="cost">
                             <option>0.00</option>
                             <option>Free</option>
                         </select>
@@ -42,16 +42,16 @@
                 <div class="control">
                     <textarea class="textarea" v-model="courseDescription"
                         placeholder="Type the description of the course here" id="courseDescription"
-                        name="courseDescription" rows="10" cols="50" required></textarea>
+                        name="courseDescription" rows="10" cols="50"></textarea>
                 </div>
             </div>
             <div class="control">
-                <button class="button is-link">Create Course</button>
+                <button class="button is-link">Edit Course</button>
             </div>
         </form>
 
-        <div v-if="isCourseCreated">
-            <h2>Course Created!</h2>
+        <div class="notification is-success is-light" v-if="isCourseEdited">
+            <h2>Course Edits Saved!</h2>
             <p><strong>Course Name:</strong> {{ courseName }}</p>
             <p><strong>Difficulty:</strong> {{ difficulty }}</p>
             <p><strong>Cost:</strong> {{ cost }}</p>
@@ -108,17 +108,3 @@ label {
 }
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,10 +6,10 @@
     <form class="box" v-on:submit.prevent="login">
       <h1 class="title is-4">Please Log In</h1>
       <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+        Please try again or email help@LearnWell if you are still having trouble logging in.
       </div>
       <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please log in.
+        Thank you for registering! Please log in.
       </div>
       <div class="field">
         <label for="username"></label>
@@ -35,11 +35,13 @@
 <script>
 import authService from "../services/AuthService";
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
+
 // import footer from '../components/Footer.vue';
 
 export default {
   components: {
     RegisterLoginNavBar,
+    
     // footer,
   },
   data() {
@@ -71,6 +73,7 @@ export default {
 
           if (response.status === 401) {
             this.invalidCredentials = true;
+            alert('Invalid username and/or password')
           }
         });
     }
