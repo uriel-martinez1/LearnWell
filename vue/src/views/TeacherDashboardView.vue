@@ -32,12 +32,13 @@
   </script>
   <style>
 
-div .footer {
-    margin: auto;
-    left: 0;
-    bottom: 50px;
+.footer {
+    position: fixed;
+    margin-left: 13%;
+    bottom: 0;
+    height: 5%;
     width: 100%;
-    background-color: rgb(16, 24, 40,1);
+    background-color: #04AA6D;
     color: white;
     text-align: left;
   }
