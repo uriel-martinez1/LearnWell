@@ -21,9 +21,9 @@ namespace Capstone.DAO
         {
             List<SubmittedAssignment> submittedAssignments = new List<SubmittedAssignment>();
 
-            string sql = "select submitted_assignment_id, assignment_id, student_id, teacher_id, course_id, score, graded_date, "
-            + " created_date, last_updated, number_of_edits from submitted_assignments "
-             + " where assignment_id = @assignment_id";
+            string sql = "SELECT submitted_assignment_id, assignment_id, student_id, teacher_id, course_id, score, graded_date, "
+            + " created_date, last_updated, number_of_edits FROM submitted_assignments "
+             + " WHERE assignment_id = @assignment_id";
             
             try
             {
@@ -63,7 +63,7 @@ namespace Capstone.DAO
             assignment.CreatedDate = Convert.ToDateTime(reader["created_date"]);
             assignment.LastEdited = SqlUtil.NullableDateTime(reader["last_updated"]);
             assignment.NumberOfEdits = Convert.ToInt32(reader["number_of_edits"]);
-            assignment.Answers = answerDao.GetAnswersByStudentId(assignment.StudentId);
+            assignment.Answers = answerDao.GetAnswersBySubmitedAssignmentId(assignment.SubmittedAssignmentId);
             assignment.Comments = commentDao.GetCommentsByUserId(assignment.StudentId,assignment.TeacherId);
             return assignment;
         }

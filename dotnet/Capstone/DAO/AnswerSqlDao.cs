@@ -16,13 +16,13 @@ namespace Capstone.DAO
         {
             connectionString = connString;
         }
-        public List<Answer> GetAnswersByStudentId(int studentId)
+        public List<Answer> GetAnswersBySubmitedAssignmentId(int submitedAssignmentId)
         {
             List<Answer> answers = new List<Answer>();
 
-            string sql = "select answer_id, submitted_assignment_id, question_type, answer_choice, answer_text, "
-            + " answer_external, isCorrect, last_updated, number_of_edits from answers " +
-            "where submitted_assignment_id = @student_id";
+            string sql = "SELECT answer_id, submitted_assignment_id, question_type, answer_choice, answer_text, "
+            + " answer_external, isCorrect, last_updated, number_of_edits FROM answers " +
+            "WHERE submited_assignment_id = @submitedAssignmentId;";
 
             try
             {
@@ -31,7 +31,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@student_id", studentId);
+                    cmd.Parameters.AddWithValue("@submitedAssignmentId", submitedAssignmentId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

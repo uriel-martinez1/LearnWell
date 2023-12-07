@@ -15,12 +15,12 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        public List<Comment> GetCommentsByUserId(int studentId)
+        public List<Comment> GetCommentsByUserId(int userId)
         {
             List<Comment> comments = new List<Comment>();
 
-            string sql = "select comment_id, submitted_assignment_id,created_by, comment, created_date," +
-                " last_updated, number_of_edits from comments where created_by = @userId";
+            string sql = "SELECT comment_id, submitted_assignment_id,created_by, comment, created_date," +
+                " last_updated, number_of_edits FROM comments WHERE created_by = @userId";
 
             try
             {
@@ -29,7 +29,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@user_id", studentId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -51,8 +51,8 @@ namespace Capstone.DAO
         {
             List<Comment> comments = new List<Comment>();
 
-            string sql = "select comment_id, submitted_assignment_id,created_by, comment, created_date," +
-                " last_updated, number_of_edits from comments where created_by = @studentId or created_by = @teacherId";
+            string sql = "SELECT comment_id, submitted_assignment_id,created_by, comment, created_date," +
+                " last_updated, number_of_edits FROM comments WHERE created_by = @studentId OR created_by = @teacherId";
 
             try
             {

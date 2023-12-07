@@ -118,6 +118,10 @@ namespace Capstone.DAO
             return course;
         }
 
+        //TODO add course method
+        //TODO edit course method
+        //TODO delete course method
+
         public Course MapRowToCourse(SqlDataReader reader)
         {
             Course newCourse = new Course();
