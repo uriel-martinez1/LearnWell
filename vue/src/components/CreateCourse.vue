@@ -1,29 +1,53 @@
 
 <template>
     <div id="app">
-        <form @submit.prevent="createCourse">
-            <label for="courseName">Course Name</label>
-            <input v-model="courseName" type="text" placeholder="Type the name of the course here" id="courseName"
-                name="courseName" required>
+        <form class="box" @submit.prevent="createCourse">
 
-            <label for="difficulty">Difficulty</label>
-            <select v-model="difficulty" id="difficulty" name="difficulty" required>
-                <option value="beginner">Beginner</option> <!--if this is an int in our db? -->
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-            </select>
+            <h1 class="title is-4">Create a Course</h1>
+            <div class="field">
+                <label class="label">Course Name</label>
+                <div class="control">
+                    <input class="input is-success" type="text" placeholder="Type the name of the course here"
+                        id="courseName" name="courseName" required>
+                </div>
+            </div>
 
-            <label for="cost">Cost</label>
-            <select v-model="cost" id="cost" name="cost" required>
-                <option value="free">0.00</option>
-            </select>
+            <div class="field">
+                <label class="label">Difficulty</label>
+                <div class="control">
+                    <div class="select">
+                        <select v-model="difficulty" id="difficulty" name="difficulty" required>
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-            <label for="courseDescription">Course Description</label>
-            <textarea v-model="courseDescription" placeholder="Type the description of the course here"
-                id="courseDescription" name="courseDescription" rows="10" cols="50" required> </textarea>
+            <div class="field">
+                <label class="label">Cost</label>
+                <div class="control">
+                    <div class="select">
+                        <select v-model="cost" id="cost" name="cost" required>
+                            <option>0.00</option>
+                            <option>Free</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-            <input type="submit" value="Create Course">
-
+            <div class="field">
+                <label class="label">Course Description</label>
+                <div class="control">
+                    <textarea class="textarea" v-model="courseDescription"
+                        placeholder="Type the description of the course here" id="courseDescription"
+                        name="courseDescription" rows="10" cols="50" required></textarea>
+                </div>
+            </div>
+            <div class="control">
+                <button class="button is-link">Create Course</button>
+            </div>
         </form>
 
         <div v-if="isCourseCreated">
@@ -54,11 +78,38 @@ export default {
         createCourse() {
             return this.courseName, this.difficulty, this.cost, this.courseDescription,
                 this.isCourseCreated = true,
-                this.isCourseActive = true;
+                this.isCourseActive = false;
         }
     }
 }
 </script>
+
+<style> 
+.form-input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-right: 0.5rem;
+}
+
+.field {
+  padding: 10px;
+}
+
+.box {
+  max-width: 50%;
+
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
+}
+
+
+
+</style>
 
 
 
