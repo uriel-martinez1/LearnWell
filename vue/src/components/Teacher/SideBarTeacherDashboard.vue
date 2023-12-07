@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div>
       <div class="header">
         <a class="navbar-item">
                 <img class="icon" src="../icon/icons8-books-64.png">
