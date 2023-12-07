@@ -50,17 +50,34 @@
           </span>
         </div>
       </div>
-      <div class="field">
-        <label for="password"></label>
 
-        <input type="password" id="password" placeholder="Create your password" v-model="user.password" required />
+      <label class="label"></label>
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input v-if="showPassword" type="text" class="input" v-model="user.password" />
+          <input v-else type="password" class="input" placeholder="Create your password" v-model="user.password">
+        </div>
+        <div class="control">
+          <button class="button" @click.prevent="toggleShow"><span class="icon is-small is-right">
+              <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"></i>
+            </span>
+          </button>
+        </div>
       </div>
-      <div class="field">
-        <label for="confirmPassword"></label>
+      <label class="label"></label>
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input v-if="showPassword" type="text" class="input" v-model="user.confirmPassword" />
+          <input v-else type="password" class="input" placeholder="Confirm your password" v-model="user.confirmPassword">
+        </div>
+        <div class="control">
+          <button class="button" @click.prevent="toggleShow"><span class="icon is-small is-right">
+              <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"></i>
+            </span>
+          </button>
+        </div>
+      </div>
 
-        <input type="password" id="confirmPassword" placeholder="Confirm your password" v-model="user.confirmPassword"
-          required />
-      </div>
       <input name="isTeacher" type="radio" id="teacher-yes" v-model="user.teacher" v-bind:value="true" />
       <label for="teacher-yes">Teacher</label>
       <input name="isTeacher" type="radio" id="teacher-no" v-model="user.teacher" v-bind:value="false" />
@@ -87,8 +104,6 @@
   </div>
 </template>
 
-
-
 <script>
 import authService from '../services/AuthService';
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
@@ -96,7 +111,7 @@ import footer from '../components/Footer.vue';
 
 export default {
 
-  components:{
+  components: {
     RegisterLoginNavBar,
     footer,
   },
@@ -112,6 +127,7 @@ export default {
         teacher: false,
         teacherKey: ''
       },
+      showPassword: false,
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };
@@ -122,7 +138,11 @@ export default {
         return 'student'
       }
       return 'teacher'
+    },
+    buttonLabel(){
+      return(this.showPassword) ? "Hide" : "Show";
     }
+
   },
   methods: {
     register() {
@@ -146,20 +166,24 @@ export default {
             this.registrationErrors = true;
             if (response.status === 400) {
               alert('Invalid information entered');
-            } else if (response.status === 500){
+            } else if (response.status === 500) {
               alert('Invalid teacher key entered')
               // this.$router.push({name: 'home'})
             }
-            
+
           });
-          this.clearErrors();
+        this.clearErrors();
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = 'Please try again or email help@LearnWell if you are still having trouble logging in..';
     },
-  },
+    toggleShow() {
+       this.showPassword = !this.showPassword;
+    },
+    
+  }
 };
 </script>
 
@@ -190,12 +214,8 @@ label {
   box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
 }
 
-/* .error-message {
-  color: #ff3860;
-  margin-bottom: 10px;
-} */
-
 .button-is-link-is-outlined-my-5 {
   accent-color: rgb(15, 167, 15);
 }
+
 </style>
