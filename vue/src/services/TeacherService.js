@@ -8,7 +8,24 @@ export default {
 
   getTeacherData(id){
     return axios.get(`/teacher/${id}`)
-  }
+  },
+
+  getStudentDataByTeacher(id){
+    return axios.get(`/teacher/${id}/students`)
+  },
+
+  getStudentCoursesByStudentUsername(username){
+    return axios.get(`/teacher/students/${username}/courses`)
+  },
+
+  getCoursesByTeacherId(id) {
+    return axios.get(`/teacher/${id}/courses`)
+  },
+
+  getCurriculumByCourseId(id){
+    return axios.get(`/teacher/courses/${id}/curriculum`)
+  },
+
 
   // getCourse(courseId) {
   //   return axios.get(`/courses/${courseId}`)
