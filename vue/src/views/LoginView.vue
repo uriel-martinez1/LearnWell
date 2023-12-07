@@ -13,21 +13,20 @@
       </div>
       <div class="field">
         <label for="username"></label>
-        <input class="input is-success" type="text" id="username" placeholder="Enter your username"
-          v-model="user.username" required autofocus />
+        <input class="input is-success" type="text" id="username" placeholder="Enter your username" 
+        v-model="user.username" required autofocus />
       </div>
       <div class="field">
         <label for="password"></label>
         <input class="input is-success" type="password" id="password" placeholder="Enter your password"
-          v-model="user.password" required autofocus />
+         v-model="user.password" required autofocus/>
       </div>
       <button class="button is-link is-outlined" type="submit"><strong>Log in</strong></button>
       <p>
-        <router-link v-bind:to="{ name: 'register' }">Need an account? Register here!</router-link>
-      </p>
+      <router-link v-bind:to="{ name: 'register' }">Need an account? Register here!</router-link></p>
     </form>
   </div>
-  <div class="footer">
+    <div class="footer">
     <footer>Created by Learn Well. © 2023</footer>
   </div>
   
@@ -38,8 +37,6 @@ import authService from "../services/AuthService";
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
 // import footer from '../components/Footer.vue';
 
-
-
 export default {
   components: {
     RegisterLoginNavBar,
@@ -49,8 +46,7 @@ export default {
     return {
       user: {
         username: "",
-        password: "",
-
+        password: ""
       },
       invalidCredentials: false
     };
@@ -63,7 +59,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            if (response.data.user.role === "student") {
+            if(response.data.user.role === "student"){
               this.$router.push("/student");
             } else {
               this.$router.push(`/teacher/${response.data.user.userId}`);
@@ -76,9 +72,8 @@ export default {
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
-        })
-    },
-
+        });
+    }
   }
 };
 </script>
@@ -87,23 +82,21 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
-
 label {
   margin-right: 0.5rem;
 }
 
-.field {
+.field{
   padding: 10px;
 }
-
-.box {
-  max-width: 50%;
-
-  margin: 0 auto;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
+.box { 
+    max-width: 50%; 
+    
+  margin: 0 auto; 
+  background-color: #ffffff; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1); 
 }
 
 </style>
