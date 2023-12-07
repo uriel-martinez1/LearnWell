@@ -3,7 +3,7 @@
       <div class="header">
         <a class="navbar-item">
                 <img class="icon" src="../icon/icons8-books-64.png">
-                <p><router-link v-bind:to="{name:'TeacherDashboardView'}"><strong>LEARNWELL</strong></router-link></p>
+                <p><strong>LEARNWELL</strong></p>
         </a>
         <h2><strong>Teacher Dashboard</strong></h2>
       </div>
