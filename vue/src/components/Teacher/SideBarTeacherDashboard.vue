@@ -1,9 +1,13 @@
 <template>
-    <div class="sidebar">
-      <div>
-        <h1>Learn Well</h1>
-        <h2>Teacher Dashboard</h2>
+    <div>
+      <div class="header">
+        <a class="navbar-item">
+                <img class="icon" src="../icon/icons8-books-64.png">
+                <p><strong>LEARNWELL</strong></p>
+        </a>
+        <h2><strong>Teacher Dashboard</strong></h2>
       </div>
+      <div class="sidebar">
         <button type="button">Dashboard</button>
         <button v-on:click="() => showCourses = !showCourses" type="button">Courses</button>
         <div v-if="showCourses">
@@ -11,12 +15,17 @@
         </div>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
-        <button type="button">Logout</button>
+        <div class="logoutButton">
+          <button type="button">Logout</button>
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
+
   export default {
+    
     data() {
       return {
         showCourses: false,
@@ -43,6 +52,7 @@
 }
 .sidebar button:hover {
   background-color: lightcyan;
+  color: blueviolet;
 }
 #courseButton {
   background-color: rgb(128, 31, 128);
@@ -63,10 +73,50 @@
   width: 200px;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 10;
   left: 0;
   background-color: lightcyan;
   overflow-x: hidden;
+}
+.header {
+  color: black;
+  text-align: left;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  top:0;
+}
+.navbar-item {
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+.icon{
+    height: auto,
+}
+.logoutButton {
+  position: fixed;
+  margin-left: 0;
+  margin-bottom: 10px;
+  width: 200px;
+  bottom: 0;
+  color: white;
+  text-align: center;
+}
+.logoutButton button {
+  background-color: rgb(184, 179, 179);
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  width: 100px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 </style>
