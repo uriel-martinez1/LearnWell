@@ -102,6 +102,21 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("courses/curriculum/{id}")]
+        public ActionResult<CurriculumElement> GetCurriculumElementByElementId(int id)
+        {
+            try
+            {
+                CurriculumElement output = CurriculumElementDao.GetCurriculumElementByCurriculumId(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
     }
 }
 

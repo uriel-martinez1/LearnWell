@@ -26,6 +26,9 @@ export default {
     return axios.get(`/teacher/courses/${id}/curriculum`)
   },
 
+  getCurriculumElementById(id){
+    return axios.get(`/teacher/courses/curriculum/${id}`)
+  },
 
   // getCourse(courseId) {
   //   return axios.get(`/courses/${courseId}`)

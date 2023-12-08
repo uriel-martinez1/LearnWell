@@ -7,7 +7,7 @@
       <h1>Teacher: {{ user.firstName }} {{ user.lastName }}</h1>
       
     </div>
-    <div>
+    <div class="box">
       <label for="courses">Courses</label>
       <input id="courses" name="courseOrStudent" type="radio" v-bind:value=true v-model="courseOrStudent">
       <label for="students">Students</label>
@@ -60,7 +60,7 @@ export default {
 </script>
 <style>
 .footer {
-  /* position: 10%; */
+  position: absolute;
   left: 200px;
   bottom: 0;
   width: 100%;
