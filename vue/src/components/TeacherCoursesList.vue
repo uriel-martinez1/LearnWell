@@ -2,6 +2,7 @@
     <div class="box">
         <ul v-for="course in this.courses" v-bind:key="course.courseId">
             <li class="title is-4">Course Name: {{ course.courseName }}</li>
+                <!-- Edit Course element/info button -->
             <div v-for="curricula in course.curriculum" v-bind:key="curricula.curriculumElementId">
                 <a v-on:click="selectCurriculumElement(curricula.curriculumElementId)">Curricula: {{ curricula.description }}</a>
                 <!---Edit curriculum button-->
@@ -10,6 +11,7 @@
             <!---Add curriculum element to the course-->
             <button v-on:click="CreateCurriculumView">Add curriculum</button>
         </ul>
+        <!-- Add a course to the teachers pannel -->
     </div>
 </template>
 
