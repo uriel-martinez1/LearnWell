@@ -6,9 +6,12 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import LogoutView from "../views/LogoutView.vue";
 import RegisterView from "../views/RegisterView.vue";
-import TeacherDashboardView from "../views/TeacherDashboardView.vue"
-import TeacherCoursesView from "../views/TeacherCoursesView.vue"
-import TeacherCurriculumView from "../views/TeacherCurriculumView.vue"
+import TeacherDashboardView from "../views/TeacherDashboardView.vue";
+import TeacherCoursesView from "../views/TeacherCoursesView.vue";
+import TeacherCurriculumView from "../views/TeacherCurriculumView.vue";
+import CreateCurriculumView from "../views/CreateCurriculumView.vue";
+import EditCurriculumView from "../views/EditCurriculumView.vue"
+
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -74,6 +77,24 @@ const routes = [
     path: '/teacher/courses/curriculum/:elementId',
     component: TeacherCurriculumView,
     name: 'TeacherCurriculumView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  {
+    path: '/teacher/courses/curriculum',
+    component: CreateCurriculumView,
+    name: 'CreateCurriculumView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  {
+    path: '/teacher/courses/curriculum/:elementId',
+    component: EditCurriculumView,
+    name: 'EditCurriculumView',
     meta: {
       requiresAuth: true
     }
