@@ -2,11 +2,11 @@ import axios from 'axios';
 
 export default {
 
-  getUser(userId) {
+  getStudentData(userId) {
     return axios.get(`/student/${userId}`);
   },
 
-  getCourses(userId) {
+  getCoursesByStudentId(userId) {
     return axios.get(`/student/${userId}/courses/`)
   },
 

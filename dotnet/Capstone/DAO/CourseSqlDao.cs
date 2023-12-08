@@ -51,6 +51,42 @@ namespace Capstone.DAO
             return courses;
         }
 
+        public List<Course> GetCoursesByStudentId(int id)
+        {
+            List<Course> courses = new List<Course>();
+
+            string sql = "SELECT courses.course_id, teacher_id, course_name, description, difficulty, cost, courses.created_date, last_updated FROM courses " +
+                "JOIN courses_students ON courses.course_id = courses_students.course_id " +
+                "WHERE courses_students.student_id = @id";
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Course nextCourse = MapRowToCourse(reader);
+                        courses.Add(nextCourse);
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return courses;
+        }
+
         //TODO fix this to acutally use the username
         public List<Course> GetCoursesByUserName(string username)
         {

@@ -8,6 +8,7 @@ import LogoutView from "../views/LogoutView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import TeacherDashboardView from "../views/TeacherDashboardView.vue"
 import TeacherCoursesView from "../views/TeacherCoursesView.vue"
+import StudentDashView from "../views/StudentDashView.vue"
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -195,21 +196,21 @@ const routes = [
   // 	}
   // },
 
+  {
+    path: '/student/:id',
+    component: StudentDashView,
+    name: 'StudentDashView',
+    meta: {
+      requiresAuth: true
+    },
+  },
   // {
-  //   path:'/student',
-  //   component: StudentView,
-  //   name: 'StudentView',
+  //   path: '/student/courses',
+  //   component: StudentDashView,
+  //   name: 'StudentDashView',
   //   meta: {
-  // 	requiresAuth: true
-  // 	}
-  // },
-  // {
-  //   path:'/student/courses',
-  //   component: StudentCourseView,
-  //   name: 'StudentView',
-  //   meta: {
-  // 	requiresAuth: true
-  // 	}
+  //     requiresAuth: true
+  //   }
   // },
   // {
   //   path:'/student/course/:CourseId',
