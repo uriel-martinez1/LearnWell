@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="ShowCurriculumView" v-if="show">
+            <!---Show curriculum view/VIEW ONLY-->
+        </div>
+
         <p class="title is-3">{{ this.content.description }}</p>
         <p class="subtitle is-5">Course content: {{ this.content.lectureContent }}</p>
     </div>
@@ -7,6 +11,8 @@
 
 <script>
 import TeacherService from '../services/TeacherService';
+
+
 export default {
     props: ['elementId'],
     data() {
@@ -17,9 +23,9 @@ export default {
     created() {
         console.log(this.elementId)
         TeacherService.getCurriculumElementById(this.elementId)
-        .then((response) =>{
-            this.content = response.data;
-        })   
+            .then((response) => {
+                this.content = response.data;
+            })
     }
 }
 
