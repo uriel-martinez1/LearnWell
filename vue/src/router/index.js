@@ -8,6 +8,7 @@ import LogoutView from "../views/LogoutView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import TeacherDashboardView from "../views/TeacherDashboardView.vue";
 import TeacherCoursesView from "../views/TeacherCoursesView.vue";
+import StudentDashView from "../views/StudentDashView.vue"
 import TeacherCurriculumView from "../views/TeacherCurriculumView.vue";
 import CreateCurriculumView from "../views/CreateCurriculumView.vue";
 import EditCurriculumView from "../views/EditCurriculumView.vue"
@@ -219,21 +220,21 @@ const routes = [
   // 	}
   // },
 
+  {
+    path: '/student/:id',
+    component: StudentDashView,
+    name: 'StudentDashView',
+    meta: {
+      requiresAuth: true
+    },
+  },
   // {
-  //   path:'/student',
-  //   component: StudentView,
-  //   name: 'StudentView',
+  //   path: '/student/courses',
+  //   component: StudentDashView,
+  //   name: 'StudentDashView',
   //   meta: {
-  // 	requiresAuth: true
-  // 	}
-  // },
-  // {
-  //   path:'/student/courses',
-  //   component: StudentCourseView,
-  //   name: 'StudentView',
-  //   meta: {
-  // 	requiresAuth: true
-  // 	}
+  //     requiresAuth: true
+  //   }
   // },
   // {
   //   path:'/student/course/:CourseId',

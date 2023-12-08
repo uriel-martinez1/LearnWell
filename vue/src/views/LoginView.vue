@@ -62,7 +62,7 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             if(response.data.user.role === "student"){
-              this.$router.push("/student");
+              this.$router.push(`/student/${response.data.user.userId}`);
             } else {
               this.$router.push(`/teacher/${response.data.user.userId}`);
             }
