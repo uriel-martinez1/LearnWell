@@ -28,7 +28,6 @@ export default {
         }
     },
     created() {
-        console.log(this.elementId)
         TeacherService.getCurriculumElementById(this.elementId)
             .then((response) => {
                 this.content = response.data;
