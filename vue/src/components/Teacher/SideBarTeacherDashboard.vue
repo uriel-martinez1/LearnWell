@@ -15,9 +15,9 @@
         </div>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
-        <div class="logoutButton">
+        <!-- <div class="logoutButton">
           <button type="button">Logout</button>
-        </div>
+        </div> -->
       </div>
     </div>
 </template>
@@ -34,7 +34,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 
 .sidebar button {
   background-color: #04AA6D;
@@ -95,7 +95,7 @@
 .icon{
     height: auto,
 }
-.logoutButton {
+/* .logoutButton {
   position: fixed;
   margin-left: 0;
   margin-bottom: 10px;
@@ -117,6 +117,6 @@
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-}
+} */
 
 </style>
