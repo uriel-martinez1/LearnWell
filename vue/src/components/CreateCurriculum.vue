@@ -256,18 +256,23 @@ export default {
                 description: this.content.description,
                 lectureContent: this.content.lectureContent,
                 createdDate: this.content.createdDate,
-                lastUpdated: this.content.lastUpdated
-            }
+                lastUpdated: this.content.lastUpdated,
+                assignments: this.content.assignments
+            },
+            answers: [
+
+            ],
+            sources: [
+                
+            ],
+            assignments : [
+            
+            ],
         };
 
     },
-    computed: {
-        curriculumElementId(){
-            return this.content.curriculumElementId
-        },
-        description(){
-            return this.content.description
-        }
+    created (){
+        
     },
      // created(){
     //     this.curriculumData = 
