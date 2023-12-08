@@ -8,7 +8,7 @@ import LogoutView from "../views/LogoutView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import TeacherDashboardView from "../views/TeacherDashboardView.vue";
 import TeacherCoursesView from "../views/TeacherCoursesView.vue";
-import StudentDashView from "../views/StudentDashView.vue"
+import StudentDashboardView from "../views/StudentDashboardView.vue"
 import TeacherCurriculumView from "../views/TeacherCurriculumView.vue";
 import CreateCurriculumView from "../views/CreateCurriculumView.vue";
 import EditCurriculumView from "../views/EditCurriculumView.vue"
@@ -222,8 +222,8 @@ const routes = [
 
   {
     path: '/student/:id',
-    component: StudentDashView,
-    name: 'StudentDashView',
+    component: StudentDashboardView,
+    name: 'StudentDashboardView',
     meta: {
       requiresAuth: true
     },
