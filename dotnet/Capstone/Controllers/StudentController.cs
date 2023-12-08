@@ -16,15 +16,17 @@ namespace Capstone.Controllers
     //[Authorize]
     public class StudentController : ControllerBase
     {
-        //        private readonly IAssignmentDao assignmentDao;
+        private readonly IAssignmentDao assignmentDao;
         private readonly ICourseDao courseDao;
         private readonly IUserDao userDao;
-        public StudentController(ICourseDao courseDao, IUserDao userDao) //IAssignmentDAo assignmentDao
+        private readonly ICurriculumElementDao curriculumElementDao;
+        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao)
         {
             //this.dashboardDao = dashboardDao;
             this.courseDao = courseDao;
             this.userDao = userDao;
-            //this.assignmentDao = assignmentDao;
+            this.curriculumElementDao = curriculumElementDao;
+            this.assignmentDao = assignmentDao;
         }
         //        //[HttpGet]
         //        //public ActionResult<Dashboard> GetDashboardByUser()
@@ -73,22 +75,36 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("courses/curriculum/{courseId}")]
+        public ActionResult<List<CurriculumElement>> GetCurriculumByCourseId(int courseId)
+        {
+            try
+            {
+                List<CurriculumElement> curriculum = curriculumElementDao.GetCurriculumElementsByCourse(courseId);
+                return Ok(curriculum);
 
-        //        [HttpGet("{courseId}/assignments")]
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
 
-        //        public ActionResult<List<Assignment>> GetAssignments(int courseId)
-        //        {
-        //            try
-        //            {
-        //                List<Assignment> outputList = AssignmentDao.GetAssignmentsByCourseId(courseId);
-        //                return Ok(outputList);
+        [HttpGet("{id}/assignments")]
 
-        //            }
-        //            catch (System.Exception)
-        //            {
-        //                return NotFound();
-        //            }
-        //        }
+        public ActionResult<List<Assignment>> GetAssignments(int id)
+        {
+            try
+            {
+                List<Assignment> outputList = assignmentDao.GetAssignmentsByCurriculumElementId(id);
+                return Ok(outputList);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 
         //        public ActionResult<Assignment> GetAssignmentById(int assignmentId)

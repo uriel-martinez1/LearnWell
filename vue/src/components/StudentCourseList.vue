@@ -2,10 +2,9 @@
     <div>
         <ul v-for="course in this.courses" v-bind:key="course.courseId">
             <li>Course Name: {{ course.courseName }}</li>
-            <div v-for="curricula in course.curriculum" 
-            v-bind:key="curricula.curriculumElementId">
-            <li>Curricula: {{ curricula.description }}</li>
-        </div>
+            <div v-for="curricula in course.curriculum" v-bind:key="curricula.curriculumElementId" v-on:click="viewCurriculum(curricula.curriculumElementId)">
+                <li>Curricula: {{ curricula.description }}</li>
+            </div>
         </ul>
     </div>
 </template>
@@ -21,22 +20,32 @@ export default {
         return {
             courses: []
         };
-    }, 
+    },
+    methods: {
+        viewCurriculum(id){
+            this.$router.push({name: "StudentCurriculumView", params:{elementId: id}})
+        }
+    },
     created() {
         StudentService.getCoursesByStudentId(this.$store.state.user.userId)
-        .then((response) => {
+            .then((response) => {
 
-            this.courses = response.data;
+                this.courses = response.data;
 
-            console.log(this.courses)
-
-            // this.courses.forEach((course) => {
-            //     StudentService.getCurriculumByCourseId(course.courseId)
-            //     .then((response) => {
-            //         course.curriculum = (response.data)
-            //     })
-            // })
-        })
+                this.courses.forEach((course) => {
+                    StudentService.getCurriculumByCourseId(course.courseId)
+                        .then((response) => {
+                            console.log(response.data, "GET CURRICULUM BY COURSE ID")
+                            course.curriculum = (response.data)
+                            // course.curriculum.forEach((curriculumElement) => {
+                            //     StudentService.getAssignmentsByCurriculumId(curriculumElement.curriculumElementId)
+                            //         .then((response) => {
+                            //             course.curriculum.assignment = (response.data)
+                            //         })
+                            // })
+                        })
+                })
+            })
     }
 }
 

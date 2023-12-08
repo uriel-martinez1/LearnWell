@@ -9,11 +9,11 @@
       </div>
       <student-course-list></student-course-list>
     </div>
-    <!-- <div class="footer">
+    <div class="footer">
       <footer>
         <p>Copyright ©-All rights are reserved</p>
       </footer>
-    </div> -->
+    </div>
   </template>
   
   <script>
@@ -36,7 +36,6 @@
     created() {
       StudentService.getStudentData(this.$store.state.user.userId)
         .then((response) => {
-          console.log('IN RESPONSE STUDENT DASH')
           this.user = response.data;
         });
     },

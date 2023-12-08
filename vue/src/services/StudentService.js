@@ -10,8 +10,11 @@ export default {
     return axios.get(`/student/${userId}/courses/`)
   },
 
-  getCourseById(userId, courseId) {
-    return axios.get(`/student/${userId}/courses/${courseId}`)
+  getCurriculumByCourseId(courseId) {
+    return axios.get(`/student/courses/curriculum/${courseId}`)
+  },
+  getAssignmentsByCurriculumId(id){
+    return axios.get(`/student/${id}/assignments`)
   },
 
   // addCourse(course) {
