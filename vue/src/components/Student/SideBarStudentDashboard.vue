@@ -8,7 +8,7 @@
       <h2><strong>Student Dashboard</strong></h2>
     </div>
     <div class="sidebar">
-      <button type="button">Dashboard</button>
+      <button type="button" v-on:click="this.$router.push(`/student/${store.state.data.user.userId}`)">Dashboard</button>
       <button v-on:click="() => showAssignments = !showAssignments" type="button">Assignments</button>
       <div v-if="showAssignments">
           <button id="assignmentButton" v-for="assignment in this.$store.state.user.courses[0].curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">{{ assignment.title }}</button>
@@ -19,11 +19,15 @@
 </template>
 
 <script>
-
+ // import StudentService from "../services/StudentService"
+ // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
-    
+    components: {
+     //StudentCourseList,
+    },
     data() {
       return {
+        showCourses: false,
         showAssignments: false,
       }
     },
