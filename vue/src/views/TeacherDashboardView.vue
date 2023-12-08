@@ -42,7 +42,7 @@ export default {
   display: flex;
   justify-content: left;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
   margin-left: 20%;
   text-align: left;
 }
@@ -59,7 +59,7 @@ export default {
   position: fixed;
   margin-left: 13%;
   bottom: 0;
-  height: 5%;
+  height: 10%;
   width: 100%;
   background-color: #04AA6D;
   color: white;
