@@ -1,5 +1,5 @@
 <template>
-    <create-curriculum v-bind:content="this.content"></create-curriculum>
+    <create-curriculum v-bind:content="this.content" v-if="content.courseId != undefined"></create-curriculum>
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
     created(){
         TeacherService.getCurriculumElementById(this.$route.params.elementId)
             .then((response) => {
-                console.log(response.data, "INSIDE CREATED getting CURRICULUM ELEMENT")
                 this.content = response.data
             })
     }
