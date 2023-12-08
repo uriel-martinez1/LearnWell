@@ -14,9 +14,6 @@
           <button id="assignmentButton" v-for="assignment in this.$store.state.user.courses[0].curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">{{ assignment.title }}</button>
         </div>
       <button type="button">Notifications</button>
-        <div class="logoutButton">
-          <button type="button">Logout</button>
-        </div>
     </div>
   </div>
 </template>
@@ -93,28 +90,5 @@ export default {
 }
 .icon{
     height: auto,
-}
-.logoutButton {
-  position: fixed;
-  margin-left: 0;
-  margin-bottom: 10px;
-  width: 200px;
-  bottom: 0;
-  color: white;
-  text-align: center;
-}
-.logoutButton button {
-  background-color: rgb(184, 179, 179);
-  border: none;
-  color: black;
-  padding: 5px 5px;
-  text-align: center;
-  width: 100px;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 </style>
