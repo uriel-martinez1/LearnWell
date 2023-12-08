@@ -18,9 +18,9 @@ namespace Capstone.DAO
         {
             List<CurriculumElement> curriculum = new List<CurriculumElement>();
 
-            string sql = "select curriculum_element_id, course_id, course_order, description, lecture_content, " +
+            string sql = "SELECT curriculum_element_id, course_id, course_order, description, lecture_content, " +
                 "created_date, last_updated "
-                    + " from curriculum_elements where course_id = @courseId";
+                    + " FROM curriculum_elements WHERE course_id = @courseId;";
 
             try
             {
@@ -29,7 +29,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@course_id", courseId);
+                    cmd.Parameters.AddWithValue("@courseId", courseId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -47,6 +47,35 @@ namespace Capstone.DAO
 
             return curriculum;
         }
+
+        public CurriculumElement GetCurriculumElementByCurriculumId(int id)
+        {
+            CurriculumElement output = null;
+
+            string sql = "SELECT curriculum_element_id, course_id, course_order, description, lecture_content, created_date, last_updated " +
+                "FROM curriculum_elements " +
+                "WHERE curriculum_element_id = @id;";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        output = MapRowToCurriculumElement(reader);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+            return output;
+        }
+
         public CurriculumElement MapRowToCurriculumElement(SqlDataReader reader)
         {
             CurriculumElement curriculum = new CurriculumElement();

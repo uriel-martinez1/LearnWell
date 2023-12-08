@@ -6,9 +6,10 @@ namespace Capstone.DAO.SqlDaoInterfaces
 {
     public interface ICourseDao
     {
-        public List<Course> GetCoursesByUserId(int id);
-        public List<Course> GetCoursesByUserName(string username);
-        public Course GetCourseByCourseId(int id);
-        public Course MapRowToCourse(SqlDataReader reader);
+        List<Course> GetCoursesByUserId(int id);
+        List<Course> GetCoursesByStudentId(int id);
+        List<Course> GetCoursesByUserName(string username);
+        Course GetCourseByCourseId(int id);
+        Course MapRowToCourse(SqlDataReader reader);
     }
 }
