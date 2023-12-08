@@ -6,7 +6,9 @@ namespace Capstone.DAO.SqlDaoInterfaces
 {
     public interface ICurriculumElementDao
     {
-        public List<CurriculumElement> GetCurriculumElementsByCourse(int courseId);
-        public CurriculumElement MapRowToCurriculumElement(SqlDataReader reader);
+        List<CurriculumElement> GetCurriculumElementsByCourse(int courseId);
+        CurriculumElement MapRowToCurriculumElement(SqlDataReader reader);
+
+        CurriculumElement GetCurriculumElementByCurriculumId(int id);
     }
 }
