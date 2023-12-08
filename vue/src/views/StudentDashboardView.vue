@@ -1,7 +1,7 @@
 <template>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
       <side-bar-student-dashboard></side-bar-student-dashboard>
-    </div>
+    </div> -->
        <div class="flex-container">
         <section  class="todayDate">
           <h2>Welcome back, {{ user.firstName }} {{ user.lastName }}!</h2> <div>Tuesday November 30, 2023</div> 
@@ -12,24 +12,24 @@
             </P>
             <student-course-list></student-course-list>
         </div> 
-        <div class="footer">
+        <!-- <div class="footer">
             <footer>
             <p>
                 Copyright ©-All rights are reserved 
             </p>
             </footer>
-        </div>
+        </div> -->
 </template>
   
 <script>
-  import SideBarStudentDashboard from '../components/Student/SideBarStudentDashboard.vue'
+  // import SideBarStudentDashboard from '../components/Student/SideBarStudentDashboard.vue'
   import pageFooter from "../components/Footer.vue";
   import StudentService from "../services/StudentService"
   import StudentCourseList from "../components/StudentCourseList.vue"
   
   export default {
     components: {
-      SideBarStudentDashboard,
+      // SideBarStudentDashboard,
       StudentCourseList,
 
     },
@@ -64,7 +64,7 @@
   margin-bottom: 50px;
   padding-top: 30px;
 }
-.footer {
+/* .footer {
     position: fixed;
     margin-left: 13%;
     bottom: 0;
@@ -73,5 +73,5 @@
     background-color: #04AA6D;
     color: white;
     text-align: left;
-  }
+  } */
 </style>
