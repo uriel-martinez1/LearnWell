@@ -38,12 +38,13 @@ export default {
 </script>
 
 <style>
-.flex-container {
+div .flex-container {
   display: flex;
   justify-content: left;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   margin-left: 20%;
+  padding-right: 10px;
   text-align: left;
 }
 
@@ -55,11 +56,12 @@ export default {
   padding-top: 30px;
 }
 
-.footer {
+div .footer {
   position: fixed;
-  margin-left: 13%;
+  padding-left: 5%;
+  padding-top: 0;
+  left: 0;
   bottom: 0;
-  height: 10%;
   width: 100%;
   background-color: #04AA6D;
   color: white;
