@@ -16,29 +16,17 @@
                 Started</strong></router-link></a>
         </div>
 
-        <div class="tile">
-          <div class="content">
-            <span class="subtitle is-5">{{ this.message.text }}</span>
-          </div>
-        </div>
+        <div class="tile">{{ this.message.text }} </div>
       </div>
       <div class="tile is-parent">
         <img class="home-image" src="../icon/LearnWellHomeimg.jpg">
       </div>
     </div>
   </div>
-  <div class="footer">
-    <footer>
-      <p>
-        Created by Learn Well. © 2023
-      </p>
-    </footer>
-  </div>
 </template>
 
 <script>
 import HomeNavBar from '../components/HomeNavBar.vue';
-import Footer from '../components/Footer.vue';
 
 export default {
   components: {
@@ -79,5 +67,6 @@ export default {
 .home-image {
   height: 60%;
 }
+
 </style>
 

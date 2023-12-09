@@ -66,7 +66,7 @@ namespace Capstone.DAO
             returnAssignment.CurriculumElementId = Convert.ToInt32(reader["curriculum_element_id"]);
             returnAssignment.Title = Convert.ToString(reader["title"]);
             returnAssignment.Description = Convert.ToString(reader["description"]);
-            returnAssignment.AssignmentId = Convert.ToInt32(reader["assignment_type"]);
+            returnAssignment.AssignmentType = Convert.ToString(reader["assignment_type"]);
             returnAssignment.CreatedDate = Convert.ToDateTime(reader["created_date"]);
             returnAssignment.LastUpdated = SqlUtil.NullableDateTime(reader["last_updated"]);
 
