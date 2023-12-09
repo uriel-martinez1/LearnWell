@@ -9,14 +9,15 @@
     </div>
     <div class="sidebar">
       <nav>
-        <button type="button">Dashboard</button>
-        <button> showCourses = !showCourses" type="button">Courses</button>
+        <router-link class="button"
+          :to="{ name: 'TeacherDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
+        <button class="button" showCourses = !showCourses >Courses</button>
         <div v-if="showCourses">
-          <button id="courseButton" v-for="course in this.$store.state.user.courses" v-bind:key="course.courseId">{{
-            course.courseName }}</button>
+          <button class="button" id="courseButton" v-for="course in $store.state.user.courses"
+            v-bind:key="course.courseId">{{ course.courseName }}</button>
         </div>
-        <button type="button">Students</button>
-        <button type="button">Notifications</button>
+        <button class="button">Students</button>
+        <button class="button">Notifications</button>
       </nav>
 
       <!-- <div class="logoutButton">
@@ -39,7 +40,7 @@ export default {
 </script>
 
 <style scoped>
-.sidebar button {
+.sidebar .button {
   background-color: #04AA6D;
   border: none;
   color: white;
@@ -54,7 +55,7 @@ export default {
   cursor: pointer;
 }
 
-.sidebar button:hover {
+.sidebar .button:hover {
   background-color: lightcyan;
   color: blueviolet;
 }
@@ -127,4 +128,5 @@ export default {
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-} */</style>
+} */
+</style>

@@ -1,25 +1,26 @@
 <template>
+  <div class="sidebar" v-if="$store.state.token != ''">
+    <side-bar-student-dashboard v-if="$store.state.user.role === 'student'"></side-bar-student-dashboard>
+    <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
+    <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
+      v-if="$store.state.token != ''">Logout</router-link>
+  </div>
   <div id="capstone-app">
-      <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-   </div> 
-   <div class="sidebar" v-if="$store.state.token != ''">
-      <side-bar-student-dashboard v-if="$store.state.user.role === 'student'"></side-bar-student-dashboard>
-      <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
-    </div>
-  <router-view />
+    <router-view />
+  </div>
   <div class="footer">
-            <footer>
-            <p>
-                Copyright ©-All rights are reserved 
-            </p>
-            </footer>
-        </div>
+    <footer>
+      <p>
+        Copyright ©-All rights are reserved
+      </p>
+    </footer>
+  </div>
 </template>
 <!-- create component using above to go on other views; use this id- "nav" -->
 <script>
 import SideBarStudentDashboard from './components/Student/SideBarStudentDashboard.vue';
 import SideBarTeacherDashboard from './components/Teacher/SideBarTeacherDashboard.vue';
-export default{
+export default {
   components: {
     SideBarStudentDashboard,
     SideBarTeacherDashboard
@@ -27,8 +28,7 @@ export default{
 }
 </script>
 <style>
-
- .logoutButton {
+.logoutButton {
   position: fixed;
   margin-left: 0;
   margin-bottom: 10px;
@@ -37,7 +37,8 @@ export default{
   text-align: center;
   z-index: 2;
 }
-.logoutButton{
+
+.logoutButton {
   background-color: rgb(184, 179, 179);
   border: none;
   color: black;
@@ -51,14 +52,15 @@ export default{
   border-radius: 8px;
   cursor: pointer;
 }
+
 .footer {
-    position: fixed;
-    /* margin-left: 13%; */
-    bottom: 0;
-    height: 5%;
-    width: 100%;
-    background-color: #04AA6D;
-    color: white;
-    text-align-last: right;
-  }
+  position: fixed;
+  /* margin-left: 13%; */
+  bottom: 0;
+  height: 5%;
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  text-align-last: right;
+}
 </style>

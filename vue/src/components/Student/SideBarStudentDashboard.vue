@@ -8,30 +8,32 @@
       <h2><strong>Student Dashboard</strong></h2>
     </div>
     <div class="sidebar">
-      <button type="button" v-on:click="this.$router.push(`/student/${store.state.data.user.userId}`)">Dashboard</button>
+      <router-link class="button" :to="{ name: 'StudentDashboardView' }">Dashboard</router-link>
       <button v-on:click="() => showAssignments = !showAssignments" type="button">Assignments</button>
       <div v-if="showAssignments">
-          <button id="assignmentButton" v-for="assignment in this.$store.state.user.courses[0].curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">{{ assignment.title }}</button>
-        </div>
+        <button id="assignmentButton"
+          v-for="assignment in this.$store.state.user.courses[0].curriculumElements[0].assignments"
+          v-bind:key="assignment.assignmentId">{{ assignment.title }}</button>
+      </div>
       <button type="button">Notifications</button>
     </div>
   </div>
 </template>
 
 <script>
- // import StudentService from "../services/StudentService"
- // import StudentCourseList from "../components/StudentCourseList.vue"
+// import StudentService from "../services/StudentService"
+// import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
-    components: {
-     //StudentCourseList,
-    },
-    data() {
-      return {
-        showCourses: false,
-        showAssignments: false,
-      }
-    },
-  }
+  components: {
+    //StudentCourseList,
+  },
+  data() {
+    return {
+      showCourses: false,
+      showAssignments: false,
+    }
+  },
+}
 
 </script>
 
@@ -50,10 +52,12 @@ export default {
   border-radius: 8px;
   cursor: pointer;
 }
+
 .sidebar button:hover {
   background-color: lightcyan;
   color: blueviolet;
 }
+
 #assignmentButton {
   background-color: rgb(128, 31, 128);
   border: none;
@@ -68,6 +72,7 @@ export default {
   border-radius: 8px;
   cursor: pointer;
 }
+
 .sidebar {
   height: 100%;
   width: 200px;
@@ -78,21 +83,23 @@ export default {
   background-color: lightcyan;
   overflow-x: hidden;
 }
+
 .header {
   color: black;
   text-align: left;
   padding-left: 15px;
   padding-bottom: 10px;
   font-size: 25px;
-  top:0;
+  top: 0;
 }
+
 .navbar-item {
   text-align: left;
   padding-left: 10px;
   padding-bottom: 10px;
   font-size: 15px;
 }
-.icon{
-    height: auto,
-}
-</style>
+
+.icon {
+  height: auto,
+}</style>

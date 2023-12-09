@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <div v-if="this.$route.query.action === 'edit'">    
             <div>{{ this.content }}
             
