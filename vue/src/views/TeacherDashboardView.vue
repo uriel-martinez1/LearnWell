@@ -32,13 +32,24 @@
   <div class="main-content">
     <div class="box">
       <h1>Teacher: {{ user.firstName }} {{ user.lastName }}</h1>
-      
     </div>
     <div class="box">
       <label for="courses">Courses</label>
-      <input id="courses" name="courseOrStudent" type="radio" v-bind:value=true v-model="courseOrStudent">
+      <input
+        id="courses"
+        name="courseOrStudent"
+        type="radio"
+        v-bind:value="true"
+        v-model="courseOrStudent"
+      />
       <label for="students">Students</label>
-      <input id="students" name="courseOrStudent" type="radio" v-bind:value="false" v-model="courseOrStudent">
+      <input
+        id="students"
+        name="courseOrStudent"
+        type="radio"
+        v-bind:value="false"
+        v-model="courseOrStudent"
+      />
     </div>
     <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
     <student-list v-else></student-list>
@@ -51,13 +62,11 @@
       </div>
     </div>  -->
   </div>
-  <div class="footer">
-    <footer>
-      <p>Copyright ©-All rights are reserved</p>
-    </footer>
-  </div>
+  <footer>
+    <p>Copyright ©-All rights are reserved</p>
+  </footer>
 </template>
-  
+
 <script>
 import SideBarTeacherDashboard from "../components/Teacher/SideBarTeacherDashboard.vue";
 import pageFooter from "../components/Footer.vue";
@@ -78,16 +87,20 @@ export default {
     };
   },
   created() {
-    TeacherService.getTeacherData(this.$store.state.user.userId)
-      .then((response) => {
+    TeacherService.getTeacherData(this.$store.state.user.userId).then(
+      (response) => {
         this.user = response.data;
-      });
+      }
+    );
   },
 };
 </script>
 
-
 <style>
+#main-content{
+  height: 100vh;
+}
+
 div .flex-container {
   display: flex;
   justify-content: left;
@@ -106,14 +119,14 @@ div .flex-container {
   padding-top: 30px;
 }
 
-div .footer {
+footer {
   position: fixed;
   padding-left: 5%;
   padding-top: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   text-align: left;
 }

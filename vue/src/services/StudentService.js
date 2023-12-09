@@ -14,7 +14,12 @@ export default {
     return axios.get(`/student/courses/curriculum/${courseId}`)
   },
   getAssignmentsByCurriculumId(id){
+    //TODO: THINK ABOUT RESTFUL HERE AND RENAME ASSIGNMENTS
     return axios.get(`/student/${id}/assignments`)
+  },
+  //TODO: CONNECT THIS TO THE DB ON THE BACKEND IN THE STUDENT CONTROLLER
+  getQuestionsByAssignmentId(id){
+    return axios.get(`/student/assignments/id/question`)
   },
 
   // addCourse(course) {
