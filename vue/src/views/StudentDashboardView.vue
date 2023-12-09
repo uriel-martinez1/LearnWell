@@ -7,9 +7,9 @@
           <h2>Welcome back, {{ user.firstName }} {{ user.lastName }}!</h2> <div>Tuesday November 30, 2023</div> 
         </section>
           <h1><strong>Overview</strong></h1>
-            <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
+            <p>LearnWell streamlines course organization and assignment management for teachers, while providing students with
                 easy access to homework, submission, and teacher communication.
-            </P>
+            </p>
             <student-course-list></student-course-list>
         </div> 
         <!-- <div class="footer">
@@ -44,6 +44,7 @@
         .then((response) => {
           this.user = response.data;
         });
+    console.log(this.$store.state.user.role)
     },
   };
 </script>
