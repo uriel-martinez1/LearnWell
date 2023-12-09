@@ -2,9 +2,9 @@
   <div id="capstone-app">
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
    </div> 
-   <div class="sidebar">
-      <side-bar-student-dashboard></side-bar-student-dashboard>
-      <!-- <side-bar-teacher-dashboard></side-bar-teacher-dashboard> Add a V else for what we want shown but keeps all the webpages cohesive-->
+   <div class="sidebar" v-if="$store.state.token != ''">
+      <side-bar-student-dashboard v-if="$store.state.user.role === 'student'"></side-bar-student-dashboard>
+      <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
     </div>
   <router-view />
   <div class="footer">
@@ -22,7 +22,7 @@ import SideBarTeacherDashboard from './components/Teacher/SideBarTeacherDashboar
 export default{
   components: {
     SideBarStudentDashboard,
-    //SideBarTeacherDashboard
+    SideBarTeacherDashboard
   }
 }
 </script>
@@ -53,12 +53,12 @@ export default{
 }
 .footer {
     position: fixed;
-    margin-left: 13%;
+    /* margin-left: 13%; */
     bottom: 0;
     height: 5%;
     width: 100%;
     background-color: #04AA6D;
     color: white;
-    text-align: left;
+    text-align-last: right;
   }
 </style>

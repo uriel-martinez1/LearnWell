@@ -1,41 +1,44 @@
 <template>
-    <div>
-      <div class="header">
-        <a class="navbar-item">
-                <img class="icon" src="../icon/icons8-books-64.png">
-                <p><strong>LEARNWELL</strong></p>
-        </a>
-        <h2><strong>Teacher Dashboard</strong></h2>
-      </div>
-      <div class="sidebar">
+  <div>
+    <div class="header">
+      <a class="navbar-item">
+        <img class="icon" src="../icon/icons8-books-64.png">
+        <p><strong>LEARNWELL</strong></p>
+      </a>
+      <h2><strong>Teacher Dashboard</strong></h2>
+    </div>
+    <div class="sidebar">
+      <nav>
         <button type="button">Dashboard</button>
-        <button v-on:click="() => showCourses = !showCourses" type="button">Courses</button>
+        <button> showCourses = !showCourses" type="button">Courses</button>
         <div v-if="showCourses">
-          <button id="courseButton" v-for="course in this.$store.state.user.courses" v-bind:key="course.courseId">{{ course.courseName }}</button>
+          <button id="courseButton" v-for="course in this.$store.state.user.courses" v-bind:key="course.courseId">{{
+            course.courseName }}</button>
         </div>
         <button type="button">Students</button>
         <button type="button">Notifications</button>
-        <!-- <div class="logoutButton">
+      </nav>
+
+      <!-- <div class="logoutButton">
           <button type="button">Logout</button>
         </div> -->
-      </div>
     </div>
+  </div>
 </template>
 
 <script>
 
-  export default {
-    
-    data() {
-      return {
-        showCourses: false,
-      }
-    },
-  }
+export default {
+
+  data() {
+    return {
+      showCourses: false,
+    }
+  },
+}
 </script>
 
 <style scoped>
-
 .sidebar button {
   background-color: #04AA6D;
   border: none;
@@ -50,10 +53,12 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .sidebar button:hover {
   background-color: lightcyan;
   color: blueviolet;
 }
+
 #courseButton {
   background-color: rgb(128, 31, 128);
   border: none;
@@ -68,6 +73,7 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .sidebar {
   height: 100%;
   width: 200px;
@@ -78,23 +84,27 @@
   background-color: lightcyan;
   overflow-x: hidden;
 }
+
 .header {
   color: black;
   text-align: left;
   padding-left: 15px;
   padding-bottom: 10px;
   font-size: 25px;
-  top:0;
+  top: 0;
 }
+
 .navbar-item {
   text-align: left;
   padding-left: 10px;
   padding-bottom: 10px;
   font-size: 15px;
 }
-.icon{
-    height: auto,
+
+.icon {
+  height: auto,
 }
+
 /* .logoutButton {
   position: fixed;
   margin-left: 0;
@@ -117,6 +127,4 @@
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-} */
-
-</style>
+} */</style>
