@@ -7,9 +7,9 @@
 
       <div class="tile is-4 is-vertical is-parent">
         <h1 class="title is-1">Let's make learning easier for all</h1>
-        <P class="subtitle is-5">LearnWell streamlines course organization and assignment management for teachers, while
+        <p class="subtitle is-5">LearnWell streamlines course organization and assignment management for teachers, while
           providing students with
-          easy access to homework, submission, and teacher communication.</P>
+          easy access to homework, submission, and teacher communication.</p>
         <p></p>
         <div class="buttons">
           <a class="button is-link is-outlined"><router-link v-bind:to="{ name: 'register' }"><strong>Get

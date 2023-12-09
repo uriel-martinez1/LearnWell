@@ -3,15 +3,15 @@
   <!-- <div class="sidebar">
     <side-bar-teacher-dashboard></side-bar-teacher-dashboard>
   </div>
-  <div class="flex-container">
+  <div class="grid-container">
     <section class="todayDate">
       <h2>Welcome back, Sarah!</h2>
       <div>Tuesday November 30, 2023</div>
     </section>
     <h1><strong>Overview</strong></h1>
-    <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
+    <p>LearnWell streamlines course organization and assignment management for teachers, while providing students with
       easy access to homework, submission, and teacher communication.
-    </P>
+    </p>
     <div class="buttons">
       <a class="button is-link is-outlined"><router-link v-bind:to="{ name: 'TeacherDashboardView' }"><strong>Get
             Started</strong></router-link></a>

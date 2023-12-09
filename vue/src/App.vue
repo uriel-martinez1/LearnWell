@@ -1,13 +1,13 @@
 <template>
-  <div class="sidebar" v-if="$store.state.token != ''">
+  <!-- <div class="sidebar" v-if="$store.state.token != ''">
     <div v-if="!$store.state.user.role == false">
-      <!-- STUDENT SIDEBAR DASHBOARD NOT WORKING, DOES NOT RENDER AT ALL, NEED HELP FROM THE HIGHER POWERS WITH OR WITHOUT PONYTAIL -->
+       STUDENT SIDEBAR DASHBOARD NOT WORKING, DOES NOT RENDER AT ALL, NEED HELP FROM THE HIGHER POWERS WITH OR WITHOUT PONYTAIL
       <side-bar-student-dashboard
         v-if="$store.state.user.role === 'student'"
       ></side-bar-student-dashboard>
       <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
     <div id="capstone-app">
       <router-view />
     </div>
@@ -25,13 +25,13 @@ import SideBarStudentDashboard from "./components/Student/SideBarStudentDashboar
 import SideBarTeacherDashboard from "./components/Teacher/SideBarTeacherDashboard.vue";
 export default {
   components: {
-    SideBarStudentDashboard,
-    SideBarTeacherDashboard,
+    // SideBarStudentDashboard,
+    // SideBarTeacherDashboard,
   },
 };
 </script>
 <style>
-html #capstone-app {
+  #capstone-app {
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
@@ -39,7 +39,8 @@ html #capstone-app {
 
 /* THIS IS A QUICK FIX  */
 #capstone-app{
-  transform: translate(15vw);
+  position: relative;
+  left: 200px;
 }
 
 .logoutButton {
