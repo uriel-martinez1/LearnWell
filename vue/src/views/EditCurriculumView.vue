@@ -5,6 +5,7 @@
 <script>
 import CreateCurriculum from '../components/CreateCurriculum.vue'
 import TeacherService from '../services/TeacherService';
+import StudentService from '../services/StudentService';
 
 export default {
     data(){
@@ -18,8 +19,15 @@ export default {
     created(){
         TeacherService.getCurriculumElementById(this.$route.params.elementId)
             .then((response) => {
-                this.content = response.data
+                StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
+                    .then((assignmentResponse) => {
+                        this.content = { 
+                            ...response.data,
+                            assignments: assignmentResponse.data
+                        }
+                    })
             })
+            
     }
 }
 </script>
