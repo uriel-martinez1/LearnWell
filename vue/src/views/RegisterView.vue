@@ -104,21 +104,16 @@
       <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
-  <div class="footer">
-    <footer>Created by Learn Well. © 2023</footer>
-  </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
-import footer from '../components/Footer.vue';
 
 export default {
 
   components: {
     RegisterLoginNavBar,
-    footer,
   },
   data() {
     return {
