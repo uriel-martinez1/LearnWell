@@ -12,18 +12,12 @@
             </p>
             <student-course-list></student-course-list>
         </div> 
-        <!-- <div class="footer">
-            <footer>
-            <p>
-                Copyright ©-All rights are reserved 
-            </p>
-            </footer>
-        </div> -->
+        
 </template>
   
 <script>
   // import SideBarStudentDashboard from '../components/Student/SideBarStudentDashboard.vue'
-  import pageFooter from "../components/Footer.vue";
+  
   import StudentService from "../services/StudentService"
   import StudentCourseList from "../components/StudentCourseList.vue"
   

@@ -1,10 +1,10 @@
 <template>
-    <div class="box">
-        <div v-for="student in this.students" v-bind:key="student.studentId">
-            <h1>Student Name: {{ student.firstName }} {{ student.lastName }}</h1>
-            <div v-for="course in student.courses" v-bind:key="course.courseId">
-                <h2> Class: {{ course.courseName }}</h2>
-                <curriculum-element v-bind:course-id="course.courseId"></curriculum-element>
+    <div class="box has-background-success has-text-white">
+        <div v-for="student in students" :key="student.studentId">
+            <h1 class="title is-4 has-text-white">Student Name: {{ student.firstName }} {{ student.lastName }}</h1>
+            <div v-for="course in student.courses" :key="course.courseId">
+                <h2 class="subtitle is-6 has-text-link">Class: {{ course.courseName }}</h2>
+                <curriculum-element :course-id="course.courseId"></curriculum-element>
             </div>
         </div>
     </div>

@@ -36,13 +36,13 @@
 import authService from "../services/AuthService";
 import RegisterLoginNavBar from '../components/RegisterLoginNavBar.vue';
 
-// import footer from '../components/Footer.vue';
+
 
 export default {
   components: {
     RegisterLoginNavBar,
     
-    // footer,
+    
   },
   data() {
     return {
