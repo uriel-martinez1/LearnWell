@@ -65,11 +65,11 @@ namespace Capstone.DAO
             newQuestion.QuestionId = Convert.ToInt32(reader["question_id"]);
             newQuestion.Prompt = Convert.ToString(reader["prompt"]);
             newQuestion.QuestionType = Convert.ToString(reader["question_type"]);
-            newQuestion.Answer1 = Convert.ToString(reader["answer_1"]);
-            newQuestion.Answer2 = Convert.ToString(reader["answer_2"]);
-            newQuestion.Answer3 = Convert.ToString(reader["answer_3"]);
-            newQuestion.Answer4 = Convert.ToString(reader["answer_4"]);
-            newQuestion.CorrectChoiceAnswer = Convert.ToInt32(reader["correct_choice_answer"]);
+            newQuestion.Answer1 = SqlUtil.NullableString(reader["answer_1"]);
+            newQuestion.Answer2 = SqlUtil.NullableString(reader["answer_2"]);
+            newQuestion.Answer3 = SqlUtil.NullableString(reader["answer_3"]);
+            newQuestion.Answer4 = SqlUtil.NullableString(reader["answer_4"]);
+            newQuestion.CorrectChoiceAnswer = SqlUtil.NullableInt(reader["correct_choice_answer"]);
             newQuestion.CreatedDate = Convert.ToDateTime(reader["created_date"]);
             newQuestion.LastUpdated = SqlUtil.NullableDateTime(reader["last_updated"]);
 

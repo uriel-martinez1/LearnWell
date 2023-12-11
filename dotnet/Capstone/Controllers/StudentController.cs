@@ -13,26 +13,25 @@ namespace Capstone.Controllers
 {
     [Route("student")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IAssignmentDao assignmentDao;
         private readonly ICourseDao courseDao;
         private readonly IUserDao userDao;
         private readonly ICurriculumElementDao curriculumElementDao;
-        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao)
+        private readonly IQuestionDao questionDao;
+
+        
+        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao, IQuestionDao questionDao)
         {
             //this.dashboardDao = dashboardDao;
             this.courseDao = courseDao;
             this.userDao = userDao;
             this.curriculumElementDao = curriculumElementDao;
             this.assignmentDao = assignmentDao;
+            this.questionDao = questionDao;
         }
-        //        //[HttpGet]
-        //        //public ActionResult<Dashboard> GetDashboardByUser()
-        //        //{
-
-        //        //}
 
         [HttpGet("{id}")]
         public ActionResult<User> GetUserData(int id)
@@ -105,6 +104,23 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("assignments/{id}/questions")]
+
+        public ActionResult<List<Question>> GetQuestionsByAssignmentId(int id)
+        {
+            try
+            {
+                List<Question> outputList = questionDao.GetQuestionsByAssignmentId(id);
+                return Ok(outputList);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 
         //        public ActionResult<Assignment> GetAssignmentById(int assignmentId)
