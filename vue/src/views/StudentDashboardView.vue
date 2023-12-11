@@ -33,12 +33,12 @@
 import StudentService from "../services/StudentService"
 import StudentCourseList from "../components/StudentCourseList.vue"
 
-function updateDateTime() {
-  const now = new Date();
-  const currentDateTime = now.toLocaleString();
-  document.querySelector('#datetime').textContent = currentDateTime;
-}
-setInterval(updateDateTime, 1000);
+// function updateDateTime() {
+//   const now = new Date();
+//   const currentDateTime = now.toLocaleString();
+//   document.querySelector('#datetime').textContent = currentDateTime;
+// }
+// setInterval(updateDateTime, 1000);
 export default {
   components: {
     StudentCourseList,

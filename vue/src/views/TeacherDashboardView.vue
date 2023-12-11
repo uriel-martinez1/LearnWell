@@ -3,7 +3,8 @@
     <div class="box has-background-white-ter">
       <h1 class="title is-5 has-text-centered has-text-black">
         Teacher: {{ user.firstName }} {{ user.lastName }}
-        <div><span id="datetime"></span></div> </h1>
+        <div><span id="datetime"></span></div>
+      </h1>
     </div>
     <div class="box has-background-white-ter has-text-black">
       <div class="field">
@@ -26,9 +27,8 @@
         </div>
       </div>
     </div>
-      <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
-      <student-list v-else></student-list>
-      <button v-on:click="AddCourse">Add Course</button>
+    <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
+    <student-list v-else></student-list>
   </div>
 </template>
 
@@ -38,17 +38,17 @@ import TeacherService from "../services/TeacherService";
 import StudentList from "../components/TeacherStudentList.vue";
 import TeacherCoursesList from "../components/TeacherCoursesList.vue";
 
-function updateDateTime() {
-      const now = new Date();
-      const currentDateTime = now.toLocaleString();
-      document.querySelector('#datetime').textContent = currentDateTime;
-    }
-    setInterval(updateDateTime, 1000);
+// function updateDateTime() {
+//       const now = new Date();
+//       const currentDateTime = now.toLocaleString();
+//       document.querySelector('#datetime').textContent = currentDateTime;
+//     }
+//     setInterval(updateDateTime, 1000);
 export default {
   components: {
     StudentList,
     TeacherCoursesList,
-},
+  },
   data() {
     return {
       courseOrStudent: true,
@@ -62,11 +62,7 @@ export default {
       }
     );
   },
-  methods: {
-    AddCourse(){
-      this.$router.push({name: 'CreateCourseView'})
-    },
-  }
+
 };
 </script>
 
@@ -74,6 +70,7 @@ export default {
 #main-content {
   height: 100vh;
 }
+
 .todayDate {
   display: flex;
   justify-content: space-between;
