@@ -1,4 +1,8 @@
 <template>
+  <!-- <div>
+  v-if="shouldShowSidebar" 
+
+  </div> -->
   <div class="sidebar" v-if="$store.state.token != ''">
     <div v-if="!$store.state.user.role == false">
       <!-- STUDENT SIDEBAR DASHBOARD NOT WORKING, DOES NOT RENDER AT ALL, NEED HELP FROM THE HIGHER POWERS WITH OR WITHOUT PONYTAIL -->

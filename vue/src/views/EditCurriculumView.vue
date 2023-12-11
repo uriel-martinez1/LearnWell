@@ -16,27 +16,19 @@ export default {
     components: {
         CreateCurriculum,
     },
-    created(){
+    created() {
         TeacherService.getCurriculumElementById(this.$route.params.elementId)
             .then((response) => {
                 StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
                     .then((assignmentResponse) => {
-                        assignmentResponse.data.forEach((element) => {
-                            StudentService.getQuestionsByAssignementId(element.assignmentId)
-                                .then((questionResponse)=> {
-                                    this.content = { 
-                                        ...response.data,
-                                        assignments: assignmentResponse.data,
-                                        //GRAB THE QUESTIONS ASSOCIATED WITH THE ASSIGNMENT AS WELL, POPULATE STATE WITH RETURN DATA   
-                                        questions: questionResponse.data,
-                                    }
-                                })
-                        })
-                    })
+                        this.content = {
+                            ...response.data,
+                            assignments: assignmentResponse.data
+                        }});
             })
-            
     }
-}
+};
+
 </script>
 
 <style></style>
