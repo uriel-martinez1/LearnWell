@@ -16,7 +16,7 @@
                 <label class="label">Difficulty</label>
                 <div class="control">
                     <div class="select">
-                        <select v-model="newCourse.difficulty" id="difficulty" name="difficulty" required>
+                        <select v-bind:value="newCourse.difficulty" id="difficulty" name="difficulty" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
