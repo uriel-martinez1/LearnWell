@@ -3,7 +3,7 @@
     <div class="sidebar">
       <div class="header">
         <a class="navbar-item">
-          <!-- <img class="icon" src="/src/icon/icons8-books-64.png" /> -->
+          <img class="icon" src="../../icon/icons8-books-64.png" />
           <p><strong>LEARNWELL</strong></p>
         </a>
         <h2><strong>Teacher Dashboard</strong></h2>
@@ -33,10 +33,6 @@
         <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
       v-if="$store.state.token != ''">Logout</router-link>
       </nav>
-
-      <!-- <div class="logoutButton">
-          <button type="button">Logout</button>
-        </div> -->
     </div>
   </div>
 </template>
