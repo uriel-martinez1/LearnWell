@@ -88,6 +88,21 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpGet("course/{id}")]
+        public ActionResult<Course> GetCourseByCourseId(int id)
+        {
+            try
+            {
+                Course output = CourseDao.GetCourseByCourseId(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
         [HttpGet("courses/{id}/curriculum")]
         public ActionResult<List<CurriculumElement>> GetCurriculumByCourseId(int id)
         {

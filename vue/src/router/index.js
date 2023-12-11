@@ -108,9 +108,9 @@ const routes = [
 
   //unsure about this route for create course
   {
-    path: '/teacher/courses',
+    path: '/teacher/course',
     component: CreateCourseView,
-    name: 'CreateCoursesView',
+    name: 'CreateCourseView',
     meta: {
       requiresAuth: true
     }
@@ -120,7 +120,7 @@ const routes = [
   {
     path: '/teacher/courses/:courseId',
     component: EditCourseView,
-    name: 'EditCoursesView',
+    name: 'EditCourseView',
     meta: {
       requiresAuth: true
     }

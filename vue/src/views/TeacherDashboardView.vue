@@ -29,8 +29,16 @@
       <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
       <student-list v-else></student-list>
       <!--Missing the v-on:to to reroute to new view AddCardView-->
-      <button v-on:click="() => this.$router.push({name: 'CreateCoursesView'})">Add Course</button>
-
+      <button v-on:click="AddCourse">Add Course</button>
+    
+    <!-- <div class="grid-container">
+      <h1>Welcome to Your Teacher Dashboard!</h1>
+      <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
+        easy access to homework, submission, and teacher communication.</P>
+      <div class="buttons">
+        <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'TeacherDashboardView'}"><strong>Get Started</strong></router-link></a>
+      </div>
+    </div>  -->
   </div>
 </template>
 
@@ -64,6 +72,11 @@ export default {
       }
     );
   },
+  methods: {
+    AddCourse(){
+      this.$router.push({name: 'CreateCourseView'})
+    },
+  }
 };
 </script>
 

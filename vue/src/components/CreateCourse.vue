@@ -76,24 +76,23 @@ export default {
     props: {
         course: {
             type: Object,
-            required: true
+            default() { return {} }
         }
-    },
-    data() {
+    }, data() {
         return {
             newCourse: {
                 // Unsure about the naming and structure of object
-                id: this.course.id,
+                id: this.course.courseId || 0,
                 // trying to grab the id of the teacher from the url
-                teacherId: parseInt(this.$route.params.userId),
-                name: this.course.name,
-                description: this.course,
-                difficulty: this.course.difficulty,
-                cost: this.course.cost,
-                created: this.course.date,
+                teacherId: this.course.teacherId || parseInt(this.$store.state.userId),
+                name: this.course.name || '',
+                description: this.course || '',
+                difficulty: this.course.difficulty || 0,
+                cost: this.course.cost || 0,
+                //WHEN WE CREATE A NEW COURSE THIS WILL BE CREATED BY THE DB, DONT PASS THIS IN THE DTO FROM FRONT TO BACK?
+                created: this.course.date || null,
                 // unsure about the updated section
-                updated: this.course.date,
-                active: this.course.active,
+                updated: this.course.date || new Date(),
             }
         };
 

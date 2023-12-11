@@ -15,30 +15,21 @@ export default {
     },
     data() {
         return {
-            course: {
-                name: '',
-                description: '',
-                difficulty: 0,
-                updated: new Date(),
-                // unsure about how to toggle active
-                active: 0,
-            }
+            course: {}
         }
     },
     created() {
-        let courseId = parseInt(this.$route.params.courseId);
-        if (courseId != 0) {
-            TeacherService.getCourseByTeacherId(this.$route.params.userId, courseId)
-                .then((response) => {
-                    this.course = response.data;
-                })
-                .catch(error => {
-                    if (error.response && error.response.status === 404) {
-                        this.$store.commit('SET_NOTIFICATION', `Error getting course ${courseId}. This course may have been deleted or you have entered an invalid course ID.`);
-                        this.$router.push({ name: 'TeacherDashboardView', params: {id: this.$route.params.userId} });
-                    }
-                });
-        }
+
+        TeacherService.getCourseByCourseId(this.$route.params.courseId)
+            .then((response) => {
+                this.course = response.data;
+            })
+            // .catch(error => {
+            //     if (error.response && error.response.status === 404) {
+            //         this.$store.commit('SET_NOTIFICATION', `Error getting course ${this.$route.params.courseId}. This course may have been deleted or you have entered an invalid course ID.`);
+            //         this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.userId } });
+            //     }
+            // });
     }
 
 }

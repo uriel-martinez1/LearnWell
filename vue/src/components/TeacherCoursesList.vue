@@ -2,6 +2,9 @@
     <div class="box has-background-white-ter has-text-black">
         <ul v-for="course in this.courses" :key="course.courseId">
             <li class="title is-5 has-text-black">Course Name: {{ course.courseName }}</li>
+            <button @click="EditCourse(course.courseId)" class="button is-link is-outlined is-small">
+                Edit Course
+            </button>
             <div v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
                 <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-black">
                     Curricula: {{ curricula.description }}
@@ -21,7 +24,6 @@
             <button @click="AddCourseView" class="button is-link is-outlined is-small">Add Course</button>
         </div> -->
     </div>
-    
 </template>
 
 <script>
@@ -50,6 +52,9 @@ export default {
             })
     },
     methods: {
+        EditCourse(id) {
+            this.$router.push({ name: 'EditCourseView', params: { 'courseId': id } })
+        },
         selectCurriculumElement(id) {
             this.$router.push({ name: 'TeacherCurriculumView', params: { 'elementId': id } })
         },
