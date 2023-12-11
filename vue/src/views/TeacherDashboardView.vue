@@ -51,8 +51,13 @@
         v-model="courseOrStudent"
       />
     </div>
-    <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
-    <student-list v-else></student-list>
+    <div class="box">
+      <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
+      <student-list v-else></student-list>
+      <!--Missing the v-on:to to reroute to new view AddCardView-->
+      <button>Add Course</button>
+    </div>
+    
     <!-- <div class="grid-container">
       <h1>Welcome to Your Teacher Dashboard!</h1>
       <P>LearnWell streamlines course organization and assignment management for teachers, while providing students with
@@ -79,7 +84,7 @@ export default {
     // SideBarTeacherDashboard,
     StudentList,
     TeacherCoursesList,
-  },
+},
   data() {
     return {
       courseOrStudent: true,
@@ -130,4 +135,6 @@ footer {
   color: white;
   text-align: left;
 }
+
+
 </style>
