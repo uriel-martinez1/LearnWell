@@ -13,7 +13,7 @@ namespace Capstone.Controllers
 {
     [Route("student")]
     [ApiController]
-    [Authorize]
+   //[Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IAssignmentDao assignmentDao;

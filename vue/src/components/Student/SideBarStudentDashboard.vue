@@ -12,7 +12,11 @@
         :to="{ name: 'StudentDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
       <button class="button" showCourses="!showCourses">Courses</button>
       <div v-if="showCourses">
-        <button class="button" id="courseButton" v-for="course in $store.state.user.courses" v-bind:key="course.courseId">
+        <button
+         class="button" 
+         id="courseButton" 
+         v-for="course in $store.state.user.courses"
+          v-bind:key="course.courseId">
           {{ course.courseName }}
         </button>
         <student-course-list></student-course-list>

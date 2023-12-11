@@ -3,7 +3,7 @@
     <div class="box has-background-white-ter">
       <h1 class="title is-5 has-text-centered has-text-black">
         Teacher: {{ user.firstName }} {{ user.lastName }}
-        <div><span id="datetime"></span></div> </h1>
+        <div><span>{{ textContent }}</span></div> </h1>
     </div>
     <div class="box has-background-white-ter has-text-black">
       <div class="field">
@@ -38,12 +38,6 @@ import TeacherService from "../services/TeacherService";
 import StudentList from "../components/TeacherStudentList.vue";
 import TeacherCoursesList from "../components/TeacherCoursesList.vue";
 
-function updateDateTime() {
-      const now = new Date();
-      const currentDateTime = now.toLocaleString();
-      document.querySelector('#datetime').textContent = currentDateTime;
-    }
-    setInterval(updateDateTime, 1000);
 export default {
   components: {
     StudentList,
@@ -53,6 +47,8 @@ export default {
     return {
       courseOrStudent: true,
       user: {},
+      textContent: '',
+      timer:''
     };
   },
   created() {
@@ -61,11 +57,17 @@ export default {
         this.user = response.data;
       }
     );
+    this.timer = setInterval(this.updateDateTime, 1000);
   },
   methods: {
     AddCourse(){
       this.$router.push({name: 'CreateCourseView'})
     },
+    updateDateTime() {
+      const now = new Date();
+      const currentDateTime = now.toLocaleString();
+      this.textContent = currentDateTime;
+    }
   }
 };
 </script>

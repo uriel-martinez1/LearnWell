@@ -1,11 +1,11 @@
 <template>
-  <div class="main-content">
+  <div v-if="user.firstName" class="main-content">
     <div class="box has-background-white-ter">
       <section class="todayDate">
         <h2 class="title is-5 has-text-centered has-text-black">Welcome back, {{ user.firstName }} {{ user.lastName }}!
         </h2>
         <div>
-          <span id="datetime"></span>
+          <span>{{ textContent }}</span>
         </div>
       </section>
       <h1><strong>Overview</strong></h1>
@@ -13,51 +13,52 @@
         easy access to homework, submission, and teacher communication.
       </p>
     </div>
-    <div class="box has-background-white-ter has-text-black">
-      <div class="field">
-        <label for="courses"></label>
-        <div class="control">
-          <label class="radio">
-            <input id="courses" name="courseOrStudent" type="radio" :value="true" v-model="courseOrStudent" />
-            Courses
-          </label>
+    <div v-if="courses[0] != undefined">
+      <ul v-for="course in this.courses" v-bind:key="course.courseId">
+        <div v-on:click="goToCourse(course.courseId)" class="box has-background-white-ter has-text-black">
+          <li>{{ course.courseName }}</li>
         </div>
-      </div>
+      </ul>
     </div>
   </div>
-  <student-course-list></student-course-list>
 </template>
   
 <script>
 
 import StudentService from "../services/StudentService"
-import StudentCourseList from "../components/StudentCourseList.vue"
 
-function updateDateTime() {
-  const now = new Date();
-  const currentDateTime = now.toLocaleString();
-  document.querySelector('#datetime').textContent = currentDateTime;
-}
-setInterval(updateDateTime, 1000);
 export default {
-  components: {
-    StudentCourseList,
 
-  },
   data() {
     return {
       user: {},
-      courses: {},
-
+      courses: [],
+      textContent: '',
+      timer: ''
     };
   },
   created() {
     StudentService.getStudentData(this.$store.state.user.userId)
-      .then((response) => {
-        this.user = response.data;
-      });
-    console.log(this.$store.state.user.role)
+      .then((studentResponse) => {
+        StudentService.getCoursesByStudentId(this.$store.state.user.userId)
+          .then((courseResponse) => {
+            this.user = studentResponse.data;
+            this.courses = [...courseResponse.data]
+          })
+      })
+    this.timer = setInterval(this.updateDateTime, 1000);
   },
+  methods: {
+    goToCourse(courseId) {
+      this.$router.push({ name: "StudentCourseSummaryView", params: { 'courseId': courseId } })
+      // this.$router.push({name: "StudentCourseView", params: {courseId : courseId}})
+    },
+    updateDateTime() {
+      const now = new Date();
+      const currentDateTime = now.toLocaleString();
+      this.textContent = currentDateTime;
+    }
+  }
 };
 </script>
 
@@ -72,4 +73,5 @@ export default {
 
 .main-content {
   width: 100%;
-}</style>
+}
+</style>
