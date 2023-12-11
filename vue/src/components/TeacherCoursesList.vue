@@ -1,9 +1,9 @@
 <template>
-    <div class="box has-background-success has-text-white">
+    <div class="box has-background-white-ter has-text-black">
         <ul v-for="course in this.courses" :key="course.courseId">
-            <li class="title is-5 has-text-white">Course Name: {{ course.courseName }}</li>
+            <li class="title is-5 has-text-black">Course Name: {{ course.courseName }}</li>
             <div v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
-                <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-white">
+                <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-black">
                     Curricula: {{ curricula.description }}
                 </a>
 

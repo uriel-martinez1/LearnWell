@@ -24,12 +24,12 @@
     <side-bar-teacher-dashboard></side-bar-teacher-dashboard>
   </div> -->
   <div class="main-content">
-    <div class="box has-background-success">
-      <h1 class="title is-5 has-text-centered has-text-white">
+    <div class="box has-background-white-ter">
+      <h1 class="title is-5 has-text-centered has-text-black">
         Teacher: {{ user.firstName }} {{ user.lastName }}
       </h1>
     </div>
-    <div class="box has-background-success has-text-white">
+    <div class="box has-background-white-ter has-text-black">
       <div class="field">
         <label for="courses"></label>
         <div class="control">
