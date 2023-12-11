@@ -1,5 +1,5 @@
 <template>
-    <create-curriculum v-bind:content="this.content" v-if="content.courseId != undefined"></create-curriculum>
+    <create-curriculum v-bind:content="this.content" v-if="content.assignments != undefined"></create-curriculum>
 </template>
 
 <script>
@@ -16,38 +16,42 @@ export default {
     components: {
         CreateCurriculum,
     },
-    created() {
-        TeacherService.getCurriculumElementById(this.$route.params.elementId)
-            .then((response) => {
-                StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
-                    .then((assignmentResponse) => {
-                        this.content = {
-                            ...response.data,
-                            assignments: assignmentResponse.data
-                        }})
-            })
-    }
-
-    // created(){
+    // created() {
     //     TeacherService.getCurriculumElementById(this.$route.params.elementId)
     //         .then((response) => {
     //             StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
-    //                 // .then((assignmentResponse) => {
-    //                 //     assignmentResponse.data.forEach((element) => {
-    //                 //         StudentService.getQuestionsByAssignementId(element.assignmentId)
-    //                 //             .then((questionResponse)=> {
-    //                 //                 this.content = { 
-    //                 //                     ...response.data,
-    //                 //                     assignments: assignmentResponse.data,
-    //                 //                     //GRAB THE QUESTIONS ASSOCIATED WITH THE ASSIGNMENT AS WELL, POPULATE STATE WITH RETURN DATA   
-    //                 //                     questions: questionResponse.data,
-    //                 //                 }
-    //                 //             })
-    //                 //     })
-    //                 // })
+    //                 .then((assignmentResponse) => {
+    //                     this.content = {
+    //                         ...response.data,
+    //                         assignments: assignmentResponse.data
+    //                     }})
     //         })
-
     // }
+
+    created(){
+        TeacherService.getCurriculumElementById(this.$route.params.elementId)
+            .then((response) => {
+                this.content = {
+                    ...response.data
+                }
+                //WHY ARE WE USING THE STUDENT SERVICE HERE? All of this data can come from the foreign key teacherId on the courses table
+                StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
+                    .then((assignmentResponse) => {
+                        this.content.assignments = []
+                        assignmentResponse.data.forEach((element) => {
+                            StudentService.getQuestionsByAssignmentId(element.assignmentId)
+                                .then((questionResponse)=> {
+                                    this.content.assignments.push({
+                                        ...element,
+                                        questions: questionResponse.data,
+                                        assignmentUpload: element.type === "text" ? false: true,
+                                    })
+                                })
+                        })
+                    })
+            })
+
+    }
 }
 </script>
 

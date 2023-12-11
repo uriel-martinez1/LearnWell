@@ -4,7 +4,7 @@
     <div v-if="this.$route.query.action === 'edit'">
       <div>{{ this.content }}</div>
       <form class="box" @submit.prevent="createCurriculum">
-        <h1 class="title is-4">Create a Curriculum</h1>
+        <h1 class="title is-4">Create a Curriculum Element</h1>
         <div class="field">
           <label class="label">Description</label>
           <div class="control">
@@ -38,6 +38,7 @@
         <!--also option to upload lecture content instead of textarea-->
         <!-- <label class="label" for="filebutton-0"></label> -->
 
+        <!-- THIS IS THE LOOP THAT DISPLAYS ALL THE SOURCES FOR THE CURRENT CURRICULUM ELEMENT -->
         <div
           class="field"
           v-for="(source, index) in this.curriculumData.sources"
@@ -83,8 +84,8 @@
         <!-- THIS IS THE LOOP THAT DISPLAYS ALL THE ASSIGNMENTS -->
         <div
           id="assignment"
-          v-for="(assignment, index) in curriculumData.assignments"
-          v-bind:key="index"
+          v-for="(assignment, i) in curriculumData.assignments"
+          v-bind:key="i"
         >
           <!-- Create an assignment with (I hope) radio buttons to select either form or assignment upload -->
           <div class="field">
@@ -95,22 +96,22 @@
               <label class="radio"> Form </label>
               <input
                 type="radio"
-                name="answer"
+                v-bind:name="i"
                 id="formAssignment"
-                v-model="assignmentUpload"
+                v-model="assignment.assignmentUpload"
                 v-bind:value="true"
               />
               <label class="radio"> Assignment Upload </label>
               <input
                 type="radio"
-                name="answer"
+                v-bind:name="i"
                 id="uploadAssignment"
-                v-model="assignmentUpload"
+                v-model="assignment.assignmentUpload"
                 v-bind:value="false"
               />
             </div>
           </div>
-          <div class="assignment" v-if="this.assignmentUpload">
+          <div class="assignment" v-if="assignment.assignmentUpload">
             <div class="field">
               <div class="control">
                 <input
@@ -127,7 +128,7 @@
 
             <div
               class="field"
-              v-for="(question, index) in this.curriculumData.questions"
+              v-for="(question, j) in assignment.questions"
               v-bind:key="question.questionId"
             >
               <div class="control">
@@ -142,7 +143,7 @@
                 />
               </div>
               <button
-                v-on:click="removeQuestionElement(index)"
+                v-on:click="removeQuestionElement(i, j)"
                 id="doublebutton2-0"
                 name="doublebutton2-0"
                 class="button is-danger"
@@ -156,7 +157,7 @@
               <label class="label" for="doublebutton-0"></label>
               <div class="control">
                 <button
-                  v-on:click="addQuestionElement"
+                  v-on:click="addQuestionElement(i)"
                   id="doublebutton-0"
                   name="doublebutton-0"
                   class="button is-success"
@@ -185,6 +186,34 @@
                 placeholder="Paste assignment URL here"
               />
             </div>
+          </div>
+          <div class="field">
+            <label class="label" for="doublebutton-0"></label>
+            <div class="control">
+              <button
+                v-on:click="removeAssignmentElement(i)"
+                id="doublebutton-0"
+                name="doublebutton-0"
+                class="button is-success"
+              >
+                Remove Assignment
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON TO ADD AN ASSIGNMENT TO THE ARRAY OF ASSIGNMENTS IN STATE -->
+        <div class="field">
+          <label class="label" for="doublebutton-0"></label>
+          <div class="control">
+            <button
+              v-on:click="addAssignmentElement"
+              id="doublebutton-0"
+              name="doublebutton-0"
+              class="button is-success"
+            >
+              Add Another Assignment
+            </button>
           </div>
         </div>
 
@@ -410,7 +439,6 @@ export default {
   props: ["content"],
   data() {
     return {
-      assignmentUpload: false,
       curriculumData: {
         curriculumElementId: this.content.curriculumElementId || 0,
         courseId: this.content.courseId || 0,
@@ -426,42 +454,33 @@ export default {
           { content: "blahblahblah.com" },
         ],
         //push an assignment here when you click the button Add Assignment
-        assignments: this.content.assignments || [],
-        //push a question here when you click the button Add Question
-        questions: this.content.questions || [
-          { prompt: "this is a question" },
-          { prompt: "this is another question" },
-          { prompt: "this is yet another question" },
-        ],
+        
+        assignments: this.content.assignments,
       },
     };
   },
-  created() {},
-  // created(){
-  //     this.curriculumData =
-  // },
   methods: {
+    addAssignmentElement() {
+      this.curriculumData.assignments.push({
+        assignmentUpload: false,
+        title: "",
+        questions: [],
+      });
+    },
+    removeAssignmentElement(index) {
+      this.curriculumData.assignments.splice(index, 1);
+    },
     removeSourceElement(index) {
       this.curriculumData.sources.splice(index, 1);
     },
     addResourceElement() {
       this.curriculumData.sources.push({ content: "" });
     },
-    removeQuestionElement(index) {
-      this.curriculumData.questions.splice(index, 1);
+    removeQuestionElement(i, j) {
+      this.curriculumData.assignments[i].questions.splice(j, 1);
     },
-    addQuestionElement() {
-      this.curriculumData.questions.push({ prompt: "" });
-    },
-    createCurriculum() {
-      // return this.curriculumName, this.curriculumDescription,
-      //     this.dailyInstructions, this.assignment,
-      //     this.isCurriculumCreated = true,
-      //     this.isCurriculumActive = false;
-      console.log(this.curriculumData);
-    },
-    toggleButton() {
-      this.formOrAssignmentUpload = false;
+    addQuestionElement(i) {
+      this.curriculumData.assignments[i].questions.push({ prompt: "" });
     },
   },
 };
