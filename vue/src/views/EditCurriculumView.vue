@@ -34,20 +34,26 @@ export default {
                 this.content = {
                     ...response.data
                 }
-                //WHY ARE WE USING THE STUDENT SERVICE HERE? All of this data can come from the foreign key teacherId on the courses table
-                StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
-                    .then((assignmentResponse) => {
-                        this.content.assignments = []
-                        assignmentResponse.data.forEach((element) => {
-                            StudentService.getQuestionsByAssignmentId(element.assignmentId)
-                                .then((questionResponse)=> {
-                                    this.content.assignments.push({
-                                        ...element,
-                                        questions: questionResponse.data,
-                                        assignmentUpload: element.type === "text" ? false: true,
+                TeacherService.getSourcesByCurriculumElementId(this.$route.params.elementId)
+                    .then((sourceResponse) => {
+                        console.log(sourceResponse.data)
+                        //WHY ARE WE USING THE STUDENT SERVICE HERE? All of this data can come from the foreign key teacherId on the courses table
+                        StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
+                            .then((assignmentResponse) => {
+                                this.content.sources = [...sourceResponse.data]
+                                this.content.assignments = []
+                                assignmentResponse.data.forEach((element) => {
+                                    StudentService.getQuestionsByAssignmentId(element.assignmentId)
+                                    .then((questionResponse)=> {
+                                        this.content.assignments.push({
+                                            ...element,
+                                            questions: questionResponse.data,
+                                            assignmentUpload: element.type === "text" ? false: true,
+                                        })
                                     })
-                                })
-                        })
+                                })                            
+                            })
+
                     })
             })
 

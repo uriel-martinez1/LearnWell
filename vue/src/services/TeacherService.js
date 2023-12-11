@@ -45,6 +45,10 @@ export default {
     return axios.get(`/teacher/courses/curriculum/${id}`)
   },
 
+  getSourcesByCurriculumElementId(id){
+    return axios.get(`/teacher/course/curriculum/${id}/sources`)
+  }
+
   // getCourse(courseId) {
   //   return axios.get(`/courses/${courseId}`)
   // },
