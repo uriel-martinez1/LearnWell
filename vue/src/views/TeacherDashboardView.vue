@@ -55,7 +55,7 @@
       <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
       <student-list v-else></student-list>
       <!--Missing the v-on:to to reroute to new view AddCardView-->
-      <button>Add Course</button>
+      <button v-on:click="() => this.$router.push({name: 'CreateCoursesView'})">Add Course</button>
     </div>
     
     <!-- <div class="grid-container">

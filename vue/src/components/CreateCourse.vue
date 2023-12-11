@@ -1,7 +1,7 @@
 
 <template>
     <div id="app">
-        <form class="box" @submit.prevent="createCourse">
+        <form class="box" @submit.prevent="submitCourse">
 
             <h1 class="title is-4">Create a Course</h1>
             <div class="field">
@@ -52,7 +52,8 @@
                 </div>
             </div>
             <div class="control">
-                <button class="button is-link">Create Course</button>
+                <button class="button is-link" type="submit">Create Course</button>
+                <button class="btn btn-cancel" v-on:click="cancelForm" type="button">Cancel</button>
             </div>
         </form>
 
@@ -113,12 +114,14 @@ export default {
                 //create the new course
                 TeacherService.addCourseByTeacherId(this.$route.params.userId, this.newCourse)
                     .then((response) => {
+                        //HARD CODED STATUS RESPONSE CHECK, VERIFY 201 SENT ON BACKEND
                         if (response.status === 201) {
                             this.$store.commit('SET_NOTIFICATION',
                                 {
                                     message: 'A new course was added.',
                                     type: 'success'
                                 });
+                            // unsure about this router push
                             this.$router.push({ name: 'TeacherDashboardView', params: { id: this.$route.params.userId } });
                         }
                     })
@@ -128,6 +131,7 @@ export default {
             } else {
                 TeacherService.updateCourseFormByTeacherId(this.$route.params.userId, this.newCourse)
                     .then((response) => {
+                        //HARD CODED STATUS RESPONSE CHECK, VERIFY 200 SENT ON BACKEND
                         if (response.status === 200) {
                             this.$store.commit('SET_NOTIFICATION', {
                                 message: `Course ${this.newCourse.id} was updated.`,
