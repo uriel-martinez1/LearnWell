@@ -13,9 +13,6 @@
   <div id="capstone-app">
     <router-view />
   </div>
-  <div id="capstone-app">
-    <router-view />
-  </div>
   <div class="footer">
     <footer>
       <p>
@@ -30,8 +27,8 @@ import SideBarStudentDashboard from "./components/Student/SideBarStudentDashboar
 import SideBarTeacherDashboard from "./components/Teacher/SideBarTeacherDashboard.vue";
 export default {
   components: {
-    // SideBarStudentDashboard,
-    // SideBarTeacherDashboard,
+    SideBarStudentDashboard,
+    SideBarTeacherDashboard,
   },
   // created for error handling
   computed: {

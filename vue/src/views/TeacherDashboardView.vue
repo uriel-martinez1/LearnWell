@@ -50,12 +50,10 @@
         </div>
       </div>
     </div>
-    <div class="box">
       <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
       <student-list v-else></student-list>
       <!--Missing the v-on:to to reroute to new view AddCardView-->
       <button v-on:click="() => this.$router.push({name: 'CreateCoursesView'})">Add Course</button>
-    </div>
     
     <!-- <div class="grid-container">
       <h1>Welcome to Your Teacher Dashboard!</h1>
@@ -120,7 +118,7 @@ export default {
   padding-top: 30px;
 }
 
-footer {
+/* footer {
   position: fixed;
   padding-left: 5%;
   padding-top: 0;
@@ -130,7 +128,7 @@ footer {
   background-color: #04aa6d;
   color: white;
   text-align: left;
-}
+} */
 
 
 </style>
