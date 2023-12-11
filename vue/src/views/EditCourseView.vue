@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Edit Course</h1>
-        <create-course v-bind:course="course"></create-course>
+        <create-course v-if="this.course.courseId" v-bind:course="course"></create-course>
     </div>
 </template>
 

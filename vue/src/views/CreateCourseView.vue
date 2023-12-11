@@ -1,7 +1,6 @@
 
 <template>
     <div>
-        <h1>Add New Course</h1>
         <create-course ></create-course>
     </div>
 </template>

@@ -5,6 +5,7 @@ using Capstone.Security;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using Capstone.DAO.SqlDaoInterfaces;
+using Capstone.DAO;
 
 namespace Capstone.Controllers
 {
@@ -18,14 +19,18 @@ namespace Capstone.Controllers
         private readonly ICourseDao CourseDao;
         private readonly ICurriculumElementDao CurriculumElementDao;
         //private readonly INotificationDao NotificationDao;
-        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao)
+        private readonly ISourceDao SourceDao;
+
+
+        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao, ISourceDao sourceDao)
         {
             //this.dashboardDao = dashboardDao;
-            this.UserDao = userDao;
+            UserDao = userDao;
             //this.AssignmentDao = assignmentDao;
-            this.CourseDao = courseDao;
-            this.CurriculumElementDao = curriculumElementDao;
+            CourseDao = courseDao;
+            CurriculumElementDao = curriculumElementDao;
             //this.NotificationDao = notificationDao;
+            SourceDao = sourceDao;
 
         }
 
@@ -124,6 +129,21 @@ namespace Capstone.Controllers
             try
             {
                 CurriculumElement output = CurriculumElementDao.GetCurriculumElementByCurriculumId(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("course/curriculum/{id}/sources")]
+        public ActionResult<List<Source>> GetSourceByCourseId(int id)
+        {
+            try
+            {
+                List<Source> output = SourceDao.GetSourcesByCurriculumElement(id);
                 return Ok(output);
 
             }

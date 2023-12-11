@@ -19,7 +19,7 @@ namespace Capstone.DAO
             List<Source> sources = new List<Source>();
 
             string sql = "SELECT source_id, curriculum_element_id, source_url, created_date, last_updated "
-                    + "FROM sources WHERE curriculum_element_id = @curriculum_element_id;";
+                    + "FROM sources WHERE curriculum_element_id = @elementId;";
 
             try
             {
@@ -28,7 +28,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@curriculum_element_id", elementId);
+                    cmd.Parameters.AddWithValue("@elementId", elementId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

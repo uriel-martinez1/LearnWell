@@ -26,9 +26,8 @@
         </div>
       </div>
     </div>
-      <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
-      <student-list v-else></student-list>
-      <button v-on:click="AddCourse">Add Course</button>
+    <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
+    <student-list v-else></student-list>
   </div>
 </template>
 
@@ -42,7 +41,7 @@ export default {
   components: {
     StudentList,
     TeacherCoursesList,
-},
+  },
   data() {
     return {
       courseOrStudent: true,
@@ -76,6 +75,7 @@ export default {
 #main-content {
   height: 100vh;
 }
+
 .todayDate {
   display: flex;
   justify-content: space-between;

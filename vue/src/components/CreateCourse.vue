@@ -3,12 +3,13 @@
     <div id="app">
         <form class="box" @submit.prevent="submitCourse">
 
-            <h1 class="title is-4">Create a Course</h1>
+            <h1 class="title is-4" v-if="this.$route.query.action=='edit'">Edit a Course</h1>
+            <h1 class="title is-4" v-else>Create a Course</h1>
             <div class="field">
                 <label class="label">Course Name</label>
                 <div class="control">
                     <input class="input is-success" v-model="newCourse.name" type="text"
-                        placeholder="Type the name of the course here" id="courseName" name="courseName" required>
+                        placeholder="Type the name of the course here" id="courseName" name="courseName">
                 </div>
             </div>
 
@@ -16,7 +17,8 @@
                 <label class="label">Difficulty</label>
                 <div class="control">
                     <div class="select">
-                        <select v-model="newCourse.difficulty" id="difficulty" name="difficulty" required>
+                        <!--Figure out the binding with the value-->
+                        <select v-model="newCourse.difficulty" id="difficulty" name="difficulty">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -35,11 +37,7 @@
             <div class="field">
                 <label class="label">Cost</label>
                 <div class="control">
-                    <div class="select">
-                        <select v-model="newCourse.cost" id="cost" name="cost" required>
-                            <option>0.00</option>
-                        </select>
-                    </div>
+                    <strong>$ </strong><input v-model="newCourse.cost" type="number" min="0.00" step="1" max="0" />
                 </div>
             </div>
 
@@ -48,9 +46,10 @@
                 <div class="control">
                     <textarea class="textarea" v-model="newCourse.description"
                         placeholder="Type the description of the course here" id="courseDescription"
-                        name="courseDescription" rows="10" cols="50" required></textarea>
+                        name="courseDescription" rows="10" cols="50" ></textarea>
                 </div>
             </div>
+
             <div class="control">
                 <button class="button is-link" type="submit">Create Course</button>
                 <button class="btn btn-cancel" v-on:click="cancelForm" type="button">Cancel</button>
@@ -85,14 +84,14 @@ export default {
                 id: this.course.courseId || 0,
                 // trying to grab the id of the teacher from the url
                 teacherId: this.course.teacherId || parseInt(this.$store.state.userId),
-                name: this.course.name || '',
-                description: this.course || '',
+                name: this.course.courseName || '',
+                description: this.course.description || '',
                 difficulty: this.course.difficulty || 0,
                 cost: this.course.cost || 0,
                 //WHEN WE CREATE A NEW COURSE THIS WILL BE CREATED BY THE DB, DONT PASS THIS IN THE DTO FROM FRONT TO BACK?
-                created: this.course.date || null,
+                created: this.course.createdDate || null,
                 // unsure about the updated section
-                updated: this.course.date || new Date(),
+                updated: this.course.lastUpdated || new Date(),
             }
         };
 
