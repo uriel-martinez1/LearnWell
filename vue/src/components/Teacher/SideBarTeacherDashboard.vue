@@ -48,6 +48,11 @@ export default {
       showCourses: false,
     };
   },
+  computed:{
+    shouldShowSidebar(){
+        return this.$route.meta.sidebar!==false;
+    }
+}
 };
 </script>
 

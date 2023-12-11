@@ -3,7 +3,7 @@
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img class="icon" src="../icon/icons8-books-64.png">
-                <p><router-link v-bind:to="{name:'home'}"><strong>LEARNWELL</strong></router-link></p>
+                <p><router-link v-bind:to="{ name: 'home' }"><strong>LEARNWELL</strong></router-link></p>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -15,8 +15,9 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-link is-outlined"><router-link v-bind:to="{name: 'home'}"><strong>Home</strong></router-link></a>
-                                        
+                    <a class="button is-link is-outlined"><router-link
+                            v-bind:to="{ name: 'home' }"><strong>Home</strong></router-link></a>
+
                 </div>
             </div>
         </div>
@@ -26,7 +27,11 @@
 <script></script>
 
 <style>
-.icon{
+.icon {
     height: auto,
+}
+
+.navbar-end {
+    margin-right: 1%;
 }
 </style>

@@ -33,6 +33,7 @@ const routes = [
     // This was originally true but should allow access to main
     meta: {
       requiresAuth: false,
+      sidebar: false,
     },
   },
   {
@@ -41,6 +42,7 @@ const routes = [
     component: LoginView,
     meta: {
       requiresAuth: false,
+      sidebar: false,
     },
   },
   {
@@ -57,6 +59,7 @@ const routes = [
     component: RegisterView,
     meta: {
       requiresAuth: false,
+      sidebar: false,
     },
   },
   {
