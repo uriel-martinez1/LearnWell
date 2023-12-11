@@ -11,7 +11,9 @@ import TeacherCoursesView from "../views/TeacherCoursesView.vue";
 import StudentDashboardView from "../views/StudentDashboardView.vue"
 import TeacherCurriculumView from "../views/TeacherCurriculumView.vue";
 import CreateCurriculumView from "../views/CreateCurriculumView.vue";
-import EditCurriculumView from "../views/EditCurriculumView.vue"
+import EditCurriculumView from "../views/EditCurriculumView.vue";
+import CreateCourseView from "../views/CreateCourseView.vue";
+import EditCourseView from "../views/EditCourseView.vue";
 
 
 /**
@@ -96,6 +98,26 @@ const routes = [
     path: '/teacher/courses/curriculum/:elementId',
     component: EditCurriculumView,
     name: 'EditCurriculumView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  //unsure about this route for create course
+  {
+    path: '/teacher/courses',
+    component: CreateCourseView,
+    name: 'CreateCoursesView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  //unsure about this route for edit course
+  {
+    path: '/teacher/courses/:courseId',
+    component: EditCourseView,
+    name: 'EditCoursesView',
     meta: {
       requiresAuth: true
     }

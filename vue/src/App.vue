@@ -8,10 +8,10 @@
       <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
     </div> -->
   <!-- </div> -->
-    <div id="capstone-app">
-      <router-view />
-    </div>
-    <!-- <div class="footer">
+  <div id="capstone-app">
+    <router-view />
+  </div>
+  <!-- <div class="footer">
       <footer>
         <p>
           Copyright ©-All rights are reserved
@@ -28,17 +28,36 @@ export default {
     // SideBarStudentDashboard,
     // SideBarTeacherDashboard,
   },
+  // created for error handling
+  computed: {
+    notification() {
+      return this.$store.state.notification;
+    },
+    notificationClass() {
+      return {
+        'status-message': true,
+        error: this.notification?.type?.toLowerCase() === 'error',
+        success: this.notification?.type?.toLowerCase() === 'success'
+      };
+    }
+  },
+  methods: {
+    clearNotification() {
+      this.$store.commit('CLEAR_NOTIFICATION');
+    },
+  }
+
 };
 </script>
 <style>
-  #capstone-app {
+#capstone-app {
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
 }
 
 /* THIS IS A QUICK FIX  */
-#capstone-app{
+#capstone-app {
   position: relative;
   left: 200px;
 }
