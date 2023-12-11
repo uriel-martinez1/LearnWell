@@ -115,6 +115,16 @@ export default {
   components: {
     RegisterLoginNavBar,
   },
+  created() {
+    if (this.$store.state.token != '') {
+      if (this.$store.state.user.role === "student") {
+        this.$router.push(`/student/${this.$store.state.user.userId}`);
+      } else {
+        this.$router.push(`/teacher/${this.$store.state.user.userId}`);
+      }
+
+    }
+  },
   data() {
     return {
       user: {

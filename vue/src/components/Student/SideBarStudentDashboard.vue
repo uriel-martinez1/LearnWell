@@ -1,45 +1,44 @@
 <template>
-  <div>
-    <div class="sidebar">
-      <div class="header">
-        <a class="navbar-item">
-          <!-- <img class="icon" src="../icon/icons8-books-64.png" /> -->
-          <p><strong>LEARNWELL</strong></p>
-        </a>
-        <h2><strong>Student Dashboard</strong></h2>
+  <div class="sidebar">
+    <div class="header">
+      <a class="navbar-item">
+        <!-- <img class="icon" src="../icon/icons8-books-64.png" /> -->
+        <p><strong>LEARNWELL</strong></p>
+      </a>
+      <h2><strong>Student Dashboard</strong></h2>
+    </div>
+    <nav>
+      <router-link class="button"
+        :to="{ name: 'StudentDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
+      <button class="button" showCourses="!showCourses">Courses</button>
+      <div v-if="showCourses">
+        <button class="button" id="courseButton" v-for="course in $store.state.user.courses" v-bind:key="course.courseId">
+          {{ course.courseName }}
+        </button>
+        <student-course-list></student-course-list>
       </div>
-      <router-link class="button" :to="{ name: 'StudentDashboardView' }"
-        >Dashboard</router-link
-      >
-      <button
-        v-on:click="() => (showAssignments = !showAssignments)"
-        type="button"
-      >
+      <button v-on:click="() => (showAssignments = !showAssignments)" type="button" class="button">
         Assignments
       </button>
       <div v-if="showAssignments">
-        <button
-          id="assignmentButton"
-          v-for="assignment in this.$store.state.user.courses[0]
-            .curriculumElements[0].assignments"
-          v-bind:key="assignment.assignmentId"
-        >
+        <button id="assignmentButton" v-for="assignment in this.$store.state.user.courses[0]
+          .curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">
           {{ assignment.title }}
         </button>
       </div>
-      <button type="button">Notifications</button>
-    </div>
+      <button type="button" class="button">Notifications</button>
+      <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''">Logout</router-link>
+    </nav>
   </div>
-  <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
-      v-if="$store.state.token != ''">Logout</router-link>
 </template>
 
 <script>
 // import StudentService from "../services/StudentService"
 // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
-  components: {
-    //StudentCourseList,
+   components: {
+  // StudentCourseList,
   },
   data() {
     return {
@@ -57,6 +56,7 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .sidebar .button {
   display: flex;
   flex-direction: column;

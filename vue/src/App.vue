@@ -6,7 +6,7 @@
   <div class="sidebar" v-if="$store.state.token != ''">
     <div v-if="!$store.state.user.role == false">
       <!-- STUDENT SIDEBAR DASHBOARD NOT WORKING, DOES NOT RENDER AT ALL, NEED HELP FROM THE HIGHER POWERS WITH OR WITHOUT PONYTAIL -->
-      <side-bar-student-dashboard v-if="$store.state.user.role === 'student'"></side-bar-student-dashboard>
+      <side-bar-student-dashboard v-if="$store.state.user.role == 'student'"></side-bar-student-dashboard>
       <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
     </div>
   </div>
@@ -61,10 +61,10 @@ export default {
 }
 
 /* THIS IS A QUICK FIX  */
-/* #capstone-app{
+#capstone-app{
   transform: translate(15vw);
   
-}  */
+}  
 
 .logoutButton {
   position: fixed;

@@ -41,25 +41,37 @@ export default {
       }
     }
   },
-  created(){
+  created() {
     try {
-        fetch("https://type.fit/api/quotes")
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data)
-            let randomQuote = data[Math.floor(Math.random() * data.length)]
-            this.message.text = randomQuote.text;
-            this.message.author = randomQuote.author.split(",")[0];
-            this.isLoading = false;
-          });
-      }
-      catch (error){
-        console.error('Something went wrong', error)
-      }
+      fetch("https://type.fit/api/quotes")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data)
+          let randomQuote = data[Math.floor(Math.random() * data.length)]
+          this.message.text = randomQuote.text;
+          this.message.author = randomQuote.author.split(",")[0];
+          this.isLoading = false;
+        });
+    }
+    catch (error) {
+      console.error('Something went wrong', error)
+    }
+
+    if(this.$store.state.token != '')
+    {
+      if(this.$store.state.user.role === "student"){
+              this.$router.push(`/student/${this.$store.state.user.userId}`);
+            } else {
+              this.$router.push(`/teacher/${this.$store.state.user.userId}`);
+            }
+
+    }
+
+    
   },
-  
+
 }
 </script>
 
@@ -67,6 +79,5 @@ export default {
 .home-image {
   height: 60%;
 }
-
 </style>
 

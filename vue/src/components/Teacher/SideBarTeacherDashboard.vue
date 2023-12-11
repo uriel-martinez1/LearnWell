@@ -33,10 +33,6 @@
         <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
       v-if="$store.state.token != ''">Logout</router-link>
       </nav>
-
-      <!-- <div class="logoutButton">
-          <button type="button">Logout</button>
-        </div> -->
     </div>
   </div>
 </template>
