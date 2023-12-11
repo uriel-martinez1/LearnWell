@@ -1,6 +1,6 @@
 <template>
     <div class="box has-background-success has-text-white">
-        <ul v-for="course in courses" :key="course.courseId">
+        <ul v-for="course in this.courses" :key="course.courseId">
             <li class="title is-5 has-text-white">Course Name: {{ course.courseName }}</li>
             <div v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
                 <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-white">
@@ -17,10 +17,11 @@
             </button>
         </ul>
         <!-- Add a course to the teacher's panel -->
-        <div class="mt-3">
+        <!-- <div class="mt-3">
             <button @click="AddCourseView" class="button is-link is-outlined is-small">Add Course</button>
-        </div>
+        </div> -->
     </div>
+    
 </template>
 
 <script>
@@ -66,4 +67,6 @@ export default {
 </script>
 
 <style></style>
+
+
 
