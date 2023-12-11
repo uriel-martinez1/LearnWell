@@ -38,12 +38,12 @@ import TeacherService from "../services/TeacherService";
 import StudentList from "../components/TeacherStudentList.vue";
 import TeacherCoursesList from "../components/TeacherCoursesList.vue";
 
-function updateDateTime() {
-      const now = new Date();
-      const currentDateTime = now.toLocaleString();
-      document.querySelector('#datetime').textContent = currentDateTime;
-    }
-    setInterval(updateDateTime, 1000);
+// function updateDateTime() {
+//       const now = new Date();
+//       const currentDateTime = now.toLocaleString();
+//       document.querySelector('#datetime').textContent = currentDateTime;
+//     }
+//     setInterval(updateDateTime, 1000);
 export default {
   components: {
     StudentList,

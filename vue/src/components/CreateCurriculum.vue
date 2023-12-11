@@ -1,12 +1,12 @@
 <template>
-  <div>{{ this.content }}</div>
   <form class="box" @submit.prevent="createCurriculum">
-    <h1 class="title is-4">Create a Curriculum Element</h1>
+    <h1 class="title is-4" v-if="this.$route.query.action == 'edit'">Edit a Curriculum Element</h1>
+    <h1 class="title is-4" v-else>Create a Curriculum Element</h1>
     <div class="field">
       <label class="label">Description</label>
       <div class="control">
         <input class="input is-success" v-model="curriculumData.description" type="text" id="curriculumName"
-          name="curriculumName" required />
+          name="curriculumName"/>
       </div>
     </div>
     <!-- This is for curriculum content -->
@@ -14,7 +14,7 @@
       <label class="label">Lecture Content</label>
       <div class="control">
         <textarea class="textarea" v-model="curriculumData.lectureContent" placeholder="Place typed lecture content here"
-          id="dailyInstructions" name="dailyInstructions" rows="10" cols="50" required>
+          id="dailyInstructions" name="dailyInstructions" rows="10" cols="50">
             </textarea>
       </div>
     </div>
@@ -22,11 +22,10 @@
     <!-- <label class="label" for="filebutton-0"></label> -->
 
     <!-- THIS IS THE LOOP THAT DISPLAYS ALL THE SOURCES FOR THE CURRENT CURRICULUM ELEMENT -->
-    <div class="field" v-for="(source, index) in this.curriculumData.sources" v-bind:key="source.sourceId">
+    <div class="field" v-for="(source, index) in curriculumData.sources" v-bind:key="source.sourceId">
       <label class="label">Resources</label>
       <div class="control">
-        <input class="input is-success" v-model="source.content" type="text" id="curriculumName" name="curriculumName"
-          required />
+        <input class="input is-success" v-model="source.sourceUrl" type="text" id="curriculumName" name="curriculumName"/>
       </div>
       <!-- Button to remove an individual resource element from the source array buy the index point in the v-for above -->
       <button v-on:click="removeSourceElement(index)" id="doublebutton2-0" name="doublebutton2-0"
@@ -39,7 +38,7 @@
     <div class="field">
       <label class="label" for="doublebutton-0"></label>
       <div class="control">
-        <button v-on:click="addResourceElement" id="doublebutton-0" name="doublebutton-0" class="button is-success">
+        <button v-on:click="addResourceElement(this.$route.params.elementId)" id="doublebutton-0" name="doublebutton-0" class="button is-success">
           Add Another Resource
         </button>
       </div>
@@ -63,14 +62,14 @@
         <div class="field">
           <div class="control">
             <input class="input is-success" v-model="assignment_title" name="assignment_title" type="text"
-              placeholder="Assignment Title" id="assignmentName" required />
+              placeholder="Assignment Title" id="assignmentName" />
           </div>
         </div>
 
         <div class="field" v-for="(question, j) in assignment.questions" v-bind:key="question.questionId">
           <div class="control">
             <input class="input is-success" v-model="question.prompt" name="curriculum_questions" type="text"
-              placeholder="Add question here." id="assignmentName" required />
+              placeholder="Add question here." id="assignmentName" />
           </div>
           <button v-on:click="removeQuestionElement(i, j)" id="doublebutton2-0" name="doublebutton2-0"
             class="button is-danger">
@@ -89,6 +88,7 @@
           </div>
         </div>
       </div>
+
       <div class="field" v-else>
         <div class="control">
           <input class="input is-link" id="assignmentTitle" name="assignmentTitle" type="text"
@@ -103,15 +103,11 @@
         <label class="label" for="doublebutton-0"></label>
         <div class="control">
           <button v-on:click="removeAssignmentElement(i)" id="doublebutton-0" name="doublebutton-0"
-            class="button is-success">
+            class="button is-danger">
             Remove Assignment
           </button>
         </div>
       </div>
-      <button v-on:click="removeQuestionElement(index)" id="doublebutton2-0" name="doublebutton2-0"
-        class="button is-danger">
-        Remove Question
-      </button>
     </div>
 
     <!-- BUTTON TO ADD AN ASSIGNMENT TO THE ARRAY OF ASSIGNMENTS IN STATE -->
@@ -146,11 +142,7 @@ export default {
         createdDate: this.content.createdDate || 0,
         lastUpdated: this.content.lastUpdated || 0,
         //push a source here when you click the button Add Source
-        sources: this.content.sources || [
-          { content: "blah.com" },
-          { content: "blahblah.com" },
-          { content: "blahblahblah.com" },
-        ],
+        sources: this.content.sources || [],
         //push an assignment here when you click the button Add Assignment
 
         assignments: this.content.assignments || [],
@@ -177,8 +169,8 @@ export default {
     removeSourceElement(index) {
       this.curriculumData.sources.splice(index, 1);
     },
-    addResourceElement() {
-      this.curriculumData.sources.push({ content: "" });
+    addResourceElement(curriculumElementId) {
+      this.curriculumData.sources.push({ sourceUrl: "" , "curriculumElementId" : curriculumElementId || 0});
     },
     removeQuestionElement(i, j) {
       this.curriculumData.assignments[i].questions.splice(j, 1);
