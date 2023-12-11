@@ -21,6 +21,10 @@ export default {
   getCoursesByTeacherId(id) {
     return axios.get(`/teacher/${id}/courses`)
   },
+  // Added this one also -- get single course by id
+  getCourseByCourseId(id) {
+    return axios.get(`/teacher/course/${id}`);
+  },
 
   //unsure about the placement of it being here or create a new service folder for course
   // Also unsure about the structure of the path
@@ -31,10 +35,6 @@ export default {
   // Also used in create course form
   updateCourseByCourseId(course) {
     return axios.put(`/teacher/courses/${course.id}`, course);
-  },
-  // Added this one also -- get single course by id
-  getCourseByTeacherId(id, course) {
-    return axios.get(`/teacher/${id}/courses/${course.id}`, course);
   },
 
   getCurriculumByCourseId(id){
