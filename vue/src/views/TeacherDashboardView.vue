@@ -17,39 +17,38 @@
             Started</strong></router-link></a>
     </div>
   </div>
-  <div class="footer">
-    <footer>
-      <p>
-        Copyright ©-All rights are reserved
-      </p>
-    </footer> -->
-  <!-- </div> -->
+ 
 
-  <!-- NEW CODE PULLED FROM MAIN -->
+   NEW CODE PULLED FROM MAIN -->
   <!-- <div class="sidebar">
     <side-bar-teacher-dashboard></side-bar-teacher-dashboard>
   </div> -->
   <div class="main-content">
-    <div class="box">
-      <h1>Teacher: {{ user.firstName }} {{ user.lastName }}</h1>
+    <div class="box has-background-white-ter">
+      <h1 class="title is-5 has-text-centered has-text-black">
+        Teacher: {{ user.firstName }} {{ user.lastName }}
+      </h1>
     </div>
-    <div class="box">
-      <label for="courses">Courses</label>
-      <input
-        id="courses"
-        name="courseOrStudent"
-        type="radio"
-        v-bind:value="true"
-        v-model="courseOrStudent"
-      />
-      <label for="students">Students</label>
-      <input
-        id="students"
-        name="courseOrStudent"
-        type="radio"
-        v-bind:value="false"
-        v-model="courseOrStudent"
-      />
+    <div class="box has-background-white-ter has-text-black">
+      <div class="field">
+        <label for="courses"></label>
+        <div class="control">
+          <label class="radio">
+            <input id="courses" name="courseOrStudent" type="radio" :value="true" v-model="courseOrStudent" />
+            Courses
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="students"></label>
+        <div class="control">
+          <label class="radio">
+            <input id="students" name="courseOrStudent" type="radio" :value="false" v-model="courseOrStudent" />
+            Students
+          </label>
+        </div>
+      </div>
     </div>
     <div class="box">
       <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
@@ -67,14 +66,11 @@
       </div>
     </div>  -->
   </div>
-  <footer>
-    <p>Copyright ©-All rights are reserved</p>
-  </footer>
 </template>
 
 <script>
 import SideBarTeacherDashboard from "../components/Teacher/SideBarTeacherDashboard.vue";
-import pageFooter from "../components/Footer.vue";
+
 import TeacherService from "../services/TeacherService";
 import StudentList from "../components/TeacherStudentList.vue";
 import TeacherCoursesList from "../components/TeacherCoursesList.vue";
@@ -102,11 +98,11 @@ export default {
 </script>
 
 <style>
-#main-content{
+#main-content {
   height: 100vh;
 }
 
-div .flex-container {
+/* div .flex-container {
   display: flex;
   justify-content: left;
   flex-direction: column;
@@ -114,7 +110,7 @@ div .flex-container {
   margin-left: 20%;
   padding-right: 10px;
   text-align: left;
-}
+} */
 
 .todayDate {
   display: flex;

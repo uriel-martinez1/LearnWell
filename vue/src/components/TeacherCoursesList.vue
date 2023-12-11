@@ -1,18 +1,27 @@
 <template>
-    <div class="box">
-        <ul v-for="course in this.courses" v-bind:key="course.courseId">
-            <li class="title is-4">Course Name: {{ course.courseName }}</li>
-                <!-- Edit Course element/info button -->
-            <div v-for="curricula in course.curriculum" v-bind:key="curricula.curriculumElementId">
-                <a v-on:click="selectCurriculumElement(curricula.curriculumElementId)">Curricula: {{ curricula.description }}</a>
-                <!---Edit curriculum button-->
-                <button v-on:click="EditCurriculumView(curricula.curriculumElementId)">Edit</button>
+    <div class="box has-background-white-ter has-text-black">
+        <ul v-for="course in this.courses" :key="course.courseId">
+            <li class="title is-5 has-text-black">Course Name: {{ course.courseName }}</li>
+            <div v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
+                <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-black">
+                    Curricula: {{ curricula.description }}
+                </a>
+
+                <button @click="EditCurriculumView(curricula.curriculumElementId)"
+                    class="button is-link is-outlined is-small">
+                    Edit
+                </button>
             </div>
-            <!---Add curriculum element to the course-->
-            <button v-on:click="CreateCurriculumView">Add curriculum</button>
+            <button @click="CreateCurriculumView" class="button is-link is-outlined is-small">
+                Add curriculum
+            </button>
         </ul>
-        <!-- Add a course to the teachers pannel -->
+        <!-- Add a course to the teacher's panel -->
+        <!-- <div class="mt-3">
+            <button @click="AddCourseView" class="button is-link is-outlined is-small">Add Course</button>
+        </div> -->
     </div>
+    
 </template>
 
 <script>
@@ -41,16 +50,16 @@ export default {
             })
     },
     methods: {
-        selectCurriculumElement(id){
-            this.$router.push({name: 'TeacherCurriculumView', params: {'elementId': id}})
+        selectCurriculumElement(id) {
+            this.$router.push({ name: 'TeacherCurriculumView', params: { 'elementId': id } })
         },
 
-        CreateCurriculumView(){
-            this.$router.push({name: 'CreateCurriculumView'})
+        CreateCurriculumView() {
+            this.$router.push({ name: 'CreateCurriculumView' })
         },
 
-        EditCurriculumView(id){
-            this.$router.push({name: 'EditCurriculumView', params: {'elementId': id}, query: {action: 'edit'}})
+        EditCurriculumView(id) {
+            this.$router.push({ name: 'EditCurriculumView', params: { 'elementId': id }, query: { action: 'edit' } })
         }
     }
 }
@@ -58,4 +67,6 @@ export default {
 </script>
 
 <style></style>
+
+
 
