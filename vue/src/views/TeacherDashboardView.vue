@@ -53,7 +53,7 @@
       <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
       <student-list v-else></student-list>
       <!--Missing the v-on:to to reroute to new view AddCardView-->
-      <button v-on:click="() => this.$router.push({name: 'CreateCoursesView'})">Add Course</button>
+      <button v-on:click="AddCourse">Add Course</button>
     
     <!-- <div class="grid-container">
       <h1>Welcome to Your Teacher Dashboard!</h1>
@@ -92,6 +92,11 @@ export default {
       }
     );
   },
+  methods: {
+    AddCourse(){
+      this.$router.push({name: 'CreateCourseView'})
+    },
+  }
 };
 </script>
 
