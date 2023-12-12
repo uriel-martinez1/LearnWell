@@ -12,7 +12,7 @@ import StudentService from '../services/StudentService';
 export default {
     data() {
         return {
-            curriculumElements: null
+            curriculumElements: []
         }
     },
     created() {
@@ -22,9 +22,11 @@ export default {
                 console.log(this.curriculumElements)
             })
     },
-    // method() {
-    //     this.$router.push({name: 'StudentAssignmentSummaryView', params: {courseId: this.$route.params.courseId, 'curriculumElementId': curriculumElementId}})
-    // },
+    methods: {
+        goToCurriculumElement(curriculumElementId){
+        this.$router.push({name: 'StudentAssignmentSummaryView', params: {courseId: this.$route.params.courseId,'curriculumElementId': curriculumElementId}})
+        }      
+    },
 }
 </script>
 <style></style>
