@@ -9,6 +9,7 @@ namespace Capstone.DAO.SqlDaoInterfaces
     {
 
         List<Assignment> GetAssignmentsByCurriculumElementId(int id);
+        List<Assignment> GetAssignmentsByCourseId(int id);
         Assignment MapRowToAssignment(SqlDataReader reader);
 
     }

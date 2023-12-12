@@ -15,6 +15,9 @@ import EditCurriculumView from "../views/EditCurriculumView.vue";
 import CreateCourseView from "../views/CreateCourseView.vue";
 import EditCourseView from "../views/EditCourseView.vue";
 import StudentCourseSummaryView from "../views/StudentCourseSummaryView.vue";
+import StudentAssignmentSummaryView from "../views/StudentAssignmentSummaryView.vue"
+
+import TeacherCourseSummaryView from "../views/TeacherCourseSummaryView.vue";
 
 
 /**
@@ -122,6 +125,16 @@ const routes = [
     path: '/teacher/courses/:courseId',
     component: EditCourseView,
     name: 'EditCourseView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  //route for Course Summary from teacher sidebar
+  {
+    path: '/teacher/course/:courseId/summary',
+    component: TeacherCourseSummaryView,
+    name: 'CourseSummaryView',
     meta: {
       requiresAuth: true
     }
@@ -287,14 +300,14 @@ const routes = [
   // 	requiresAuth: true
   // 	}
   // },
-  // {
-  //   path: '/student/courses/:courseId/curriculum-elements/:curriculum-element-id/assignments/:assignmentId',
-  //   component: AssignmentView,
-  //   name: 'AssignmentView',
-  //   meta: {
-  // 	requiresAuth: true
-  // 	}
-  // },
+  {
+    path: '/student/courses/:courseId/:curriculumElementId/:assignmentId',
+    component: StudentAssignmentSummaryView,
+    name: 'StudentAssignmentSummaryView',
+    meta: {
+      requiresAuth: true
+    }
+  },
 
   // {
   //   path: '/student/submitted-assignment',

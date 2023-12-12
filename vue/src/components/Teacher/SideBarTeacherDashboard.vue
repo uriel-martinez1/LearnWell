@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$store.state.sideBarData">
     <div class="sidebar">
       <div class="header">
         <a class="navbar-item">
@@ -9,29 +9,21 @@
         <h2><strong>Teacher Dashboard</strong></h2>
       </div>
       <nav>
-        <router-link
-          class="button"
-          :to="{
-            name: 'TeacherDashboardView',
-            params: { id: $store.state.user.userId },
-          }"
-          >Dashboard</router-link
-        >
-        <button class="button" showCourses="!showCourses">Courses</button>
-        <div v-if="showCourses">
-          <button
-            class="button"
-            id="courseButton"
-            v-for="course in $store.state.user.courses"
-            v-bind:key="course.courseId"
-          >
+        <router-link class="button" :to="{
+          name: 'TeacherDashboardView',
+          params: { id: $store.state.user.userId },
+        }">Dashboard</router-link>
+        <button class="button" v-on:click="showCourses">Courses</button>
+        <div v-if="displayCourses">
+          <button class="button is-link" id="courseButton" v-for="course in $store.state.sideBarData"
+            v-bind:key="course.courseId" v-on:click="routeCourseSummary(course.courseId)">
             {{ course.courseName }}
           </button>
         </div>
         <button class="button">Students</button>
         <button class="button">Notifications</button>
         <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
-      v-if="$store.state.token != ''">Logout</router-link>
+          v-if="$store.state.token != ''">Logout</router-link>
       </nav>
     </div>
   </div>
@@ -41,10 +33,25 @@
 export default {
   data() {
     return {
-      showCourses: false,
+      displayCourses: false,
+      courses: [],
     };
   },
+  computed: {
 
+  },
+  methods: {
+    routeCourseSummary(courseId){
+      this.$router.push({name: 'CourseSummaryView', params: {'courseId' : courseId}})
+    },
+    showCourses(){
+      this.displayCourses = !this.displayCourses
+      console.log(this.courses)
+    }
+  },
+  created(){
+
+  }
 };
 
 </script>
@@ -56,6 +63,7 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .sidebar .button {
   display: flex;
   flex-direction: column;

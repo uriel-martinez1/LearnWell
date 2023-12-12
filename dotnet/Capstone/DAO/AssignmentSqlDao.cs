@@ -54,6 +54,44 @@ namespace Capstone.DAO
 
         }
 
+        public List<Assignment> GetAssignmentsByCourseId(int id)
+        {
+            List<Assignment> assignments = new List<Assignment>();
+
+            string sql = "SELECT assignment_id, assignments.curriculum_element_id, title, assignments.description, assignment_type, assignments.created_date, assignments.last_updated " +
+                "FROM assignments " +
+                "JOIN curriculum_elements on curriculum_elements.curriculum_element_id = assignments.curriculum_element_id " +
+                "JOIN courses on courses.course_id = curriculum_elements.course_id " +
+                "WHERE courses.course_id = @id;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Assignment currAssignment = MapRowToAssignment(reader);
+                        assignments.Add(currAssignment);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return assignments;
+        }
+
         //TODO add assignment method
         //TODO edit assignment method
         //TODO delete assignment method
