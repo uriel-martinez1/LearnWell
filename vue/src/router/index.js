@@ -16,7 +16,7 @@ import CreateCourseView from "../views/CreateCourseView.vue";
 import EditCourseView from "../views/EditCourseView.vue";
 import StudentCourseSummaryView from "../views/StudentCourseSummaryView.vue";
 import TeacherCourseSummaryView from "../views/TeacherCourseSummaryView.vue";
-
+import TeacherStudentProfileView from "../views/TeacherStudentProfileView.vue";
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -137,6 +137,16 @@ const routes = [
       requiresAuth: true
     }
   },
+
+    //route for student profile from course summary
+    {
+      path: '/teacher/course/student/:userId',
+      component: TeacherStudentProfileView,
+      name: 'TeacherStudentProfileView',
+      meta: {
+        requiresAuth: true
+      }
+    },
 
   // {
   //   path:'/teacher/courses?action=create',
