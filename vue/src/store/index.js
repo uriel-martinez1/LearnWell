@@ -10,6 +10,7 @@ export function createStore(currentToken, currentUser) {
       user: currentUser || {},
       // created for error handling
       notification: null,
+      sideBarData: [],
       users:
       {
         userid: 1,
@@ -160,6 +161,9 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_SIDEBAR_DATA(state, courseElement){
+        state.sideBarData.push(courseElement)
       },
       // Added for error handling 
       SET_NOTIFICATION(state, notification) {

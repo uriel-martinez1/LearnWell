@@ -51,6 +51,12 @@ export default {
                             course.curriculum = (response.data)
                         })
                 })
+                //add a mutation to the store here to populate the data about courses by teacher id to use in the teacher sidebar
+                if(this.$store.state.sideBarData.length < this.courses.length){
+                    this.courses.forEach((course) => {
+                        this.$store.commit('SET_SIDEBAR_DATA', course)
+                    })
+                }
             })
     },
     methods: {
