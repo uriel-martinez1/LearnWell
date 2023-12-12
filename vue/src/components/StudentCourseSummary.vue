@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <div v-for="element in curriculumElements" v-bind:key="element.courseId" class="box has-background-white-ter has-text-black">
-            <h1 >{{ element.description }}</h1>
-        </div>
+    <div v-if="curriculumElements[0] != undefined">
+        <ul v-for="element in curriculumElements" v-bind:key="element.courseId" class="box has-background-white-ter has-text-black">
+            <li v-on:click="goToCurriculumElement(curriculumElement.curriculumElementId)">{{ element.description }}</li>
+        </ul>
     </div>
 </template>
 
@@ -21,7 +21,10 @@ export default {
                 this.curriculumElements = curriculumResponse.data
                 console.log(this.curriculumElements)
             })
-    }
+    },
+    method() {
+        this.$router.push({name: 'StudentAssignmentSummaryView', params: {'curriculumElementId': curriculumElementId}})
+    },
 }
 </script>
 <style></style>
