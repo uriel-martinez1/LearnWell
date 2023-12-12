@@ -26,7 +26,7 @@
           .curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">
           {{ assignment.title }}
         </button>
-      </div>
+      </div> 
       <button type="button" class="button">Notifications</button>
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''">Logout</router-link>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-// import StudentService from "../services/StudentService"
+import StudentService from "../../services/StudentService"
 // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
    components: {
@@ -44,8 +44,8 @@ export default {
   data() {
     return {
       displayCourses: false,
-      courses: []
-      // showAssignments: false,
+      courses: [],
+      
     };
   },
   computed:{
@@ -58,10 +58,18 @@ export default {
     showCourses(){
       this.displayCourses = !this.displayCourses
       console.log(this.courses)
-    }
+    },
+
   },
   created(){
-
+    StudentService.getCoursesByStudentId(this.$store.state.user.userId)
+      .then(response => {
+        this.courses = response.data;
+        this.courses.forEach(course => {
+          this.$store.commit('SET_SIDEBAR_DATA',  course);
+        });
+      });
+      
   }
 };
 </script>
@@ -92,10 +100,10 @@ nav {
   cursor: pointer;
 }
 
-/* .sidebar button:hover {
+.sidebar button:hover {
   background-color: lightcyan;
   color: blueviolet;
-} */
+}
 
 /* #assignmentButton {
   background-color: rgb(128, 31, 128);
