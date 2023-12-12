@@ -286,7 +286,7 @@ const routes = [
   //   }
   // },
   {
-    path: '/student/courses/:courseId',
+    path: '/student/course/:courseId/summary',
     component: StudentCourseSummaryView,
     name: 'StudentCourseSummaryView',
     meta: {

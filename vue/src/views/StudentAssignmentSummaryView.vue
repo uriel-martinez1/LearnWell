@@ -25,5 +25,6 @@ export default {
 
 }
 </script>
-
+<!-- created()this.route. curriculum id then in student service to
+    get assignment by curriculum id; created is life cycle hook. Once these things are creted in the DOM, go get me this data -->
 <style></style>
