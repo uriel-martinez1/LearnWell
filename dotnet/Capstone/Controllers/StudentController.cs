@@ -91,11 +91,18 @@ namespace Capstone.Controllers
 
         [HttpGet("{id}/assignments")]
 
-        public ActionResult<List<Assignment>> GetAssignments(int id)
+        public ActionResult<List<AssignmentDTO>> GetAssignments(int id)
         {
             try
             {
-                List<Assignment> outputList = assignmentDao.GetAssignmentsByCurriculumElementId(id);
+                List<Assignment> assList = assignmentDao.GetAssignmentsByCurriculumElementId(id);
+                List<AssignmentDTO> outputList = new List<AssignmentDTO>();
+                foreach (Assignment item in assList)
+                {
+                    AssignmentDTO temp = new AssignmentDTO(item);
+                    temp.Questions = questionDao.GetQuestionsByAssignmentId(item.AssignmentId);
+                    outputList.Add(temp);
+                }
                 return Ok(outputList);
 
             }
