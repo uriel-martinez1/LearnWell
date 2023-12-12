@@ -15,18 +15,18 @@ namespace Capstone.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly IUserDao UserDao;
-        //private readonly IAssignmentDao AssignmentDao;
+        private readonly IAssignmentDao AssignmentDao;
         private readonly ICourseDao CourseDao;
         private readonly ICurriculumElementDao CurriculumElementDao;
         //private readonly INotificationDao NotificationDao;
         private readonly ISourceDao SourceDao;
 
 
-        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao, ISourceDao sourceDao)
+        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao, ISourceDao sourceDao, IAssignmentDao assignmentDao)
         {
             //this.dashboardDao = dashboardDao;
             UserDao = userDao;
-            //this.AssignmentDao = assignmentDao;
+            AssignmentDao = assignmentDao;
             CourseDao = courseDao;
             CurriculumElementDao = curriculumElementDao;
             //this.NotificationDao = notificationDao;
@@ -108,6 +108,21 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpGet("course/{id}/assignments")]
+        public ActionResult<List<Assignment>> GetAssignmentsByCourseId(int id)
+        {
+            try
+            {
+                List<Assignment> output = AssignmentDao.GetAssignmentsByCourseId(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
         [HttpGet("courses/{id}/curriculum")]
         public ActionResult<List<CurriculumElement>> GetCurriculumByCourseId(int id)
         {
@@ -152,6 +167,8 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+
+
     }
 }
 

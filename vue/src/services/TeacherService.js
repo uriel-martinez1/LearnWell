@@ -25,6 +25,11 @@ export default {
   getCourseByCourseId(id) {
     return axios.get(`/teacher/course/${id}`);
   },
+  
+  // get assignments by course --> in course summary
+  getAssignmentsByCourseId(id){
+    return axios.get(`teacher/course/${id}/assignments`)
+  },
 
   //unsure about the placement of it being here or create a new service folder for course
   // Also unsure about the structure of the path
