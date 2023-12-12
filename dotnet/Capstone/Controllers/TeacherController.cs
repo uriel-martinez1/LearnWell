@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     [Route("teacher")]
     [ApiController]
-    [Authorize]
+   // [Authorize]
     public class TeacherController : ControllerBase
     {
         private readonly IUserDao UserDao;
