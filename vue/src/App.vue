@@ -11,6 +11,7 @@
     </div>
   </div>
   <div id="capstone-app">
+    <!--We need to keep this so we can render components every time a path changes and we need to render a component-->
     <router-view :key="$route.fullPath"/>
   </div>
   <div class="footer">
