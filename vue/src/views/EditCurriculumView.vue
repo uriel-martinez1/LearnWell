@@ -16,17 +16,6 @@ export default {
     components: {
         CreateCurriculum,
     },
-    // created() {
-    //     TeacherService.getCurriculumElementById(this.$route.params.elementId)
-    //         .then((response) => {
-    //             StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
-    //                 .then((assignmentResponse) => {
-    //                     this.content = {
-    //                         ...response.data,
-    //                         assignments: assignmentResponse.data
-    //                     }})
-    //         })
-    // }
 
     created(){
         TeacherService.getCurriculumElementById(this.$route.params.elementId)
@@ -36,7 +25,6 @@ export default {
                 }
                 TeacherService.getSourcesByCurriculumElementId(this.$route.params.elementId)
                     .then((sourceResponse) => {
-                        console.log(sourceResponse.data)
                         //WHY ARE WE USING THE STUDENT SERVICE HERE? All of this data can come from the foreign key teacherId on the courses table
                         StudentService.getAssignmentsByCurriculumId(this.$route.params.elementId)
                             .then((assignmentResponse) => {

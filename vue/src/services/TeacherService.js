@@ -52,6 +52,15 @@ export default {
 
   getSourcesByCurriculumElementId(id){
     return axios.get(`/teacher/course/curriculum/${id}/sources`)
+  },
+
+  addCurriculumElement(teacherId, courseId, curriculumElement){
+    console.log('INSIDE addCurriculumElement', curriculumElement)
+    return axios.post(`/teacher/${teacherId}/course/${courseId}/curriculum`, curriculumElement)
+  },
+
+  editCurriculumElement(teacherId, courseId, curriculumElementId, curriculumElement){
+    return axios.put(`/teacher/${teacherId}/course/${courseId}/curriculum/${curriculumElementId}`, curriculumElement)
   }
 
   // getCourse(courseId) {

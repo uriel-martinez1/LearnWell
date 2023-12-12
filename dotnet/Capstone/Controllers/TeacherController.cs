@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using Capstone.DAO.SqlDaoInterfaces;
 using Capstone.DAO;
+using Capstone.Models.NewFolder;
 
 namespace Capstone.Controllers
 {
     [Route("teacher")]
     [ApiController]
-   // [Authorize]
+    [Authorize]
     public class TeacherController : ControllerBase
     {
         private readonly IUserDao UserDao;
@@ -168,6 +169,41 @@ namespace Capstone.Controllers
             }
         }
 
+
+
+        //TODO: ADD DTO for CURRICULUM ELEMENT
+        [HttpPost("{teacherId}/course/{courseId}/curriculum")]
+        public ActionResult<List<Source>> AddCurriculumElement(int teacherId, int courseId, CurriculumElementDTO dataIn)
+        {
+            try
+            {
+                //List<Source> output = SourceDao.GetSourcesByCurriculumElement(id);
+                //return Ok(output);
+                return null;
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        //TODO: ADD DTO for CURRICULUM ELEMENT
+        [HttpPut("{teacherId}/course/{courseId}/curriculum/{curriculumElementId}")]
+        public ActionResult<List<Source>> UpdateCurriculumElement(int teacherId, int courseId, int curriculumElementId, CurriculumElementDTO dataIn)
+        {
+            try
+            {
+                //List<Source> output = SourceDao.GetSourcesByCurriculumElement(id);
+                //return Ok(output);
+                return null;
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
 
     }
 }
