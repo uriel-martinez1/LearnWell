@@ -276,7 +276,7 @@ const routes = [
   //   }
   // },
   {
-    path: '/student/courses/:courseId',
+    path: '/student/course/:courseId/summary',
     component: StudentCourseSummaryView,
     name: 'StudentCourseSummaryView',
     meta: {
@@ -301,7 +301,7 @@ const routes = [
   // 	}
   // },
   {
-    path: '/student/courses/:courseId/:curriculumElementId/:assignmentId',
+    path: '/student/courses/:courseId/curriculum/:curriculumElementId',
     component: StudentAssignmentSummaryView,
     name: 'StudentAssignmentSummaryView',
     meta: {

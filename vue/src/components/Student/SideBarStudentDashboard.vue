@@ -10,16 +10,13 @@
     <nav>
       <router-link class="button"
         :to="{ name: 'StudentDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
-      <button class="button" showCourses="!showCourses">Courses</button>
-      <div v-if="showCourses">
-        <button
-         class="button" 
-         id="courseButton" 
-         v-for="course in $store.state.user.courses"
+      <button class="button" v-on:click="showCourses">Courses</button>
+      <div v-show="displayCourses">
+        <router-link :to="{name: 'StudentCourseSummaryView', params: {courseId: course.courseId }}" class="button is-link" id="courseButton" 
+         v-for="course in $store.state.sideBarData"
           v-bind:key="course.courseId">
           {{ course.courseName }}
-        </button>
-        <student-course-list></student-course-list>
+        </router-link>
       </div>
       <button v-on:click="() => (showAssignments = !showAssignments)" type="button" class="button">
         Assignments
@@ -46,14 +43,30 @@ export default {
   },
   data() {
     return {
-      showCourses: false,
-      showAssignments: false,
+      displayCourses: false,
+      courses: []
+      // showAssignments: false,
     };
   },
+  computed:{
+
+  },
+  methods: {
+    routeCourseSummary(courseId){
+      this.$router.push({name: 'CourseSummaryView', params: {'courseId' : courseId}})
+    },
+    showCourses(){
+      this.displayCourses = !this.displayCourses
+      console.log(this.courses)
+    }
+  },
+  created(){
+
+  }
 };
 </script>
 
-<style>
+<style scoped>
 nav {
   display: flex;
   flex-direction: column;
@@ -79,12 +92,12 @@ nav {
   cursor: pointer;
 }
 
-.sidebar button:hover {
+/* .sidebar button:hover {
   background-color: lightcyan;
   color: blueviolet;
-}
+} */
 
-#assignmentButton {
+/* #assignmentButton {
   background-color: rgb(128, 31, 128);
   border: none;
   color: white;
@@ -97,7 +110,7 @@ nav {
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-}
+} */
 
 .sidebar {
   height: 100%;
@@ -110,21 +123,21 @@ nav {
   overflow-x: hidden;
 }
 
-.header {
+/* .header {
   color: black;
   text-align: left;
   padding-left: 15px;
   padding-bottom: 10px;
   font-size: 25px;
   top: 0;
-}
+} */
 
-.navbar-item {
+/* .navbar-item {
   text-align: left;
   padding-left: 10px;
   padding-bottom: 10px;
   font-size: 15px;
-}
+} */
 
 .icon {
   height: auto;
