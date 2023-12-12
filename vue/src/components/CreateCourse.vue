@@ -52,7 +52,7 @@
 
             <div class="control">
                 <button class="button is-link" type="submit">Create Course</button>
-                <button class="btn btn-cancel" v-on:click="cancelForm" type="button">Cancel</button>
+                <button class="btn btn-cancel" v-on:click.prevent="cancelForm" type="button">Cancel</button>
             </div>
         </form>
 
@@ -144,7 +144,8 @@ export default {
             }
         },
         cancelForm() {
-            this.$router.push({ name: 'TeacherDashboardView', params: { id: this.$route.params.userId } });
+            // you need to link the params to the user in the store 
+            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId } });
         },
         handleErrorResponse(error, verb) {
             // we could reach the server but there was a problem with the request
