@@ -1,5 +1,5 @@
 <template>
-    <!-- Add a button thats accessable only to the teacher (v-if user.role === teacher), to toggle editing on the curriculum element, otherwise it will be in the view only format -->
+    <!-- Add a button thats accessible only to the teacher (v-if user.role === teacher), to toggle editing on the curriculum element, otherwise it will be in the view only format -->
     <div>
         <!-- v-if to toggle the view vs the edit curriculum element -->
             <!-- VIEW ONLY -->

@@ -14,6 +14,7 @@ import CreateCurriculumView from "../views/CreateCurriculumView.vue";
 import EditCurriculumView from "../views/EditCurriculumView.vue";
 import CreateCourseView from "../views/CreateCourseView.vue";
 import EditCourseView from "../views/EditCourseView.vue";
+import StudentCourseSummaryView from "../views/StudentCourseSummaryView.vue";
 
 
 /**
@@ -261,14 +262,14 @@ const routes = [
   //     requiresAuth: true
   //   }
   // },
-  // {
-  //   path:'/student/course/:CourseId',
-  //   component: StudentCourseView,
-  //   name: 'StudentCourseView',
-  //   meta: {
-  // 	requiresAuth: true
-  // 	}
-  // },
+  {
+    path: '/student/courses/:courseId',
+    component: StudentCourseSummaryView,
+    name: 'StudentCourseSummaryView',
+    meta: {
+      requiresAuth: true
+    }
+  },
 
   // {
   //   path: '/student/courses/:courseId/curriculum-elements',
