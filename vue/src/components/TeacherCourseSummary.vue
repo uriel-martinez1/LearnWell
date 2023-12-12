@@ -3,13 +3,15 @@
     <p>{{ course.courseName }}</p>
     <p>{{ course.description }}</p>
 
-    <div v-for="student in students" v-bind:key="student.id">
-        <p>{{ student.firstName }}</p>
-    </div>
-
     <div v-for="assignment in assignments" v-bind:key="assignment.assignmentId">
         <p>{{ assignment.title }}</p>
     </div>
+
+    <h1>Student List</h1>
+    <div v-for="student in students" v-bind:key="student.id">
+        <p>{{ student.firstName }} {{ student.lastName }}</p>
+    </div>
+
 </template>
 
 <script>
