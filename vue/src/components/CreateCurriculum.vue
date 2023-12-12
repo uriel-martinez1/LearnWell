@@ -1,35 +1,80 @@
 <template>
-  <form class="box" @submit.prevent="createCurriculum">
-    <h1 class="title is-4" v-if="this.$route.query.action == 'edit'">Edit a Curriculum Element</h1>
+  <form
+    class="box"
+    @submit.prevent="
+      this.$route.query.action == 'edit'
+        ? editCurriculum(
+            this.$store.state.user.userId,
+            this.curriculumData.courseId,
+            this.curriculumData.curriculumElementId,
+            this.curriculumData
+          )
+        : createCurriculum(
+            this.$store.state.user.userId,
+            this.curriculumData.courseId,
+            this.curriculumData
+          )
+    "
+  >
+    <h1 class="title is-4" v-if="this.$route.query.action == 'edit'">
+      Edit a Curriculum Element
+    </h1>
     <h1 class="title is-4" v-else>Create a Curriculum Element</h1>
     <div class="field">
       <label class="label">Description</label>
       <div class="control">
-        <input class="input is-success" v-model="curriculumData.description" type="text" id="curriculumName"
-          name="curriculumName"/>
+        <input
+          class="input is-success"
+          v-model="curriculumData.description"
+          type="text"
+          id="curriculumName"
+          name="curriculumName"
+        />
       </div>
     </div>
     <!-- This is for curriculum content -->
     <div class="field">
       <label class="label">Lecture Content</label>
       <div class="control">
-        <textarea class="textarea" v-model="curriculumData.lectureContent" placeholder="Place typed lecture content here"
-          id="dailyInstructions" name="dailyInstructions" rows="10" cols="50">
-            </textarea>
+        <textarea
+          class="textarea"
+          v-model="curriculumData.lectureContent"
+          placeholder="Place typed lecture content here"
+          id="dailyInstructions"
+          name="dailyInstructions"
+          rows="10"
+          cols="50"
+        >
+        </textarea>
       </div>
     </div>
     <!--also option to upload lecture content instead of textarea-->
     <!-- <label class="label" for="filebutton-0"></label> -->
 
     <!-- THIS IS THE LOOP THAT DISPLAYS ALL THE SOURCES FOR THE CURRENT CURRICULUM ELEMENT -->
-    <div class="field" v-for="(source, index) in curriculumData.sources" v-bind:key="source.sourceId">
+    <div
+      class="field"
+      v-for="(source, index) in curriculumData.sources"
+      v-bind:key="source.sourceId"
+    >
       <label class="label">Resources</label>
       <div class="control">
-        <input class="input is-success" v-model="source.sourceUrl" type="text" id="curriculumName" name="curriculumName"/>
+        <input
+          class="input is-success"
+          v-model="source.sourceUrl"
+          type="text"
+          id="curriculumName"
+          name="curriculumName"
+        />
       </div>
       <!-- Button to remove an individual resource element from the source array buy the index point in the v-for above -->
-      <button v-on:click="removeSourceElement(index)" id="doublebutton2-0" name="doublebutton2-0"
-        class="button is-danger">
+      <button
+        v-on:click="removeSourceElement(index)"
+        type="button"
+        id="doublebutton2-0"
+        name="doublebutton2-0"
+        class="button is-danger"
+      >
         Remove resource
       </button>
     </div>
@@ -38,41 +83,82 @@
     <div class="field">
       <label class="label" for="doublebutton-0"></label>
       <div class="control">
-        <button v-on:click="addResourceElement(this.$route.params.elementId)" id="doublebutton-0" name="doublebutton-0" class="button is-success">
+        <button
+          v-on:click="addResourceElement(this.$route.params.elementId)"
+          type="button"
+          id="doublebutton-0"
+          name="doublebutton-0"
+          class="button is-success"
+        >
           Add Another Resource
         </button>
       </div>
     </div>
 
     <!-- THIS IS THE LOOP THAT DISPLAYS ALL THE ASSIGNMENTS -->
-    <div id="assignment" v-for="(assignment, i) in curriculumData.assignments" v-bind:key="i">
+    <div
+      id="assignment"
+      v-for="(assignment, i) in curriculumData.assignments"
+      v-bind:key="i"
+    >
       <!-- Create an assignment with (I hope) radio buttons to select either form or assignment upload -->
       <div class="field">
         <label class="label" for="createAssignment">Create Assignment</label>
         <div class="control">
           <label class="radio"> Form </label>
-          <input type="radio" v-bind:name="i" id="formAssignment" v-model="assignment.assignmentUpload"
-            v-bind:value="true" />
+          <input
+            type="radio"
+            v-bind:name="i"
+            id="formAssignment"
+            v-model="assignment.assignmentUpload"
+            v-bind:value="true"
+          />
           <label class="radio"> Assignment Upload </label>
-          <input type="radio" v-bind:name="i" id="uploadAssignment" v-model="assignment.assignmentUpload"
-            v-bind:value="false" />
+          <input
+            type="radio"
+            v-bind:name="i"
+            id="uploadAssignment"
+            v-model="assignment.assignmentUpload"
+            v-bind:value="false"
+          />
         </div>
       </div>
       <div class="assignment" v-if="assignment.assignmentUpload">
         <div class="field">
           <div class="control">
-            <input class="input is-success" v-model="assignment_title" name="assignment_title" type="text"
-              placeholder="Assignment Title" id="assignmentName" />
+            <input
+              class="input is-success"
+              v-model="assignment_title"
+              name="assignment_title"
+              type="text"
+              placeholder="Assignment Title"
+              id="assignmentName"
+            />
           </div>
         </div>
 
-        <div class="field" v-for="(question, j) in assignment.questions" v-bind:key="question.questionId">
+        <div
+          class="field"
+          v-for="(question, j) in assignment.questions"
+          v-bind:key="question.questionId"
+        >
           <div class="control">
-            <input class="input is-success" v-model="question.prompt" name="curriculum_questions" type="text"
-              placeholder="Add question here." id="assignmentName" />
+            <input
+              class="input is-success"
+              v-model="question.prompt"
+              name="curriculum_questions"
+              type="text"
+              placeholder="Add question here."
+              id="assignmentName"
+            />
           </div>
-          <button v-on:click="removeQuestionElement(i, j)" id="doublebutton2-0" name="doublebutton2-0"
-            class="button is-danger">
+          <button
+            v-on:click="removeQuestionElement(i, j)"
+            type="button"
+            id="doublebutton2-0"
+            name="doublebutton2-0"
+            class="button is-danger"
+          >
             Remove Question
           </button>
         </div>
@@ -81,8 +167,13 @@
         <div class="field">
           <label class="label" for="doublebutton-0"></label>
           <div class="control">
-            <button v-on:click="addQuestionElement(i)" id="doublebutton-0" name="doublebutton-0"
-              class="button is-success">
+            <button
+              v-on:click="addQuestionElement(i)"
+              type="button"
+              id="doublebutton-0"
+              name="doublebutton-0"
+              class="button is-success"
+            >
               Add Another Question
             </button>
           </div>
@@ -91,19 +182,34 @@
 
       <div class="field" v-else>
         <div class="control">
-          <input class="input is-link" id="assignmentTitle" name="assignmentTitle" type="text"
-            placeholder="Assignment Title" />
+          <input
+            class="input is-link"
+            id="assignmentTitle"
+            name="assignmentTitle"
+            type="text"
+            placeholder="Assignment Title"
+          />
         </div>
         <div class="control">
-          <input class="input is-link" id="assignmentUrl" name="assignmentUrl" type="text"
-            placeholder="Paste assignment URL here" />
+          <input
+            class="input is-link"
+            id="assignmentUrl"
+            name="assignmentUrl"
+            type="text"
+            placeholder="Paste assignment URL here"
+          />
         </div>
       </div>
       <div class="field">
         <label class="label" for="doublebutton-0"></label>
         <div class="control">
-          <button v-on:click="removeAssignmentElement(i)" id="doublebutton-0" name="doublebutton-0"
-            class="button is-danger">
+          <button
+            v-on:click="removeAssignmentElement(i)"
+            type="button"
+            id="doublebutton-0"
+            name="doublebutton-0"
+            class="button is-danger"
+          >
             Remove Assignment
           </button>
         </div>
@@ -114,8 +220,27 @@
     <div class="field">
       <label class="label" for="doublebutton-0"></label>
       <div class="control">
-        <button v-on:click="addAssignmentElement" id="doublebutton-0" name="doublebutton-0" class="button is-success">
+        <button
+          v-on:click="addAssignmentElement"
+          type="button"
+          id="doublebutton-0"
+          name="doublebutton-0"
+          class="button is-success"
+        >
           Add Another Assignment
+        </button>
+      </div>
+    </div>
+
+    <!-- BUTTON TO ADD AND SAVE/EDIT A CURRICULUM ELEMENT  -->
+    <div class="field">
+      <label class="label" for="doublebutton-0"></label>
+      <div class="control">
+        <button
+          type="submit"
+          class="button is-success"
+        >
+          Save Curriculum Element
         </button>
       </div>
     </div>
@@ -123,12 +248,16 @@
 </template>
 
 <script>
+import TeacherService from "../services/TeacherService.js";
+
 export default {
   props: {
     content: {
       type: Object,
-      default() { return {} }
-    }
+      default() {
+        return {};
+      },
+    },
   },
   data() {
     return {
@@ -139,17 +268,28 @@ export default {
         courseOrder: this.content.courseOrder || 0,
         description: this.content.description || "",
         lectureContent: this.content.lectureContent || "",
-        createdDate: this.content.createdDate || 0,
-        lastUpdated: this.content.lastUpdated || 0,
-        //push a source here when you click the button Add Source
         sources: this.content.sources || [],
-        //push an assignment here when you click the button Add Assignment
-
         assignments: this.content.assignments || [],
       },
     };
   },
   methods: {
+    createCurriculum(teacherId, courseId, curriculumData) {
+      console.log('INSIDE createCurriculum Method in CreatCurriculum vue component', curriculumData)
+      TeacherService.addCurriculumElement(teacherId, courseId, curriculumData);
+      //THIS DOESN't HAVE TO PUSH TO HOME, MAYBE THIS DOES THE ALERT THROUGH THE STORE AND THEN ROUTES YOU TO HOME AFTER A SETTIMEOUT
+      this.$router.push({ name: "home" });
+    },
+    editCurriculum(teacherId, courseId, curriculumElementId, curriculumData) {
+      TeacherService.editCurriculumElement(
+        teacherId,
+        courseId,
+        curriculumElementId,
+        curriculumData
+      );
+      //THIS DOESN't HAVE TO PUSH TO HOME, MAYBE THIS DOES THE ALERT THROUGH THE STORE AND THEN ROUTES YOU TO HOME AFTER A SETTIMEOUT
+      this.$router.push({ name: "home" });
+    },
     addAssignmentElement() {
       this.curriculumData.assignments.push({
         assignmentId: 0,
@@ -170,7 +310,10 @@ export default {
       this.curriculumData.sources.splice(index, 1);
     },
     addResourceElement(curriculumElementId) {
-      this.curriculumData.sources.push({ sourceUrl: "" , "curriculumElementId" : curriculumElementId || 0});
+      this.curriculumData.sources.push({
+        sourceUrl: "",
+        curriculumElementId: curriculumElementId || 0,
+      });
     },
     removeQuestionElement(i, j) {
       this.curriculumData.assignments[i].questions.splice(j, 1);
@@ -191,7 +334,6 @@ export default {
     },
     toggleButton() {
       this.formOrAssignmentUpload = false;
-
     },
   },
 };
