@@ -2,7 +2,7 @@
     <div v-if="this.students[0]" class="box has-background-white-ter has-text-black">
         <h1 class="is-size-4">Student List</h1>
         <div v-on:click="studentSummary(student.userId)" v-for="student in students" :key="student.userId">
-            <h2>{{ student.firstName }} {{ student.lastName }}</h2>
+            <a>{{ student.firstName }} {{ student.lastName }}</a>
             <!-- <div v-for="course in student.courses" :key="course.courseId"> -->
                 <!-- <h2 class="subtitle is-6 has-text-black">{{ course.courseName }}</h2>
                 <curriculum-element :course-id="course.courseId"></curriculum-element> -->

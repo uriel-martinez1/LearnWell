@@ -168,6 +168,20 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpGet("course/curriculum/{id}/assignments")]
+        public ActionResult<List<Assignment>> GetAssignmentsByCurriculumId(int id)
+        {
+            try
+            {
+                List<Assignment> output = AssignmentDao.GetAssignmentsByCurriculumElementId(id);
+                return Ok(output);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
 
 
         //TODO: ADD DTO for CURRICULUM ELEMENT

@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .content{
     position: absolute;
     left: 200px;
