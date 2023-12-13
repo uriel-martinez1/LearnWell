@@ -2,11 +2,11 @@
   <div v-if="user.firstName" class="main-content">
     <div class="box has-background-white-ter">
       <section class="todayDate">
-        <h2 class="title is-5 has-text-centered has-text-black">Welcome back, {{ user.firstName }} {{ user.lastName }}!
+        <h2 class="title is-5 has-text-centered">Welcome back, {{ user.firstName }} {{ user.lastName }}!
+          <div>
+            <span>{{ textContent }}</span>
+          </div>
         </h2>
-        <div>
-          <span>{{ textContent }}</span>
-        </div>
       </section>
       <h1><strong>Overview</strong></h1>
       <p>LearnWell streamlines course organization and assignment management for teachers, while providing students with
@@ -15,7 +15,7 @@
     </div>
     <div v-if="courses[0] != undefined">
       <ul v-for="course in this.courses" v-bind:key="course.courseId">
-        <div v-on:click="goToCourse(course.courseId)" class="box has-background-white-ter has-text-black">
+        <div v-on:click="goToCourse(course.courseId)" class="box has-background-white-ter has-text">
           <li>{{ course.courseName }}</li>
         </div>
       </ul>
@@ -73,5 +73,9 @@ export default {
 
 .main-content {
   width: 100%;
+}
+
+li {
+  cursor: pointer;
 }
 </style>

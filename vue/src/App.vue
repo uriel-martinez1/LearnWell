@@ -100,12 +100,12 @@ export default {
 }
 
 div #capstone-app {
-  display: flex;
+   display: flex;
   justify-content: left;
   flex-direction: column;
-  width: 80%;
-  /* margin-left: 2%; */
-  padding-right: 10px;
-  /* text-align: left; */
+  width: 80%; 
+  margin-left: 2%; 
+  padding-right: 10px; 
+  text-align: left; 
 }
 </style>
