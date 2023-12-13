@@ -128,15 +128,15 @@ namespace Capstone.Controllers
 
         [HttpGet("{id}/assignments")]
 
-        public ActionResult<List<AssignmentDTO>> GetAssignments(int id)
+        public ActionResult<List<GrabAssignmentDTO>> GetAssignments(int id)
         {
             try
             {
                 List<Assignment> assList = assignmentDao.GetAssignmentsByCurriculumElementId(id);
-                List<AssignmentDTO> outputList = new List<AssignmentDTO>();
+                List<GrabAssignmentDTO> outputList = new List<GrabAssignmentDTO>();
                 foreach (Assignment item in assList)
                 {
-                    AssignmentDTO temp = new AssignmentDTO(item);
+                    GrabAssignmentDTO temp = new GrabAssignmentDTO(item);
                     temp.Questions = questionDao.GetQuestionsByAssignmentId(item.AssignmentId);
                     outputList.Add(temp);
                 }
