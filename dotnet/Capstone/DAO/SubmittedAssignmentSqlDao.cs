@@ -50,6 +50,39 @@ namespace Capstone.DAO
 
             return submittedAssignments;
         }
+  /*      public SubmittedAssignment AddSubmittedAssignment(SubmittedAssignmentDTO submittedAssignment)                     TODO Get this linked up
+        {
+            SubmittedAssignmentDTO newSubmittedAssignment = new SubmittedAssignmentDTO();
+
+            string sql = "INSERT INTO submitted_assignments (assignment_id, student_id, teacher_id, course_id)" +
+                "VALUES (submittedAssignment.AssignmentId = @assignment_id, )";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@assignment_id", submittedAssignment.AssignmentId);
+                    cmd.Parameters.AddWithValue("@student_id", submittedAssignment.StudentId);
+                    cmd.Parameters.AddWithValue("@teacher_id", submittedAssignment.TeacherId);
+                    cmd.Parameters.AddWithValue("@course_id", submittedAssignment.CourseId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        newSubmittedAssignment = MapRowToSubmittedAssignment(reader);
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return newSubmittedAssignment;
+        }*/
         public SubmittedAssignment MapRowToSubmittedAssignment(SqlDataReader reader)
         {
             SubmittedAssignment assignment = new SubmittedAssignment();

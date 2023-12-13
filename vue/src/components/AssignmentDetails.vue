@@ -1,17 +1,34 @@
 <template>
     <div>
         <li @click="showQuestions = !showQuestions">{{ assignment.description }}</li>
-            <li v-show="showQuestions" v-for="question in assignment.questions" v-bind:key="question.question_id">{{ question.prompt }}</li>
-
+        <form v-on:submit.prevent="submitAssignment()">
+            <div v-show="showQuestions" v-for="(question) in answers.questions" v-bind:key="question.question_id">
+                <p>{{ question.prompt }}</p>
+                <textarea class="textarea" placeholder="Fill in Answer here." v-model="question.studentanswer"></textarea>
+            </div>
+            <button v-if="showQuestions" type="submit">Submit Assignment</button>
+        </form>
     </div>
 </template>
 <script>
+import StudentService from '../services/StudentService';
 export default {
     props: ['assignment'],
-    data(){
+    data() {
         return {
-            showQuestions: false
+            showQuestions: false,
+            answers: []
         }
+    },
+    methods: {
+        submitAssignment() {
+        //     //HERE IS WHERE YOU SEND A POST USING AXIOS
+            StudentService.submitHomeworkByAssignmentId(this.$store.state.user.userId, this.$route.params.courseId,this.$route.params.curriculumId, this.answers)
+            this.$router.push({name: "StudentAssignmentSummaryView"})
+        }
+    },
+    created() {
+        this.answers = this.assignment;
     }
 }
 </script>
