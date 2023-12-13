@@ -1,6 +1,7 @@
 ﻿using Capstone.DAO.SqlDaoInterfaces;
 using Capstone.Exceptions;
 using Capstone.Models;
+using Capstone.Models.NewFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -52,6 +53,66 @@ namespace Capstone.DAO
             }
 
             return questions;
+        }
+
+        public List<int> AddQuestionsByAssignmentId(CurriculumElementDTO incoming, int assignmentId, int assignmentIndex)
+        {
+            List<int> questionIds = new List<int>();
+
+            string questionSql = "INSERT INTO questions(prompt, question_type) " +
+                "OUTPUT INSERTED.question_id AS questionId " +
+                "VALUES (@prompt, @questionType)";
+
+            string joinSql = "INSERT INTO assignments_questions(assignment_id, question_id) " +
+                "VALUES (@assignmentId, @questionId)";
+
+
+            incoming.assignments[assignmentIndex].Questions.ForEach((question) =>
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(questionSql, conn);
+                        cmd.Parameters.AddWithValue("@prompt", question.Prompt);
+                        cmd.Parameters.AddWithValue("@questionType", question.QuestionType);
+                        questionIds.Add(Convert.ToInt32(cmd.ExecuteScalar()));
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new DaoException("SQL exception occurred", ex);
+                }
+
+            });
+            questionIds.ForEach((questionId) =>
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(joinSql, conn);
+                        cmd.Parameters.AddWithValue("@assignmentId", assignmentId);
+                        cmd.Parameters.AddWithValue("@questionId", questionId);
+                        if (cmd.ExecuteNonQuery() < 1)
+                        {
+                            throw new DaoException("SQL exception occurred");
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new DaoException("SQL exception occurred", ex);
+                }
+            });
+
+
+
+            return questionIds;
         }
 
         //TODO add question method
