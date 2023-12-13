@@ -17,7 +17,7 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
-          <p class="title">{{ this.content.description }} *Main tile*</p>
+          <p class="title">{{ this.content.courseName }} {{ this.content.description }}  *Main tile*</p>
           <p class="subtitle">{{this.content.lectureContent}}</p>
         </article>
         <article class="tile is-child notification is-warning">
@@ -54,11 +54,19 @@ export default {
         }
     },
     created() {
+        TeacherService.getCourseByCourseId(this.elementId)
+        .then((response)=> {
+            this.content ={
+                 ...response.data
+            }
+        
         TeacherService.getCurriculumElementById(this.elementId)
             .then((response) => {
                 this.content = response.data;
             })
+            
     }
+        )}
 }
 
 </script>
