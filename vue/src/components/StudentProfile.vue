@@ -1,11 +1,31 @@
 <template>
     <!--We need to grad the student information based on the course?-->
     <div class="box has-background-white-ter">
+        
         <section class="studentProfile">
             <h1 class="title is-5 has-text-centered has-text-black">Student Profile</h1>
         </section>
-        <h2>{{ student.firstName }} {{ student.lastName }}</h2>
-        <p>{{ student.email }} </p>
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <h2>
+                    <span class="icon is-small">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    {{ student.firstName }} {{ student.lastName }}
+                </h2>
+                <p>
+                    <span class="icon is-small">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    {{ student.email }}
+                </p>
+                <progress class="progress is-success" value="60" max="100">60%</progress>
+            </div>
+            <div class="column is-one-third has-text-centered">
+                <!-- Add your image source dynamically or use a placeholder -->
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Profile" class="square-image">
+            </div>
+        </div>
     </div>
 
     <!--First we need to grab the curriculum data-->
