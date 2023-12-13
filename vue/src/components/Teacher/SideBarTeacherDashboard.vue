@@ -15,7 +15,7 @@
         }">Dashboard</router-link>
         <button class="button" v-on:click="showCourses">Courses</button>
         <div v-show="displayCourses">
-          <router-link :to="{name: 'CourseSummaryView', params: {courseId: course.courseId}}" class="button is-link" id="courseButton" v-for="course in $store.state.sideBarData"
+          <router-link :to="{name: 'CourseSummaryView', params: {courseId: course.courseId}}" class="button is-success" id="courseButton" v-for="course in $store.state.sideBarData"
             v-bind:key="course.courseId">
             {{ course.courseName }}
           </router-link>

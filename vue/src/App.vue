@@ -71,7 +71,7 @@ export default {
   position: fixed;
   z-index: 2;
   bottom: 0;
-  background-color: rgb(184, 179, 179);
+  background-color: rgb(179, 184, 179);
   border: none;
   color: black;
   padding: 5px 5px;

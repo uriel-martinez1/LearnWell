@@ -20,17 +20,17 @@
         </div>
     </div> -->
 
-    <div class="box">
+    <div class="box has-background-white-ter">
         <h1 class="is-size-1"><strong>{{ course.courseName }}</strong></h1>
         <h2 class="is-size-3">{{ course.description }}</h2>
         <br />
         <table class="table is-hoverable is-fullwidth">
             <thead>
-                <tr>
-                    <th>Lectures</th>
-                    <th>Created Date</th>
-                    <th>Assignment</th>
-                    <th>Assignment Type</th>
+                <tr class="has-background-success">
+                    <th class="has-text-white">Lectures</th>
+                    <th class="has-text-white">Created Date</th>
+                    <th class="has-text-white">Assignment</th>
+                    <th class="has-text-white">Assignment Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +53,11 @@
         <br />
         <table class="table is-hoverable is-fullwidth">
             <thead>
-                <tr>
-                    <th>Status</th>
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>Email</th>
+                <tr class=" has-background-success">
+                    <th class="has-text-white">Status</th>
+                    <th class="has-text-white">First</th>
+                    <th class="has-text-white">Last</th>
+                    <th class="has-text-white">Email</th>
                 </tr>
             </thead>
             <tbody>
