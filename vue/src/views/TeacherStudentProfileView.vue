@@ -1,5 +1,7 @@
 <template>
-    <student-profile></student-profile>
+    <div style="width: 100vh;">
+        <student-profile></student-profile>
+    </div>
 </template>
 
 <script>
@@ -12,5 +14,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
