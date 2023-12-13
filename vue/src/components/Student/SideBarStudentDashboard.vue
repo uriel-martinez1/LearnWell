@@ -12,21 +12,21 @@
         :to="{ name: 'StudentDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
       <button class="button" v-on:click="showCourses">Courses</button>
       <div v-show="displayCourses">
-        <router-link :to="{name: 'StudentCourseSummaryView', params: {courseId: course.courseId }}" class="button is-link" id="courseButton" 
-         v-for="course in $store.state.sideBarData"
+        <router-link :to="{ name: 'StudentCourseSummaryView', params: { courseId: course.courseId } }"
+          class="button is-link" id="courseButton" v-for="course in $store.state.sideBarData"
           v-bind:key="course.courseId">
           {{ course.courseName }}
         </router-link>
       </div>
-      <button v-on:click="() => (showAssignments = !showAssignments)" type="button" class="button">
-        Assignments
-      </button>
-      <div v-if="showAssignments">
-        <button id="assignmentButton" v-for="assignment in this.$store.state.user.courses[0]
-          .curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">
+      <button class="button" v-on:click="showAssignments">Assignments</button>
+      <!-- <router-link class="button" :to="{name: 'StudentAssignmentSummaryView'}">Assignments</router-link> -->
+      <!-- <div v-show="displayAssignments">
+        <router-link :to="{ name: 'StudentAssignmentSummaryView', params: { assignmentId: assignment.assignmentId } }"
+          class="button is-link" id="assignmentButton" v-for="assignment in $store.state.sideBarData"
+          v-bind:key="assignment.assignmentId">
           {{ assignment.title }}
-        </button>
-      </div> 
+        </router-link>
+      </div> -->
       <button type="button" class="button">Notifications</button>
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''">Logout</router-link>
@@ -38,38 +38,48 @@
 import StudentService from "../../services/StudentService"
 // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
-   components: {
-  // StudentCourseList,
+  components: {
+    // StudentCourseList,
   },
   data() {
     return {
       displayCourses: false,
       courses: [],
-      
+      // displayAssignments: false,
+      // assignments: [],
+
     };
   },
-  computed:{
+  computed: {
 
   },
   methods: {
-    routeCourseSummary(courseId){
-      this.$router.push({name: 'CourseSummaryView', params: {'courseId' : courseId}})
+    routeCourseSummary(courseId) {
+      this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': courseId } })
     },
-    showCourses(){
+    showCourses() {
       this.displayCourses = !this.displayCourses
       console.log(this.courses)
     },
+    // showAssignments() {
+    //   this.displayAssignments = !this.displayAssignments
+    //   console.log(this.assignments)
+    // },
 
   },
-  created(){
+  created() {
     StudentService.getCoursesByStudentId(this.$store.state.user.userId)
       .then(response => {
         this.courses = response.data;
         this.courses.forEach(course => {
-          this.$store.commit('SET_SIDEBAR_DATA',  course);
+          this.$store.commit('SET_SIDEBAR_DATA', course);
+          // TODO Get the curriculum
         });
       });
-      
+    // StudentService.getAssignmentsByCurriculumId(this.$store.state.curriculumElements.curriculumElementId)
+    // .then(response => {
+    //   this.assignments = response.data;
+    // });
   }
 };
 </script>
