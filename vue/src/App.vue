@@ -53,19 +53,19 @@ export default {
 };
 </script>
 <style>
-#capstone-app {
+/* #capstone-app {
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
   transform: translate(15vw);
 
-}
+} */
 
 /* THIS IS A QUICK FIX  */
-#capstone-app{
+/* #capstone-app{
   transform: translate(15vw);
   
-}  
+}   */
 
 .logoutButton {
   position: fixed;
@@ -99,13 +99,13 @@ export default {
   text-align-last: left;
 }
 
-div #capstone-app {
-  display: flex;
+/* div #capstone-app {
+   display: flex;
   justify-content: left;
   flex-direction: column;
-  width: 80%;
-  /* margin-left: 2%; */
-  padding-right: 10px;
-  /* text-align: left; */
-}
+  width: 80%; 
+  margin-left: 2%; 
+  padding-right: 10px; 
+  text-align: left; 
+} */
 </style>

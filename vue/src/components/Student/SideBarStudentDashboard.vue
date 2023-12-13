@@ -18,8 +18,8 @@
           {{ course.courseName }}
         </router-link>
       </div>
-      <button class="button" v-on:click="showAssignments">Assignments</button>
-      <!-- <router-link class="button" :to="{name: 'StudentAssignmentSummaryView'}">Assignments</router-link> -->
+      <button class="button" v-on:click="routeAssignmentView(curriculumId)">Assignments</button>
+      <!-- <router-link :to="{ name: 'StudentAssignmentSummaryView' }" v-on:click="routeAssignmentView">Assignments</router-link> -->
       <!-- <div v-show="displayAssignments">
         <router-link :to="{ name: 'StudentAssignmentSummaryView', params: { assignmentId: assignment.assignmentId } }"
           class="button is-link" id="assignmentButton" v-for="assignment in $store.state.sideBarData"
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { storeKey } from "vuex";
 import StudentService from "../../services/StudentService"
 // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
@@ -61,6 +62,9 @@ export default {
       this.displayCourses = !this.displayCourses
       console.log(this.courses)
     },
+    routeAssignmentView(curriculumId) {
+      this.$router.push({ name: 'StudentAssignmentSummaryView', params: { 'curriculumId': storeKey.state } })
+    }
     // showAssignments() {
     //   this.displayAssignments = !this.displayAssignments
     //   console.log(this.assignments)
