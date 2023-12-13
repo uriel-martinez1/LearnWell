@@ -25,18 +25,18 @@
             <button v-on:click="AddCourse" class="button is-link is-small">Add Course</button>
         </div> 
     </div> -->
-    <div id="main" class="box has-background-white-ter has-text-black"><h1 class="title">Courses</h1>
+    <div id="main" class="box has-background-white-ter has-text-black"><h1 class="title has-text-centered">Courses</h1>
         <table class="table is-striped is-hoverable is-fullwidth" v-for="course in this.courses" :key="course.courseId">
             <thead>
                 <tr>
-                    <th class="title is-5 is-success">{{ course.courseName }}</th>
-                    <th><button @click="EditCourse(course.courseId)" class="button is-link is-outlined is-small">Edit
+                    <th @click="EditCourse(course.courseId)" class="title is-5 is-success">{{ course.courseName }}</th>
+                    <th class="is-success"><button  @click="EditCourse(course.courseId)" class="button is-link is-light is-small ">Edit
                             Course</button></th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
-                    <td>{{ curricula.description }}</td>
+                    <td @click="selectCurriculumElement(curricula.curriculumElementId)">{{ curricula.description }}</td>
                     <td><button @click="EditCurriculumView(curricula.curriculumElementId, course.courseId)"
                             class="button is-link is-outlined is-small">Edit</button></td>
                 </tr>
@@ -110,6 +110,9 @@ export default {
 <style>
 #main {
     padding: 10vh;
+}
+td{
+    cursor: pointer;
 }
 </style>
 

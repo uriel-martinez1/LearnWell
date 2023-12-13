@@ -5,8 +5,8 @@
         Welcome {{ user.firstName }} {{ user.lastName }}!
         <div><span>{{ textContent }}</span></div> </h1>
     </div>
-    <div class="box has-background-white-ter has-text-black">
-      <div class="field">
+    <div class="box has-background-white-ter has-text-black has-text-centered">
+      <!-- <div class="field">
         <label for="courses"></label>
         <div class="control">
           <label class="radio">
@@ -24,7 +24,19 @@
             Students
           </label>
         </div>
-      </div>
+      </div> -->
+
+      <div class="control">
+  <label class="courses">
+    <input type="radio" name="courseOrStudent" :value ="true" v-model="courseOrStudent">
+    Courses
+  </label>
+  <label class="students">
+    <input type="radio" name="courseOrStudent" :value="false" v-model="courseOrStudent" >
+    Students
+  </label>
+</div>
+
     </div>
     <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
     <student-list v-else></student-list>
