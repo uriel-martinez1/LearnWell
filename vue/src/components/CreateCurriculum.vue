@@ -111,7 +111,7 @@
             v-bind:name="i"
             id="formAssignment"
             v-model="assignment.assignmentUpload"
-            v-bind:value="true"
+            v-bind:value="false"
           />
           <label class="radio"> Assignment Upload </label>
           <input
@@ -119,19 +119,32 @@
             v-bind:name="i"
             id="uploadAssignment"
             v-model="assignment.assignmentUpload"
-            v-bind:value="false"
+            v-bind:value="true"
           />
         </div>
       </div>
-      <div class="assignment" v-if="assignment.assignmentUpload">
+      <div class="assignment" v-if="!assignment.assignmentUpload">
         <div class="field">
           <div class="control">
             <input
               class="input is-success"
-              v-model="assignment_title"
+              v-model="assignment.title"
               name="assignment_title"
               type="text"
               placeholder="Assignment Title"
+              id="assignmentName"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input
+              class="input is-success"
+              v-model="assignment.description"
+              name="assignment_title"
+              type="text"
+              placeholder="Assignment Description"
               id="assignmentName"
             />
           </div>
@@ -264,7 +277,7 @@ export default {
       assignmentUpload: false,
       curriculumData: {
         curriculumElementId: this.content.curriculumElementId || 0,
-        courseId: this.content.courseId || 0,
+        courseId: this.content.courseId || this.$route.params.courseId,
         courseOrder: this.content.courseOrder || 0,
         description: this.content.description || "",
         lectureContent: this.content.lectureContent || "",
@@ -294,10 +307,8 @@ export default {
       this.curriculumData.assignments.push({
         assignmentId: 0,
         assignmentType: "homework",
-        createdDate: null,
         curriculumElementId: 0,
         description: "",
-        lastUpdated: null,
         questions: [],
         title: "",
         assignmentUpload: true,
@@ -325,8 +336,6 @@ export default {
         answer3: null,
         answer4: null,
         correctChoiceAnswer: null,
-        createdDate: null,
-        lastUpdated: null,
         prompt: "",
         questionId: 0,
         questionType: "text",

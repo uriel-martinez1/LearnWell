@@ -93,7 +93,7 @@ const routes = [
   },
 
   {
-    path: '/teacher/courses/curriculum',
+    path: '/teacher/course/:courseId/curriculum',
     component: CreateCurriculumView,
     name: 'CreateCurriculumView',
     meta: {
@@ -102,7 +102,7 @@ const routes = [
   },
 
   {
-    path: '/teacher/courses/curriculum/:elementId',
+    path: '/teacher/course/:courseId/curriculum/:elementId',
     component: EditCurriculumView,
     name: 'EditCurriculumView',
     meta: {

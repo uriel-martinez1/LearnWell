@@ -1,6 +1,7 @@
 ﻿using Capstone.DAO.SqlDaoInterfaces;
 using Capstone.Exceptions;
 using Capstone.Models;
+using Capstone.Models.NewFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -46,6 +47,40 @@ namespace Capstone.DAO
 
             return sources;
         }
+
+        public List<int> AddSourcesByCurriculumElement(CurriculumElementDTO incoming, int curriculumElementId)
+        {
+            List<int> sources = new List<int>();
+
+            string sql = "INSERT INTO sources (curriculum_element_id, source_url) " +
+                "OUTPUT INSERTED.source_id AS sourceId " +
+                "VALUES (@curriculumElementId, @sourceUrl);";
+
+            incoming.sources.ForEach((element) =>
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@curriculumElementId", curriculumElementId);
+                        cmd.Parameters.AddWithValue("@sourceUrl", element.sourceUrl);
+
+                        sources.Add(Convert.ToInt32(cmd.ExecuteScalar()));
+
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new DaoException("SQL exception occurred", ex);
+                }
+            });
+
+            return sources;
+        }
+
         public Source MapRowToSource(SqlDataReader reader)
         {
             Source source = new Source();
