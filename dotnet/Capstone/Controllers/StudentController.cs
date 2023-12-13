@@ -13,7 +13,7 @@ namespace Capstone.Controllers
 {
     [Route("student")]
     [ApiController]
-   //[Authorize]
+    [Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IAssignmentDao assignmentDao;
@@ -23,9 +23,10 @@ namespace Capstone.Controllers
         private readonly IQuestionDao questionDao;
         private readonly ISubmittedAssignmentDao submittedAssignmentDao;
         private readonly IAnswerDao answerDao;
+        private readonly ISourceDao sourceDao;
 
         
-        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao, IQuestionDao questionDao, ISubmittedAssignmentDao submittedAssignmentDao, IAnswerDao answerDao)
+        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao, IQuestionDao questionDao, ISubmittedAssignmentDao submittedAssignmentDao, IAnswerDao answerDao, ISourceDao sourceDao)
         {
             //this.dashboardDao = dashboardDao;
             this.courseDao = courseDao;
@@ -35,6 +36,7 @@ namespace Capstone.Controllers
             this.questionDao = questionDao;
             this.submittedAssignmentDao = submittedAssignmentDao;
             this.answerDao = answerDao;
+            this.sourceDao = sourceDao;
         }
 
         [HttpGet("{id}")]
@@ -78,13 +80,44 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-        [HttpGet("courses/curriculum/{courseId}")]
+        [HttpGet("course/{courseId}/curriculum")]
         public ActionResult<List<CurriculumElement>> GetCurriculumByCourseId(int courseId)
         {
             try
             {
                 List<CurriculumElement> curriculum = curriculumElementDao.GetCurriculumElementsByCourse(courseId);
                 return Ok(curriculum);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("course/curriculum/{elementId}")]
+        public ActionResult<CurriculumElement> GetCurriculumByCurriculumElementId(int elementId)
+        {
+            try
+            {
+                CurriculumElement curriculum = curriculumElementDao.GetCurriculumElementByCurriculumId(elementId);
+                return Ok(curriculum);
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
+
+
+        [HttpGet("course/curriculum/{elementId}/sources")]
+        public ActionResult<List<Source>> GetSourcesByCurriculumElementId(int elementId)
+        {
+            try
+            {
+                List<Source> sources = sourceDao.GetSourcesByCurriculumElement(elementId);
+                return Ok(sources);
 
             }
             catch (System.Exception)
