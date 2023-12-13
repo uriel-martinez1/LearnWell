@@ -20,28 +20,52 @@
         </div>
     </div> -->
 
-    <div class="box">
+    <div class="box" >
         <h1 class="is-size-1"><strong>{{ course.courseName }}</strong></h1>
         <h2 class="is-size-3">{{ course.description }}</h2>
         <br />
-        <u>Lectures</u>
         <table class="table">
             <thead>
                 <tr>
                     <th>Lectures</th>
-                    <th>Title</th>
-                    <th>Name</th>
+                    <th>Created Date</th>
+                    <th>Assignment</th>
+                    <th>Assignment Type</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="curriculum in course" :key="curriculum.curriculumId">
+                <tr v-for="curriculum in this.course.curriculum" :key="curriculum.curriculumId">
                     <td>{{ curriculum.description }}</td>
+                    <td>{{ curriculum.createdDate }}</td>
+                    <td>{{ curriculum.assignments[0].title }}</td>
+                    <td>{{ curriculum.assignments[0].assignmentType }}</td>
                 </tr>
-                <tr v-for="assignments in course" :key="assignments.assignmentId">
+               
+
+                <!-- <tr v-for="assignments in newCourse.assignments" :key="assignments.assignmentId">
                     <td class="is-size-4">{{ assignments.title }}</td>
                 </tr>
-                <tr v-for="student in course.students" :key="student.userId">
+                <tr v-for="student in newCourse.students" :key="student.userId">
                     <td class="is-size-4">{{ student.firstName }} {{ student.lastName }}</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <br/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>First</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="student in this.course.students" :key="student.userId">
+                    <td>Active</td>
+                    <td>{{ student.firstName }}</td>
+                    <td>{{ student.lastName }}</td>
+                    <td>{{ student.email }}</td>
                 </tr>
             </tbody>
         </table>
@@ -55,7 +79,7 @@ import TeacherService from '../services/TeacherService';
 
 export default {
     props: {
-        content: {
+        course: {
             type: Object,
             default() {
                 return {};
@@ -64,19 +88,8 @@ export default {
     },
     data() {
         return {
-            course: {
-                courseId: this.course.courseId,
-                teacherId: this.course.userId,
-                courseName: this.course.courseName,
-                description: this.course.description,
-                difficulty: this.course.difficulty,
-                cost: this.course.cost,
-                createdDate: this.course.createdDate,
-                lastUpdated: this.course.lastUpdated,
-                isActive: this.course.isActive,
-                students: this.course.students,
-                curriculum: this.course.curriculum,
-                assignments: this.course.assignments,
+            newCourse: {
+                ...this.course
             }
         }
     },

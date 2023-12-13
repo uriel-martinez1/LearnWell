@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <teacher-course-summary></teacher-course-summary>
+        <teacher-course-summary v-bind:course="course"></teacher-course-summary>
     </div>
 </template>
 
@@ -35,9 +35,9 @@ export default {
                                 this.course.curriculum = []
                                 curriculumResponse.data.forEach((curriculum) => {
                                     // check if the service is working 
-                                    TeacherService.getAssignmentsByCurriculumId(curriculum.curriculumElementId)
+                                    TeacherService.getAssignmentByCurriculumId(curriculum.curriculumElementId)
                                     .then((assignmentResponse) => {
-                                        this.content.curriculum.push({
+                                        this.course.curriculum.push({
                                             ...curriculum,
                                             assignments: assignmentResponse.data
                                         })

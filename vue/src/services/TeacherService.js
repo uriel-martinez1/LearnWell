@@ -31,6 +31,11 @@ export default {
     return axios.get(`teacher/course/${id}/assignments`)
   },
 
+  //used in the teacher course summary view
+  getAssignmentByCurriculumId(id){
+    return axios.get(`teacher/course/curriculum/${id}/assignments`)
+  },
+
   //unsure about the placement of it being here or create a new service folder for course
   // Also unsure about the structure of the path
   addCourse(course) {
