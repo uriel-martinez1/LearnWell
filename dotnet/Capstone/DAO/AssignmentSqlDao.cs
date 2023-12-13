@@ -1,6 +1,7 @@
 ﻿using Capstone.DAO.SqlDaoInterfaces;
 using Capstone.Exceptions;
 using Capstone.Models;
+using Capstone.Models.NewFolder;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -90,6 +91,68 @@ namespace Capstone.DAO
             }
 
             return assignments;
+        }
+
+        public List<int> AddAssignmentsByCurriculumElement(CurriculumElementDTO incoming, int curriculumElementId)
+        {
+
+            List<int> assignments = new List<int>();
+
+            string sql = "INSERT INTO assignments(curriculum_element_id, title, description, assignment_type) " +
+                "OUTPUT INSERTED.assignment_id AS sourceId " +
+                "VALUES (@curriculumElementId, @title, @description, @assignmentType);";
+
+            incoming.assignments.ForEach((element) =>
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@curriculumElementId", curriculumElementId);
+                        cmd.Parameters.AddWithValue("@title", element.Title);
+                        cmd.Parameters.AddWithValue("@description", element.Description);
+                        cmd.Parameters.AddWithValue("@assignmentType", element.AssignmentType);
+
+                        assignments.Add(Convert.ToInt32(cmd.ExecuteScalar()));
+
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new DaoException("SQL exception occurred", ex);
+                }
+            });
+
+            return assignments;
+        }
+
+        public CompleteAssignment GetCompleteAssignmentsWithQuestions(CurriculumElementDTO incoming, Assignment incomingAssignment, IQuestionDao questionDao, int assignmentIndex)
+        {
+            CompleteAssignment assignment = new CompleteAssignment();
+
+            assignment.AssignmentId = incomingAssignment.AssignmentId;
+            assignment.AssignmentType = incomingAssignment.AssignmentType;
+            assignment.CreatedDate = incomingAssignment.CreatedDate;
+            assignment.CurriculumElementId = incomingAssignment.CurriculumElementId;
+            assignment.Description = incomingAssignment.Description;
+            assignment.LastUpdated = incomingAssignment.LastUpdated;
+            assignment.Title = incomingAssignment.Title;
+            try
+            {
+                List<int> questionIds = questionDao.AddQuestionsByAssignmentId(incoming, incomingAssignment.AssignmentId, assignmentIndex);
+                List<Question> questions = questionDao.GetQuestionsByAssignmentId(incomingAssignment.AssignmentId); ;
+                assignment.Questions = questions;
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+
+            return assignment;
         }
 
         //TODO add assignment method

@@ -10,16 +10,13 @@
     <nav>
       <router-link class="button"
         :to="{ name: 'StudentDashboardView', params: { id: $store.state.user.userId } }">Dashboard</router-link>
-      <button class="button" showCourses="!showCourses">Courses</button>
-      <div v-if="showCourses">
-        <button
-         class="button" 
-         id="courseButton" 
-         v-for="course in $store.state.user.courses"
+      <button class="button" v-on:click="showCourses">Courses</button>
+      <div v-show="displayCourses">
+        <router-link :to="{name: 'StudentCourseSummaryView', params: {courseId: course.courseId }}" class="button is-link" id="courseButton" 
+         v-for="course in $store.state.sideBarData"
           v-bind:key="course.courseId">
           {{ course.courseName }}
-        </button>
-        <student-course-list></student-course-list>
+        </router-link>
       </div>
       <button v-on:click="() => (showAssignments = !showAssignments)" type="button" class="button">
         Assignments
@@ -29,7 +26,7 @@
           .curriculumElements[0].assignments" v-bind:key="assignment.assignmentId">
           {{ assignment.title }}
         </button>
-      </div>
+      </div> 
       <button type="button" class="button">Notifications</button>
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''">Logout</router-link>
@@ -38,7 +35,7 @@
 </template>
 
 <script>
-// import StudentService from "../services/StudentService"
+import StudentService from "../../services/StudentService"
 // import StudentCourseList from "../components/StudentCourseList.vue"
 export default {
    components: {
@@ -46,14 +43,38 @@ export default {
   },
   data() {
     return {
-      showCourses: false,
-      showAssignments: false,
+      displayCourses: false,
+      courses: [],
+      
     };
   },
+  computed:{
+
+  },
+  methods: {
+    routeCourseSummary(courseId){
+      this.$router.push({name: 'CourseSummaryView', params: {'courseId' : courseId}})
+    },
+    showCourses(){
+      this.displayCourses = !this.displayCourses
+      console.log(this.courses)
+    },
+
+  },
+  created(){
+    StudentService.getCoursesByStudentId(this.$store.state.user.userId)
+      .then(response => {
+        this.courses = response.data;
+        this.courses.forEach(course => {
+          this.$store.commit('SET_SIDEBAR_DATA',  course);
+        });
+      });
+      
+  }
 };
 </script>
 
-<style>
+<style scoped>
 nav {
   display: flex;
   flex-direction: column;
@@ -84,7 +105,7 @@ nav {
   color: blueviolet;
 }
 
-#assignmentButton {
+/* #assignmentButton {
   background-color: rgb(128, 31, 128);
   border: none;
   color: white;
@@ -97,7 +118,7 @@ nav {
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-}
+} */
 
 .sidebar {
   height: 100%;
@@ -110,21 +131,21 @@ nav {
   overflow-x: hidden;
 }
 
-.header {
+/* .header {
   color: black;
   text-align: left;
   padding-left: 15px;
   padding-bottom: 10px;
   font-size: 25px;
   top: 0;
-}
+} */
 
-.navbar-item {
+/* .navbar-item {
   text-align: left;
   padding-left: 10px;
   padding-bottom: 10px;
   font-size: 15px;
-}
+} */
 
 .icon {
   height: auto;
