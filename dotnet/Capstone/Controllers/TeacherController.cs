@@ -19,19 +19,18 @@ namespace Capstone.Controllers
         private readonly IAssignmentDao AssignmentDao;
         private readonly ICourseDao CourseDao;
         private readonly ICurriculumElementDao CurriculumElementDao;
-        //private readonly INotificationDao NotificationDao;
         private readonly ISourceDao SourceDao;
+        private readonly IQuestionDao QuestionDao;
 
 
-        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao, ISourceDao sourceDao, IAssignmentDao assignmentDao)
+        public TeacherController(IUserDao userDao, ICourseDao courseDao, ICurriculumElementDao curriculumElementDao, ISourceDao sourceDao, IAssignmentDao assignmentDao, IQuestionDao questionDao)
         {
-            //this.dashboardDao = dashboardDao;
             UserDao = userDao;
             AssignmentDao = assignmentDao;
             CourseDao = courseDao;
             CurriculumElementDao = curriculumElementDao;
-            //this.NotificationDao = notificationDao;
             SourceDao = sourceDao;
+            QuestionDao = questionDao;
 
         }
 
@@ -173,14 +172,13 @@ namespace Capstone.Controllers
 
         //TODO: ADD DTO for CURRICULUM ELEMENT
         [HttpPost("{teacherId}/course/{courseId}/curriculum")]
-        public ActionResult<List<Source>> AddCurriculumElement(int teacherId, int courseId, CurriculumElementDTO dataIn)
+        public ActionResult<CompleteCurriculumElement> AddCompleteCurriculumElement(CurriculumElementDTO dataIn)
         {
             try
             {
-                //List<Source> output = SourceDao.GetSourcesByCurriculumElement(id);
-                //return Ok(output);
-                return null;
-
+                CompleteCurriculumElement output = CurriculumElementDao.AddCompleteCurriculumElement(dataIn, SourceDao, AssignmentDao, QuestionDao);
+                //DO A POST REDIRECT GET HERE
+                return Ok(output);
             }
             catch (System.Exception)
             {

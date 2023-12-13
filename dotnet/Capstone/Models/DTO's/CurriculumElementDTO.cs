@@ -11,8 +11,6 @@ namespace Capstone.Models.NewFolder
         public int courseOrder { get; set; }
         public string description { get; set; }
         public string lectureContent { get; set; }
-        public DateTime? createdDate { get; set; }
-        public DateTime? lastUpdated { get; set; }
         public List<SourceDTO> sources { get; set; }
         public List<AssignmentDTO> assignments { get; set; }
     }
