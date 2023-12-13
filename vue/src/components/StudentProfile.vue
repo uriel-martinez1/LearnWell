@@ -5,7 +5,7 @@
             <h1 class="title is-5 has-text-centered has-text-black">Student Profile</h1>
         </section>
         <h2>{{ student.firstName }} {{ student.lastName }}</h2>
-        <p>{{ student.email }}</p>
+        <p>{{ student.email }} </p>
     </div>
 
     <!--First we need to grab the curriculum data-->
