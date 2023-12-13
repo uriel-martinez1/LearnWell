@@ -1,13 +1,13 @@
 <template>
     <div id="main" class="box has-background-white-ter has-text-black">
         <ul v-for="course in this.courses" :key="course.courseId">
-            <li class="title is-5 has-text-black">Course Name: {{ course.courseName }}</li>
+            <li class="title is-5 has-text-black">{{ course.courseName }}</li>
             <button @click="EditCourse(course.courseId)" class="button is-link is-outlined is-small">
                 Edit Course
             </button>
             <div v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
                 <a @click="selectCurriculumElement(curricula.curriculumElementId)" class="has-text-black">
-                    Curricula: {{ curricula.description }}
+                    {{ curricula.description }}
                 </a>
 
                 <button @click="EditCurriculumView(curricula.curriculumElementId, course.courseId)"
@@ -20,10 +20,10 @@
             </button>
         </ul>
         <!-- Add a course to the teacher's panel -->
-        <!-- <div class="mt-3">
-            <button @click="AddCourseView" class="button is-link is-outlined is-small">Add Course</button>
-        </div> -->
-        <button v-on:click="AddCourse" class="button is-link">Add Course</button>
+         <div class="mt-4">
+            
+            <button v-on:click="AddCourse" class="button is-link is-small">Add Course</button>
+        </div> 
 
     </div>
 </template>

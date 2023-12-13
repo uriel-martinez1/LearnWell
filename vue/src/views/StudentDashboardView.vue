@@ -75,10 +75,6 @@ export default {
   width: 100%;
 }
 
-.box-has-background-white-ter-has-text {
-  cursor: alias;
-}
-
 li {
   cursor: pointer;
 }

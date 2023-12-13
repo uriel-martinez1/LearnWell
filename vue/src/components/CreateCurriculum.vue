@@ -105,22 +105,22 @@
       <div class="field">
         <label class="label" for="createAssignment">Create Assignment</label>
         <div class="control">
-          <label class="radio"> Form </label>
-          <input
+          <label class="radio"><input
             type="radio"
             v-bind:name="i"
             id="formAssignment"
             v-model="assignment.assignmentUpload"
-            v-bind:value="false"
-          />
-          <label class="radio"> Assignment Upload </label>
-          <input
+            v-bind:value="true"
+          /> Form </label>
+          
+          <label class="radio"><input
             type="radio"
             v-bind:name="i"
             id="uploadAssignment"
             v-model="assignment.assignmentUpload"
-            v-bind:value="true"
-          />
+            v-bind:value="false"
+          /> Assignment Upload </label>
+          
         </div>
       </div>
       <div class="assignment" v-if="!assignment.assignmentUpload">
