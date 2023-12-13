@@ -161,6 +161,7 @@ GO
 CREATE TABLE answers(
 	answer_id int IDENTITY (1,1) NOT NULL,
 	submitted_assignment_id int NOT NULL,
+	question_id int NOT NULL,
 	question_type nvarchar(50) NOT NULL,
 	answer_choice int NULL,
 	answer_text nvarchar(max) NULL,
@@ -170,6 +171,7 @@ CREATE TABLE answers(
 	number_of_edits int DEFAULT 0,
 	CONSTRAINT PK_answer_id PRIMARY KEY (answer_id),
 	CONSTRAINT FK_answers_submitted_assignment_id FOREIGN KEY (submitted_assignment_id) REFERENCES submitted_assignments(submitted_assignment_id),
+	CONSTRAINT FK_answers_question_id FOREIGN KEY (question_id) REFERENCES questions(question_id),
 	CONSTRAINT CHK_answers_question_type CHECK (question_type = 'choice' OR question_type = 'text' OR question_type = 'external'),
 	CONSTRAINT CHK_answers_answer_choice CHECK (answer_choice >= 1 AND answer_choice <= 4)
 )

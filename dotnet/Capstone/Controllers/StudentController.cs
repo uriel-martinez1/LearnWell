@@ -21,9 +21,11 @@ namespace Capstone.Controllers
         private readonly IUserDao userDao;
         private readonly ICurriculumElementDao curriculumElementDao;
         private readonly IQuestionDao questionDao;
+        private readonly ISubmittedAssignmentDao submittedAssignmentDao;
+        private readonly IAnswerDao answerDao;
 
         
-        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao, IQuestionDao questionDao)
+        public StudentController(ICourseDao courseDao, IUserDao userDao, ICurriculumElementDao curriculumElementDao, IAssignmentDao assignmentDao, IQuestionDao questionDao, ISubmittedAssignmentDao submittedAssignmentDao, IAnswerDao answerDao)
         {
             //this.dashboardDao = dashboardDao;
             this.courseDao = courseDao;
@@ -31,6 +33,8 @@ namespace Capstone.Controllers
             this.curriculumElementDao = curriculumElementDao;
             this.assignmentDao = assignmentDao;
             this.questionDao = questionDao;
+            this.submittedAssignmentDao = submittedAssignmentDao;
+            this.answerDao = answerDao;
         }
 
         [HttpGet("{id}")]
@@ -127,6 +131,26 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        //[HttpPost("{userId}/courses/{courseId}/{}assignment/{submittedAssigmentId}")]                                                         TODO Link this up later
+        //public ActionResult<SubmittedAssignment> AddSubmittedAssignment(AnswerDTO incomingAnswers, int assignmentId, int teacherId, int studentId, int courseId)
+        //{
+        //    try
+        //    {
+        //        List<Answer> answers = answerDao.(incomingAnswers);
+        //        SubmittedAssignment submittedAssignment = submittedAssignmentDao.AddSubmittedAssignment(submittedAssignmentId);
+        //        foreach (Answer item in incomingAnswers)
+        //        {
+        //            AssignmentDTO temp = new AssignmentDTO(item);
+        //            temp.Questions = questionDao.GetQuestionsByAssignmentId(item.AssignmentId);
+        //            outputList.Add(temp);
+        //        }
+        //        return Ok(submittedAssignment);
+        //    }
+        //    catch (System.Exception)
+        //    {
+        //        return NotFound();
+        //    }
+        //}
 
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 

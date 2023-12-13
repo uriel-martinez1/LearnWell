@@ -21,7 +21,9 @@ export default {
   getQuestionsByAssignmentId(id){
     return axios.get(`/student/assignments/${id}/questions`)
   },
-
+  submitHomeworkByAssignmentId(userId, courseId, curriculumId, answers){
+    return axios.post(`/student/${userId}/courses/${courseId}/curriculum/${curriculumId}`, answers)
+  },
   // addCourse(course) {
   //   return axios.post(`/course`, course);
   // },
