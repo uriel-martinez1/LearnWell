@@ -36,7 +36,7 @@ export default {
                                         this.content.assignments.push({
                                             ...element,
                                             questions: questionResponse.data,
-                                            assignmentUpload: element.type === "text" ? false: true,
+                                            assignmentUpload: element.type === "text" ? 'true': 'false',
                                         })
                                     })
                                 })                            
