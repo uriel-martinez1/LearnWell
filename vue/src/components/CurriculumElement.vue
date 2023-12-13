@@ -11,9 +11,35 @@
             <!---Show curriculum view/VIEW ONLY-->
         </div>
 
-        <p class="title is-3">{{ this.content.description }}</p>
-        <p class="subtitle is-5">Course content: {{ this.content.lectureContent }}</p>
     </div>
+    <div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">{{ this.content.description }} *Main tile*</p>
+          <p class="subtitle">{{this.content.lectureContent}}</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">{{ this.content.description }}*yellow tile*</p>
+          <p class="subtitle">{{this.content.lectureContent}}</p>
+        </article>
+      </div>
+      
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">{{ this.content.description }} *Tall tile*</p>
+        <p class="subtitle">{{this.content.lectureContent}}</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
 </template>
 
 <script>

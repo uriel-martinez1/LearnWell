@@ -2,7 +2,7 @@
   <div class="main-content">
     <div class="box has-background-white-ter">
       <h1 class="title is-5 has-text-centered has-text-black">
-        Teacher: {{ user.firstName }} {{ user.lastName }}
+        Welcome {{ user.firstName }} {{ user.lastName }}!
         <div><span>{{ textContent }}</span></div> </h1>
     </div>
     <div class="box has-background-white-ter has-text-black">

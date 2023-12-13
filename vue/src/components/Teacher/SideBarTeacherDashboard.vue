@@ -82,10 +82,10 @@ nav {
   cursor: pointer;
 }
 
-/* .sidebar .button:hover {
+.sidebar .button:hover {
   background-color: lightcyan;
   color: blueviolet;
-} */
+}
 
 /* #courseButton {
   background-color: rgb(128, 31, 128);

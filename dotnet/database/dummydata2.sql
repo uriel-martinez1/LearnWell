@@ -6,7 +6,9 @@ VALUES
 (1, 'John', 'Doe', 'john.doe@email.com', 'john.doe', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=', 'admin', 0, 1, 1, GETUTCDATE(), NULL),
 (2, 'Jane', 'Doe', 'jane.doe@email.com', 'jane.doe', 'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=', 'teacher', 1, 0, 1, GETUTCDATE(), NULL),
 (3, 'Alice', 'Johnson', 'alice.j@email.com', 'alice.j', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL),
-(4, 'Bob', 'Smith', 'bob.smith@email.com', 'bob.smith', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL);
+(4, 'Bob', 'Smith', 'bob.smith@email.com', 'bob.smith', 'hashed_password', 'salt_value', 'student', 0, 0, 1, GETUTCDATE(), NULL),
+(5, 'learn', 'well', 'learn@gmail.com', 'learnwell', 'S9nRezNystgbIjR4zDMNPP30WaY=', 'DOivTu4QvPo=', 'student', 0, 0, 1, GETUTCDATE(), NULL),
+(6, 'jennifer', 'julie', 'Jen@email.com','Jenjulie', 'HhqXnMi5WyG9gdE7xs0WxGOq+fI=', 'Y/qhDn113BE=', 'student', 0, 0, 1, GETUTCDATE(), NULL);
 
 SET IDENTITY_INSERT users OFF;
 
@@ -20,7 +22,11 @@ VALUES
 INSERT INTO courses_students (course_id, student_id, created_date, isActive)
 VALUES
 (1, 3, GETUTCDATE(), 1),
-(2, 4, GETUTCDATE(), 1);
+(2, 4, GETUTCDATE(), 1),
+(2, 5, GETUTCDATE(), 1),
+(2, 6, GETUTCDATE(), 1),
+(1, 6, GETUTCDATE(), 1),
+(1, 5, GETUTCDATE(), 1);
 
 -- Populate curriculum_elements table
 INSERT INTO curriculum_elements (course_id, course_order, description, lecture_content, created_date, last_updated, isActive)
