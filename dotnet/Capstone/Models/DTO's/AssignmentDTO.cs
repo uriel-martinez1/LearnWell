@@ -11,8 +11,6 @@ namespace Capstone.Models.DTO_s
         public string description { get; set; }
         public string title { get; set; }
         public List<QuestionDTO> questions { get; set; }
-        public DateTime? createdDate { get; set; }
-        public DateTime? lastUpdated { get; set; }
 
     }
 }

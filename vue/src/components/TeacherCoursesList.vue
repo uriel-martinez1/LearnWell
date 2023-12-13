@@ -10,12 +10,12 @@
                     Curricula: {{ curricula.description }}
                 </a>
 
-                <button @click="EditCurriculumView(curricula.curriculumElementId)"
+                <button @click="EditCurriculumView(curricula.curriculumElementId, course.courseId)"
                     class="button is-link is-outlined is-small">
                     Edit
                 </button>
             </div>
-            <button @click="CreateCurriculumView" class="button is-link is-outlined is-small">
+            <button @click="CreateCurriculumView(course.courseId)" class="button is-link is-outlined is-small">
                 Add curriculum
             </button>
         </ul>
@@ -67,12 +67,12 @@ export default {
             this.$router.push({ name: 'TeacherCurriculumView', params: { 'elementId': id } })
         },
 
-        CreateCurriculumView() {
-            this.$router.push({ name: 'CreateCurriculumView' })
+        CreateCurriculumView(courseId) {
+            this.$router.push({ name: 'CreateCurriculumView', params: { 'courseId' : courseId} })
         },
 
-        EditCurriculumView(id) {
-            this.$router.push({ name: 'EditCurriculumView', params: { 'elementId': id }, query: { action: 'edit' } })
+        EditCurriculumView(elementId, courseId) {
+            this.$router.push({ name: 'EditCurriculumView', params: { 'elementId': elementId, 'courseId' : courseId }, query: { action: 'edit' } })
         },
         AddCourse() {
             this.$router.push({ name: 'CreateCourseView' })

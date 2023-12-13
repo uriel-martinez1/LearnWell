@@ -12,8 +12,6 @@ namespace Capstone.Models.DTO_s
         public string answer3 { get; set; }
         public string answer4 { get; set; }
         public int? correctChoiceAnswer { get; set; }
-        public DateTime? createdDate { get; set; }
-        public DateTime? lastUpdated { get; set; }
 
     }
 }
