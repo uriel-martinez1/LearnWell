@@ -8,5 +8,7 @@ namespace Capstone.DAO.SqlDaoInterfaces
     {
         public List<SubmittedAssignment> GetSubmittedAssignmentsByAssignmentId(int assignmentId);
         public SubmittedAssignment MapRowToSubmittedAssignment(SqlDataReader reader);
+        public SubmittedAssignment AddSubmittedAssignment(SubmittedAssignment submittedAssignment);
+
     }
 }

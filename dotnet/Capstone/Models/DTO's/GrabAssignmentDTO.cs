@@ -18,6 +18,6 @@ namespace Capstone.Models
             CreatedDate = assignment.CreatedDate;
             LastUpdated = assignment.LastUpdated;
 
+        }
     }
-}
 }

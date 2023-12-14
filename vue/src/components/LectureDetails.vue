@@ -10,8 +10,9 @@
   </div>
   <div class="box has-background-white-ter">
     <h2><strong>Lecture Sources:</strong></h2>
-    <a v-for="source in sources" :key="source.sourceId">
+    <a v-bind:href="source.sourceUrl" v-for="source in sources" :key="source.sourceId">
       {{ source.sourceUrl }}
+      <br/>
     </a>
   </div>
 </template>

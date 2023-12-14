@@ -28,14 +28,51 @@ VALUES
 (1, 6, GETUTCDATE(), 1),
 (1, 5, GETUTCDATE(), 1);
 
--- Populate curriculum_elements table
+-- Populate curriculum_elements table with additional elements and full lectures
 INSERT INTO curriculum_elements (course_id, course_order, description, lecture_content, created_date, last_updated, isActive)
 VALUES
-(1, 1, 'Introduction to Algebra', 'Algebra basics lecture', GETUTCDATE(), NULL, 1),
-(1, 2, 'Advanced Calculus', 'Calculus principles lecture', GETUTCDATE(), NULL, 1),
-(1, 3, 'Linear Algebra', 'Linear algebra concepts', GETUTCDATE(), NULL, 1),
-(2, 1, 'Shakespearean Literature', 'Shakespearean plays lecture', GETUTCDATE(), NULL, 1),
-(2, 2, 'Romantic Poetry', 'Study of Romantic poetry', GETUTCDATE(), NULL, 1);
+-- Additional elements for Math 101
+(1, 1, 'Introduction to Algebra', 'Welcome to the "Introduction to Algebra" lecture! In this session, we will explore the foundational concepts of algebra. Algebra is the branch of mathematics that deals with variables and the rules for manipulating them. Get ready to dive into solving equations, working with expressions, and understanding the fundamental principles that underlie algebraic thinking. By the end of this lecture, you will have a solid grasp of algebra basics and be well-prepared for the exciting journey ahead in this course.', GETUTCDATE(), NULL, 1),
+
+(1, 2, 'Advanced Calculus', 'Welcome to the "Advanced Calculus" lecture! Building on the fundamentals of calculus, this session will take you to the next level of mathematical understanding. We will explore advanced topics such as multivariable calculus, vector calculus, and applications in various fields. Prepare to enhance your problem-solving skills and gain a deeper insight into the beauty of mathematical analysis. Get ready for a challenging yet rewarding exploration of calculus principles.', GETUTCDATE(), NULL, 1),
+
+(1, 3, 'Linear Algebra', 'Welcome to the "Linear Algebra" lecture! Linear algebra is a powerful mathematical tool with applications in various fields, including physics, computer science, and engineering. In this session, we will delve into the key concepts of linear algebra, such as matrices, determinants, and eigenvalues. Explore the fundamental principles that govern linear transformations and discover the importance of linear algebra in solving real-world problems. By the end of this lecture, you will have a solid foundation in linear algebra concepts.', GETUTCDATE(), NULL, 1),
+
+(1, 4, 'Geometry Fundamentals', 'Welcome to the world of geometry! In this lecture, we will delve into the foundational principles of Euclidean geometry. We will explore the basic geometric shapes, angles, and the art of geometric proofs. Get ready to visualize and reason with shapes!', GETUTCDATE(), NULL, 1),
+
+(1, 5, 'Trigonometry Basics', 'Trigonometry is the study of triangles and the relationships between their sides and angles. In this lecture, we will cover the basics of trigonometric functions, including sine, cosine, and tangent. Prepare to unlock the secrets of triangles and understand their applications in real-world problems.', GETUTCDATE(), NULL, 1),
+
+(1, 6, 'Probability and Statistics', 'Probability and statistics play a crucial role in understanding uncertainty and variability. In this lecture, we will explore the fundamentals of probability, data analysis, and statistical inference. Gain the skills to make informed decisions in the face of uncertainty.', GETUTCDATE(), NULL, 1),
+
+(1, 7, 'Number Theory', 'Welcome to the fascinating world of number theory! In this lecture, we will delve into the properties of integers, prime numbers, and divisibility rules. Explore the beauty of number patterns and the secrets they hold. Get ready for a journey into the heart of pure mathematics!', GETUTCDATE(), NULL, 1),
+
+(1, 8, 'Advanced Calculus Topics', 'Ready for a deeper dive into calculus? This lecture will explore advanced topics in calculus, including multivariable calculus, vector calculus, and applications in physics and engineering. Get ready to tackle complex mathematical concepts and enhance your problem-solving skills.', GETUTCDATE(), NULL, 1),
+
+(1, 9, 'Differential Equations', 'Differential equations are powerful tools for modeling real-world phenomena. In this lecture, we will study ordinary and partial differential equations, exploring their solutions and applications. Join us on a journey to understand the dynamics of change in various scientific and engineering fields.', GETUTCDATE(), NULL, 1),
+
+(1, 10, 'Mathematical Logic', 'Welcome to the world of mathematical logic! In this lecture, we will explore the fundamental principles of mathematical logic, including propositional and first-order logic. Learn the art of constructing logical arguments and proofs. Get ready to enhance your reasoning skills!', GETUTCDATE(), NULL, 1),
+
+-- Additional elements for English 201
+(2, 1, 'Shakespearean Literature', 'Welcome to the "Shakespearean Literature" lecture! In this session, we will immerse ourselves in the world of William Shakespeare, one of the greatest playwrights and poets in history. We will explore the timeless beauty of Shakespearean plays, including tragedies, comedies, and histories. Delve into the rich language, complex characters, and profound themes that define Shakespearean literature. By the end of this lecture, you will have a deep appreciation for the Bard and his enduring impact on the world of literature.', GETUTCDATE(), NULL, 1),
+
+(2, 2, 'Romantic Poetry', 'Welcome to the "Romantic Poetry" lecture! In this session, we will embark on a poetic journey through the Romantic era, a period marked by intense emotions, nature appreciation, and artistic freedom. We will study the works of major Romantic poets and analyze the themes that characterize their poetry. Explore the beauty of nature, the expression of individualism, and the passionate exploration of human experience. By the end of this lecture, you will have a profound understanding of the Romantic poetry movement.', GETUTCDATE(), NULL, 1),
+
+(2, 3, 'Victorian Literature', 'Step into the Victorian era through the lens of literature! In this lecture, we will explore the major themes and works of Victorian literature. Dive into the societal influences that shaped this period and discover the rich tapestry of novels, poetry, and essays.', GETUTCDATE(), NULL, 1),
+
+(2, 4, 'Modernist Literature', 'Embark on a journey into the avant-garde world of modernist literature! This lecture will delve into the literary movements and experimentation that defined the modernist period. Explore the works of influential writers who pushed the boundaries of traditional storytelling.', GETUTCDATE(), NULL, 1),
+
+(2, 5, 'Post-Colonial Literature', 'Explore the diverse voices of post-colonial literature in this captivating lecture. We will analyze literary works that address the legacies of colonialism and the complexities of cultural identity. Join us in unraveling the narratives that emerged in the post-colonial world.', GETUTCDATE(), NULL, 1),
+
+(2, 6, 'Literary Criticism', 'Welcome to the world of literary criticism! In this lecture, we will introduce various approaches to analyzing and interpreting literature. Gain insights into the different schools of thought and critical lenses that scholars use to explore the deeper meanings within literary works.', GETUTCDATE(), NULL, 1),
+
+(2, 7, 'Creative Writing Workshop', 'Unleash your creativity in this hands-on workshop! This lecture will guide you through various forms of creative writing, including fiction, poetry, and non-fiction. Discover techniques to express your unique voice and tell compelling stories.', GETUTCDATE(), NULL, 1),
+
+(2, 8, 'Shakespearean Tragedies', 'Step onto the stage of Shakespearean tragedies! In this lecture, we will dive deep into the tragic plays of William Shakespeare. Analyze the profound themes, complex characters, and timeless tragedies that have captivated audiences for centuries.', GETUTCDATE(), NULL, 1),
+
+(2, 9, 'Modern Poetry', 'Experience the beauty of modern poetry in this enlightening lecture. We will explore the major movements and poets of the modernist and post-modernist periods. Discover the diverse forms and innovative expressions that characterize modern poetry.', GETUTCDATE(), NULL, 1),
+
+(2, 10, 'Literary Theory', 'Delve into the realm of literary theory in this thought-provoking lecture. We will examine major literary theories and their applications, from structuralism to postcolonialism. Gain a deeper understanding of how different perspectives shape our interpretation of literature.', GETUTCDATE(), NULL, 1);
+
 
 -- Populate sources table
 INSERT INTO sources (curriculum_element_id, source_url, created_date, last_updated, isActive)
