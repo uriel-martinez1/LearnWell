@@ -51,8 +51,8 @@
             </div>
 
             <div class="control">
-                <button class="button is-link" type="submit">Create Course</button>
-                <button class="button is-link is-outlined btn-cancel" v-on:click.prevent="cancelForm" type="button">Cancel</button>
+                <button class="button is-success" type="submit">Create Course</button> 
+                <button class="button is-danger btn-cancel" v-on:click.prevent="cancelForm" type="button">Cancel</button>
             </div>
         </form>
 
