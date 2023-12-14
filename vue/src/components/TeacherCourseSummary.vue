@@ -1,25 +1,4 @@
 <template>
-    <!-- <div class="box">
-        <h1 class="is-size-1"><strong>{{ course.courseName }}</strong></h1>
-        <h2 class="is-size-3">{{ course.description }}</h2>
-        <br/>
-
-        <u>Lectures</u>
-        <div v-for="curricula in curriculum" v-bind:key="curricula.curriculumElementId">
-            <h3>{{ curricula.description }}</h3>
-        </div>
-        <br/>
-        <u>Assignments</u>
-        <div v-for="assignment in assignments" v-bind:key="assignment.assignmentId">
-            <h3 class="is-size-4">{{ assignment.title }}</h3>
-        </div>
-        <br/>
-        <u>Student List</u>
-        <div v-for="student in students" v-bind:key="student.id">
-            <h3 class="is-size-4">{{ student.firstName }} {{ student.lastName }}</h3>
-        </div>
-    </div> -->
-
     <nav class="breadcrumb is-medium is-centered" aria-label="breadcrumbs">
         <ul>
             <li><a href="#">Dashboard</a></li>
