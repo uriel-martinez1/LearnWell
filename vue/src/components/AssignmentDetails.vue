@@ -4,7 +4,7 @@
         <form v-on:submit.prevent="submitAssignment()">
             <div v-show="showQuestions" v-for="(question) in answers.questions" v-bind:key="question.question_id">
                 <p>{{ question.prompt }}</p>
-                <textarea class="textarea" placeholder="Fill in Answer here." v-model="question.studentanswer"></textarea>
+                <textarea class="textarea" placeholder="Fill in Answer here." v-model="question.studentanswer"> </textarea>
             </div>
             <button v-if="showQuestions" type="submit">Submit Assignment</button>
         </form>

@@ -2,29 +2,24 @@
   <div class="main-content">
     <div class="box has-background-white-ter">
       <h1 class="title is-5 has-text-centered has-text-black">
-        Teacher: {{ user.firstName }} {{ user.lastName }}
-        <div><span>{{ textContent }}</span></div> </h1>
+        Welcome {{ user.firstName }} {{ user.lastName }}!
+        <div><span>{{ textContent }}</span></div>
+      </h1>
     </div>
-    <div class="box has-background-white-ter has-text-black">
-      <div class="field">
-        <label for="courses"></label>
-        <div class="control">
-          <label class="radio">
-            <input id="courses" name="courseOrStudent" type="radio" :value="true" v-model="courseOrStudent" />
-            Courses
-          </label>
+    <div class="box has-background-white-ter has-text-black has-text-centered">
+
+      <div class="control">
+        <div class="tabs is-centered is-large">
+          <ul>
+            <li :class="{ 'is-active': courseOrStudent === true }" v-on:click="courseOrStudent = true">
+              <a>Courses</a>
+            </li>
+            <li :class="{ 'is-active': courseOrStudent === false }" v-on:click="courseOrStudent = false"><a>Students</a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="field">
-        <label for="students"></label>
-        <div class="control">
-          <label class="radio">
-            <input id="students" name="courseOrStudent" type="radio" :value="false" v-model="courseOrStudent" />
-            Students
-          </label>
-        </div>
-      </div>
     </div>
     <teacher-courses-list v-if="this.courseOrStudent"></teacher-courses-list>
     <student-list v-else></student-list>
@@ -47,7 +42,7 @@ export default {
       courseOrStudent: true,
       user: {},
       textContent: '',
-      timer:''
+      timer: ''
     };
   },
   created() {
@@ -59,8 +54,8 @@ export default {
     this.timer = setInterval(this.updateDateTime, 1000);
   },
   methods: {
-    AddCourse(){
-      this.$router.push({name: 'CreateCourseView'})
+    AddCourse() {
+      this.$router.push({ name: 'CreateCourseView' })
     },
     updateDateTime() {
       const now = new Date();
