@@ -24,7 +24,7 @@ namespace Capstone.DAO
             string sql = "SELECT submitted_assignment_id, assignment_id, student_id, teacher_id, course_id, score, graded_date, "
             + " created_date, last_updated, number_of_edits FROM submitted_assignments "
              + " WHERE assignment_id = @assignment_id";
-            
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -49,13 +49,15 @@ namespace Capstone.DAO
             }
 
             return submittedAssignments;
-        }
-  /*      public SubmittedAssignment AddSubmittedAssignment(SubmittedAssignmentDTO submittedAssignment)                     TODO Get this linked up
+        }   
+        public SubmittedAssignment GetSubmittedAssignmentByAssignmentId(int submittedassignmentId)
         {
-            SubmittedAssignmentDTO newSubmittedAssignment = new SubmittedAssignmentDTO();
+            SubmittedAssignment submittedAssignment = new SubmittedAssignment();
 
-            string sql = "INSERT INTO submitted_assignments (assignment_id, student_id, teacher_id, course_id)" +
-                "VALUES (submittedAssignment.AssignmentId = @assignment_id, )";
+            string sql = "SELECT submitted_assignment_id, assignment_id, student_id, teacher_id, course_id, score, graded_date, "
+            + " created_date, last_updated, number_of_edits FROM submitted_assignments "
+             + " WHERE submitted_assignment_id = @submitted_assignment_id";
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -63,16 +65,12 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@assignment_id", submittedAssignment.AssignmentId);
-                    cmd.Parameters.AddWithValue("@student_id", submittedAssignment.StudentId);
-                    cmd.Parameters.AddWithValue("@teacher_id", submittedAssignment.TeacherId);
-                    cmd.Parameters.AddWithValue("@course_id", submittedAssignment.CourseId);
+                    cmd.Parameters.AddWithValue("@submitted_assignment_id", submittedassignmentId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        newSubmittedAssignment = MapRowToSubmittedAssignment(reader);
-
+                        submittedAssignment = MapRowToSubmittedAssignment(reader);
                     }
                 }
             }
@@ -81,11 +79,42 @@ namespace Capstone.DAO
                 throw new DaoException("SQL exception occurred", ex);
             }
 
-            return newSubmittedAssignment;
-        }*/
+            return submittedAssignment;
+        }
+        public SubmittedAssignment AddSubmittedAssignment(SubmittedAssignment submittedAssignment)
+        {
+            SubmittedAssignment outputAssignment = new SubmittedAssignment();
+            int output = 0;
+
+            string sql = "INSERT INTO submitted_assignments (assignment_id, student_id, teacher_id, course_id) " +
+                "OUTPUT INSERTED.submitted_assignment_id AS id " +
+                "VALUES (@assignmentId, @studentId, @teacherId, @courseId)";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@assignmentId", submittedAssignment.AssignmentId);
+                    cmd.Parameters.AddWithValue("@studentId", submittedAssignment.StudentId);
+                    cmd.Parameters.AddWithValue("@teacherId", submittedAssignment.TeacherId);
+                    cmd.Parameters.AddWithValue("@courseId", submittedAssignment.CourseId);
+
+                    output = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                outputAssignment = GetSubmittedAssignmentByAssignmentId(output);
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+            return outputAssignment;
+        }
         public SubmittedAssignment MapRowToSubmittedAssignment(SqlDataReader reader)
         {
             SubmittedAssignment assignment = new SubmittedAssignment();
+            
             assignment.SubmittedAssignmentId = Convert.ToInt32(reader["submitted_assignment_id"]);
             assignment.AssignmentId = Convert.ToInt32(reader["assignment_id"]);
             assignment.StudentId = Convert.ToInt32(reader["student_id"]);
@@ -96,8 +125,8 @@ namespace Capstone.DAO
             assignment.CreatedDate = Convert.ToDateTime(reader["created_date"]);
             assignment.LastEdited = SqlUtil.NullableDateTime(reader["last_updated"]);
             assignment.NumberOfEdits = Convert.ToInt32(reader["number_of_edits"]);
-            assignment.Answers = answerDao.GetAnswersBySubmitedAssignmentId(assignment.SubmittedAssignmentId);
-            assignment.Comments = commentDao.GetCommentsByUserId(assignment.StudentId,assignment.TeacherId);
+            //assignment.Answers = answerDao.GetAnswersBySubmitedAssignmentId(assignment.SubmittedAssignmentId);
+            //assignment.Comments = commentDao.GetCommentsByUserId(assignment.StudentId, assignment.TeacherId);
             return assignment;
         }
     }

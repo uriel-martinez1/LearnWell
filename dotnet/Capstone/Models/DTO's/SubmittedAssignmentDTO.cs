@@ -11,6 +11,6 @@ namespace Capstone.Models.DTO_s
         public int CourseId { get; set; }
         public int Score { get; set; }
         public int NumberOfEdits { get; set; }
-        public List<Answer> Answers { get; set; } = new List<Answer>();
+        public List<Answer> Answers { get; set; }
     }
 }
