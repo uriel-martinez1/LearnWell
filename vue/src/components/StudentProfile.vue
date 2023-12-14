@@ -5,7 +5,7 @@
             <li class="is-active"><a href="#" aria-current="page">{{ student.firstName }} {{ student.lastName }}</a></li>
         </ul>
     </nav>
-    <div class="box has-background-link-light">
+    <div class="box smallBox has-background-link-light">
         <section class="studentProfile">
             <h1 class="is-size-2"><strong>Student Profile</strong></h1>
         </section>
@@ -59,8 +59,8 @@ export default {
 }
 </script>
 
-<style>
-.box {
+<style >
+.smallBox {
     max-width: 60%;
     margin-left: 20%;
 
