@@ -41,7 +41,6 @@ export default {
       this.$route.params.curriculumElementId
     ).then((sourceResponse) => {
       this.sources = sourceResponse.data;
-      console.log("SOURCES", this.sources)
     });
     StudentService.getCurriculumByCurriculumElementId(
       this.$route.params.curriculumElementId
