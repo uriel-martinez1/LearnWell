@@ -67,7 +67,7 @@ namespace Capstone.DAO
                 "VALUES (@assignmentId, @questionId)";
 
 
-            incoming.assignments[assignmentIndex].Questions.ForEach((question) =>
+            incoming.assignments[assignmentIndex].questions.ForEach((question) =>
             {
                 try
                 {
@@ -76,8 +76,8 @@ namespace Capstone.DAO
                         conn.Open();
 
                         SqlCommand cmd = new SqlCommand(questionSql, conn);
-                        cmd.Parameters.AddWithValue("@prompt", question.Prompt);
-                        cmd.Parameters.AddWithValue("@questionType", question.QuestionType);
+                        cmd.Parameters.AddWithValue("@prompt", question.prompt);
+                        cmd.Parameters.AddWithValue("@questionType", question.questionType);
                         questionIds.Add(Convert.ToInt32(cmd.ExecuteScalar()));
                     }
                 }

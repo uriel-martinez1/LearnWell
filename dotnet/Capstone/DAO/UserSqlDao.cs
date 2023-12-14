@@ -54,9 +54,9 @@ namespace Capstone.DAO
         {
             List<User> students = new List<User>();
 
-            string sql = "SELECT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users " +
+            string sql = "SELECT DISTINCT user_id, first_name, last_name, email, username, password_hash, salt, user_role, isTeacher FROM users " +
                 "JOIN courses_students ON courses_students.student_id = users.user_id " +
-                "WHERE courses_students.course_id IN (SELECT course_id FROM courses WHERE teacher_id = @id)";
+                "WHERE courses_students.course_id IN (SELECT course_id FROM courses WHERE teacher_id = @id);";
 
             try
             {
