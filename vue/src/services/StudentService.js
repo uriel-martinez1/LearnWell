@@ -11,10 +11,19 @@ export default {
   },
 
   getCurriculumByCourseId(courseId) {
-    return axios.get(`/student/courses/curriculum/${courseId}`)
+    return axios.get(`/student/course/${courseId}/curriculum`)
   },
+  
+  getCurriculumByCurriculumElementId(elementId){
+    return axios.get(`/student/course/curriculum/${elementId}`)
+  },
+
+  getSourcesByCurriculumElementId(elementId){
+    return axios.get(`/student/course/curriculum/${elementId}/sources`)
+  },
+
   getAssignmentsByCurriculumId(id){
-    //TODO: THINK ABOUT RESTFUL HERE AND RENAME ASSIGNMENTS
+    //TODO: THINK ABOUT RESTFUL HERE AND RENAME ASSIGNMENTSS
     return axios.get(`/student/${id}/assignments`)
   },
   //TODO: CONNECT THIS TO THE DB ON THE BACKEND IN THE STUDENT CONTROLLER

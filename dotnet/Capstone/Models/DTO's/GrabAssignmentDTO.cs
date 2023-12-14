@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Capstone.Models
 {
-    public class AssignmentDTO : Assignment
+    public class GrabAssignmentDTO : Assignment
     {
         public List<Question> Questions { get; set; }
 
-        public AssignmentDTO() { }
-        public AssignmentDTO(Assignment assignment)
+        public GrabAssignmentDTO() { }
+        public GrabAssignmentDTO(Assignment assignment)
         {
             AssignmentId = assignment.AssignmentId;
             CurriculumElementId = assignment.CurriculumElementId;

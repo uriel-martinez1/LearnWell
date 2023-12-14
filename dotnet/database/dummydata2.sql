@@ -148,35 +148,39 @@ VALUES
 (7, 4, 2, 2, 0, NULL, GETUTCDATE());
 
 -- Populate answers table
-INSERT INTO answers (submitted_assignment_id, question_type, answer_choice, answer_text, answer_external, isCorrect, last_updated, number_of_edits)
+INSERT INTO answers (submitted_assignment_id, question_id, question_type, answer_choice, answer_text, answer_external, isCorrect, last_updated, number_of_edits)
 VALUES
 -- Answers for Algebra Homework 1
-(1, 'choice', 1, NULL, NULL, 0, NULL, 0),
-(1, 'text', NULL, 'The solution is x = 4.', NULL, 0, NULL, 0),
+(1, 1, 'choice', 1, NULL, NULL, 0, NULL, 0),
+(1, 2, 'text', NULL, 'The solution is x = 4.', NULL, 0, NULL, 0),
+
+-- Answers for Algebra Homework 1 (second submission)
+(1, 1, 'choice', 2, NULL, NULL, 0, NULL, 0),
+(1, 2, 'text', NULL, 'Another answer for question 2.', NULL, 0, NULL, 0),
 
 -- Answers for Algebra Quiz 1
-(2, 'text', NULL, 'The integral is (1/3)x^3 + C.', NULL, 0, NULL, 0),
-(2, 'text', NULL, 'The derivative of sin(x) is cos(x).', NULL, 0, NULL, 0),
+(2, 3, 'text', NULL, 'The integral is (1/3)x^3 + C.', NULL, 0, NULL, 0),
+(2, 4, 'text', NULL, 'The derivative of sin(x) is cos(x).', NULL, 0, NULL, 0),
 
 -- Answers for Calculus Homework 1
-(3, 'text', NULL, 'The limit is 1.', NULL, 0, NULL, 0),
-(3, 'text', NULL, 'The integral is (1/3)x^3 + C.', NULL, 0, NULL, 0),
+(3, 5, 'text', NULL, 'The limit is 1.', NULL, 0, NULL, 0),
+(3, 6, 'text', NULL, 'The integral is (1/3)x^3 + C.', NULL, 0, NULL, 0),
 
 -- Answers for Calculus Quiz 2
-(4, 'text', NULL, 'The solution is y = Ce^(x^2).', NULL, 0, NULL, 0),
-(4, 'text', NULL, 'The derivative of ln(x) is 1/x.', NULL, 0, NULL, 0),
+(4, 7, 'text', NULL, 'The solution is y = Ce^(x^2).', NULL, 0, NULL, 0),
+(4, 8, 'text', NULL, 'The derivative of ln(x) is 1/x.', NULL, 0, NULL, 0),
 
 -- Answers for Linear Algebra Homework 1
-(5, 'text', NULL, 'The determinant is ad - bc.', NULL, 0, NULL, 0),
-(5, 'text', NULL, 'The eigenvalues are 4 and 2.', NULL, 0, NULL, 0),
+(5, 9, 'text', NULL, 'The determinant is ad - bc.', NULL, 0, NULL, 0),
+(5, 10, 'text', NULL, 'The eigenvalues are 4 and 2.', NULL, 0, NULL, 0),
 
 -- Answers for Shakespeare Essay
-(6, 'text', NULL, 'Othello portrays themes of jealousy and manipulation.', NULL, 0, NULL, 0),
-(6, 'text', NULL, 'Hamlet undergoes a complex character transformation.', NULL, 0, NULL, 0),
+(6, 11, 'text', NULL, 'Othello portrays themes of jealousy and manipulation.', NULL, 0, NULL, 0),
+(6, 12, 'text', NULL, 'Hamlet undergoes a complex character transformation.', NULL, 0, NULL, 0),
 
 -- Answers for Romantic Poetry Essay
-(7, 'text', NULL, 'Wordsworth emphasizes nature''s impact on the human spirit.', NULL, 0, NULL, 0),
-(7, 'text', NULL, 'Romantic poets were influenced by political and social changes.', NULL, 0, NULL, 0);
+(7, 13, 'text', NULL, 'Wordsworth emphasizes nature''s impact on the human spirit.', NULL, 0, NULL, 0),
+(7, 14, 'text', NULL, 'Romantic poets were influenced by political and social changes.', NULL, 0, NULL, 0);
 
 -- Populate comments table
 INSERT INTO comments (submitted_assignment_id, created_by, comment, created_date, last_updated, number_of_edits)
