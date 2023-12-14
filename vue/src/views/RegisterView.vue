@@ -236,15 +236,7 @@ label {
   width: 55%;
 }
 
-.box {
-  max-width: 70%;
 
-  margin: 0 auto;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
-}
 
 .button-is-link-is-outlined-my-5 {
   accent-color: rgb(15, 167, 15);
