@@ -36,6 +36,16 @@ export default {
                     })
                 })
             })
+            TeacherService.getAssignmentByCurriculumId(this.curriculum.curriculumElementId)
+            .then((assignmentsResponse) => {
+                this.curriculum.assignments = []
+                assignmentsResponse.data.forEach((assignment) => {
+                    this.curriculum.assignments.push({
+                        ...assignment,
+                        //assignments: assignmentsResponse.data
+                    })
+                })
+            })
         })
     }
 }

@@ -113,11 +113,10 @@ nav {
   cursor: pointer;
 }
 
-.sidebar button:hover {
+.button:hover {
   background-color: lightcyan;
   color: blueviolet;
 }
-
 /* #assignmentButton {
   background-color: rgb(128, 31, 128);
   border: none;
