@@ -80,12 +80,14 @@ export default {
         {
             this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId}})
         },
-        backToCourse()
+        backToCourse(id)
         {
-            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})
+            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': id}})
         },
-    }
-
+    } 
+// backToCourse(id){this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})}
+            
+        
     //     TeacherService.getCurriculumElementById(this.elementId)
     //         .then((response) => {
     //             this.content.curriculum = response.data;
