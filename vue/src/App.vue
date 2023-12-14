@@ -42,7 +42,7 @@ export default {
 
 #capstone-app {
   box-sizing: border-box;
-  transform: translate(15vw);
+  /* transform: translate(15vw); */
   margin-bottom: 60px;
 }
 
@@ -65,12 +65,10 @@ export default {
 }
 
 div #capstone-app {
-   display: flex;
+  display: flex;
   justify-content: left;
   flex-direction: column;
-  width: 80%; 
-  margin-left: 2%; 
-  padding-right: 10px; 
+  /* width: 80%;  */
   text-align: left; 
 }
 </style>
