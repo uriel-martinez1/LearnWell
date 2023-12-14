@@ -6,20 +6,20 @@
     <div class="tile is-ancestor">
 
       <div class="tile is-4 is-vertical is-parent">
-        <h1 class="title is-1">Let's make learning easier for all</h1>
+        <h1 class="title is-1 is-justify-content-center">Let's make learning easier for all</h1>
         <p class="subtitle is-5">LearnWell streamlines course organization and assignment management for teachers, while
           providing students with
           easy access to homework, submission, and teacher communication.</p>
         <p></p>
-        <div class="buttons">
-          <a class="button is-link is-outlined"><router-link v-bind:to="{ name: 'register' }"><strong>Get
-                Started</strong></router-link></a>
+        <div class="buttons is-justify-content-left">
+          <router-link v-bind:to="{ name: 'register' }" class="button is-link">Get
+                Started</router-link>
         </div>
 
-        <div class="tile">{{ this.message.text }} </div>
+        <div class="block"><strong><i>"{{ this.message.text }}"</i></strong> -{{ this.message.author }}</div>
       </div>
       <div class="tile is-parent">
-        <img class="home-image" src="../icon/LearnWellHomeimg.jpg">
+        <img class="home-image" src="../icon/3963180.jpg">
       </div>
     </div>
   </div>
@@ -77,7 +77,12 @@ export default {
 
 <style>
 .home-image {
-  height: 60%;
+  height: 200wh;
 }
+
+.tile > h1 {
+  padding-top: 50%;
+}
+
 </style>
 

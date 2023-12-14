@@ -79,6 +79,8 @@ export default {
           // TODO Get the curriculum
         });
       });
+
+      console.log(typeof(this.$route.path))
     // StudentService.getAssignmentsByCurriculumId(this.$store.state.curriculumElements.curriculumElementId)
     // .then(response => {
     //   this.assignments = response.data;

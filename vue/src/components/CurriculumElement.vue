@@ -2,7 +2,7 @@
     <nav class="breadcrumb is-medium is-centered" aria-label="breadcrumbs">
         <ul>
             <li><a v-on:click="backToDashboard">Dashboard</a></li>
-            <li><a v-on:click="backToCourse">{{ this.courseData.courseName }}</a></li>
+            <li><a v-on:click="backToCourse(courseData.courseId)">{{ this.courseData.courseName }}</a></li>
             <li class="is-active"><a href="#" aria-current="page">{{ curriculum.description }}</a></li>
         </ul>
     </nav>

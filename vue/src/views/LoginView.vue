@@ -50,6 +50,8 @@ export default {
       }
 
     }
+    console.log(typeof(this.$route.path))
+
   },
   data() {
     return {
