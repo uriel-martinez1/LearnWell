@@ -1,13 +1,24 @@
 <template>
-
   <div class="sidebar" v-if="$store.state.token != ''">
     <div v-if="!$store.state.user.role == false">
-      <side-bar-student-dashboard v-if="$store.state.user.role == 'student'"></side-bar-student-dashboard>
+      <side-bar-student-dashboard
+        v-if="$store.state.user.role == 'student'"
+      ></side-bar-student-dashboard>
       <side-bar-teacher-dashboard v-else></side-bar-teacher-dashboard>
     </div>
   </div>
-  <div id="capstone-app">
-    <router-view :key="$route.fullPath"/>
+  <div
+    id="capstone-app"
+    :class="{
+      mainPage:
+        this.$route.path.includes('/teacher') ||
+        this.$route.path.includes('/student'),
+      homePage: this.$route.path === '/',
+      loginPage: this.$route.path === '/login',
+      registerPage: this.$route.path === '/register',
+    }"
+  >
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 <script>
@@ -24,21 +35,39 @@ export default {
     },
     notificationClass() {
       return {
-        'status-message': true,
-        error: this.notification?.type?.toLowerCase() === 'error',
-        success: this.notification?.type?.toLowerCase() === 'success'
+        "status-message": true,
+        error: this.notification?.type?.toLowerCase() === "error",
+        success: this.notification?.type?.toLowerCase() === "success",
       };
-    }
+    },
   },
   methods: {
     clearNotification() {
-      this.$store.commit('CLEAR_NOTIFICATION');
+      this.$store.commit("CLEAR_NOTIFICATION");
     },
-  }
-
+  },
 };
 </script>
 <style>
+.loginPage {
+  width: 50%;
+  transform: translate(25vw);
+}
+
+.mainPage {
+  width: 65%;
+  transform: translate(25vw);
+}
+
+.homePage {
+  width: 80%;
+  transform: translate(10vw);
+}
+
+.registerPage {
+  width: 70%;
+  transform: translate(15vw);
+}
 
 #capstone-app {
   box-sizing: border-box;
@@ -69,6 +98,6 @@ div #capstone-app {
   justify-content: left;
   flex-direction: column;
   /* width: 80%;  */
-  text-align: left; 
+  text-align: left;
 }
 </style>
