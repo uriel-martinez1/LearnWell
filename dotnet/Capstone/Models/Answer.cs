@@ -5,6 +5,7 @@ namespace Capstone.Models
     public class Answer
     {
         public int AnswerId { get; set; }
+        public int QuestionId { get; set; }
         public int SubmittedAssignmentId { get; set; }
         public string QuestionType { get; set; }
         public int? AnswerChoice { get; set; }

@@ -23,8 +23,8 @@ export default {
     methods: {
         submitAssignment() {
         //     //HERE IS WHERE YOU SEND A POST USING AXIOS
-            StudentService.submitHomeworkByAssignmentId(this.$store.state.user.userId, this.$route.params.courseId,this.$route.params.curriculumId, this.answers)
-            this.$router.push({name: "StudentAssignmentSummaryView"})
+            StudentService.submitHomeworkByAssignmentId(this.$store.state.user.userId, this.$route.params.courseId,this.$route.params.curriculumElementId, this.answers)
+            this.$router.push({name: "home"})
         }
     },
     created() {
