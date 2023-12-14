@@ -38,8 +38,8 @@ export default {
 
   //unsure about the placement of it being here or create a new service folder for course
   // Also unsure about the structure of the path
-  addCourse(course) {
-    return axios.post(`/teacher/courses`, course)
+  addCourse(teacherId, course) {
+    return axios.post(`/teacher/${teacherId}/course`, course)
   },
 
   // Also used in create course form

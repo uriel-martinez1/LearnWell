@@ -111,8 +111,17 @@ const routes = [
   },
 
   //unsure about this route for create course
+  // {
+  //   path: '/teacher/course',
+  //   component: CreateCourseView,
+  //   name: 'CreateCourseView',
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
+
   {
-    path: '/teacher/course',
+    path: '/teacher/:id/course/create',
     component: CreateCourseView,
     name: 'CreateCourseView',
     meta: {
@@ -122,7 +131,7 @@ const routes = [
 
   //unsure about this route for edit course
   {
-    path: '/teacher/courses/:courseId',
+    path: '/teacher/:id/course/:courseId/edit',
     component: EditCourseView,
     name: 'EditCourseView',
     meta: {
