@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.Xml;
 using System.Security.Principal;
 using Capstone.DAO.SqlDaoInterfaces;
+using Capstone.Models.DTO_s;
 
 namespace Capstone.Controllers
 {
@@ -95,15 +96,15 @@ namespace Capstone.Controllers
 
         [HttpGet("{id}/assignments")]
 
-        public ActionResult<List<AssignmentDTO>> GetAssignments(int id)
+        public ActionResult<List<GrabAssignmentDTO>> GetAssignments(int id)
         {
             try
             {
                 List<Assignment> assList = assignmentDao.GetAssignmentsByCurriculumElementId(id);
-                List<AssignmentDTO> outputList = new List<AssignmentDTO>();
+                List<GrabAssignmentDTO> outputList = new List<GrabAssignmentDTO>();
                 foreach (Assignment item in assList)
                 {
-                    AssignmentDTO temp = new AssignmentDTO(item);
+                    GrabAssignmentDTO temp = new GrabAssignmentDTO(item);
                     temp.Questions = questionDao.GetQuestionsByAssignmentId(item.AssignmentId);
                     outputList.Add(temp);
                 }
@@ -131,26 +132,46 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-        //[HttpPost("{userId}/courses/{courseId}/{}assignment/{submittedAssigmentId}")]                                                         TODO Link this up later
-        //public ActionResult<SubmittedAssignment> AddSubmittedAssignment(AnswerDTO incomingAnswers, int assignmentId, int teacherId, int studentId, int courseId)
-        //{
-        //    try
-        //    {
-        //        List<Answer> answers = answerDao.(incomingAnswers);
-        //        SubmittedAssignment submittedAssignment = submittedAssignmentDao.AddSubmittedAssignment(submittedAssignmentId);
-        //        foreach (Answer item in incomingAnswers)
-        //        {
-        //            AssignmentDTO temp = new AssignmentDTO(item);
-        //            temp.Questions = questionDao.GetQuestionsByAssignmentId(item.AssignmentId);
-        //            outputList.Add(temp);
-        //        }
-        //        return Ok(submittedAssignment);
-        //    }
-        //    catch (System.Exception)
-        //    {
-        //        return NotFound();
-        //    }
-        //}
+        [HttpPost("{userId}/courses/{courseId}/curriculum/{curriculumId}")]
+        public ActionResult<SubmittedAssignment> AddSubmittedAssignment(GrabAssignmentDTO incomingAssignmentQuestions, int userId, int curriculumId, int courseId)
+        {
+            try
+            {
+                SubmittedAssignment output = new SubmittedAssignment();
+                Course course = new Course();
+                // grab the teacherId from the courseDAO\
+                course = courseDao.GetCourseByCourseId(courseId);
+                output.TeacherId = course.TeacherId;
+                // build a new SubmittedAssignment Object
+                output.StudentId = userId;
+                output.CourseId = courseId;
+                output.AssignmentId = incomingAssignmentQuestions.CurriculumElementId;
+                // fill in the data and pass to submittedAssignmentDAO
+                // get back the new submittedAssignment, 
+                SubmittedAssignment submit = submittedAssignmentDao.AddSubmittedAssignment(output);
+                // loop through incomingAssignmentQuestions.Questions
+                //TODO: fix loop
+                foreach (Question item in incomingAssignmentQuestions.Questions)
+                {
+                    Answer answer = new Answer();
+                    answer.SubmittedAssignmentId = submit.SubmittedAssignmentId;
+                    answer.AnswerText = item.StudentAnswer;
+                    answer.QuestionId = item.QuestionId;
+                    answer.QuestionType = item.QuestionType;
+                    answerDao.AddSubmittedAnswer(answer);
+                }
+                return Ok(output);
+                // for each question, build a new Answers object
+                // fill in the data for the answers object
+                // call the answersDAO and pass it the answer object
+                // ends your for loop
+
+            }
+            catch (System.Exception)
+            {
+                return NotFound();
+            }
+        }
 
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 

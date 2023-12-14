@@ -7,7 +7,8 @@ namespace Capstone.DAO.SqlDaoInterfaces
     public interface IAnswerDao
     {
         List<Answer> GetAnswersBySubmitedAssignmentId(int submitedAssignmentId);
-      Answer MapRowToAnswer(SqlDataReader reader);
+        Answer AddSubmittedAnswer(Answer answer);
+        Answer MapRowToAnswer(SqlDataReader reader);
 
     }
 }

@@ -112,9 +112,9 @@ namespace Capstone.DAO
 
                         SqlCommand cmd = new SqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("@curriculumElementId", curriculumElementId);
-                        cmd.Parameters.AddWithValue("@title", element.Title);
-                        cmd.Parameters.AddWithValue("@description", element.Description);
-                        cmd.Parameters.AddWithValue("@assignmentType", element.AssignmentType);
+                        cmd.Parameters.AddWithValue("@title", element.title);
+                        cmd.Parameters.AddWithValue("@description", element.description);
+                        cmd.Parameters.AddWithValue("@assignmentType", element.assignmentType);
 
                         assignments.Add(Convert.ToInt32(cmd.ExecuteScalar()));
 
