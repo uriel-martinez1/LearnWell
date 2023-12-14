@@ -20,11 +20,11 @@
         </div>
     </div> -->
 
-    <div class="box" >
+    <div class="box">
         <h1 class="is-size-1"><strong>{{ course.courseName }}</strong></h1>
         <h2 class="is-size-3">{{ course.description }}</h2>
         <br />
-        <table class="table">
+        <table class="table is-hoverable is-fullwidth">
             <thead>
                 <tr>
                     <th>Lectures</th>
@@ -40,7 +40,7 @@
                     <td>{{ curriculum.assignments[0].title }}</td>
                     <td>{{ curriculum.assignments[0].assignmentType }}</td>
                 </tr>
-               
+
 
                 <!-- <tr v-for="assignments in newCourse.assignments" :key="assignments.assignmentId">
                     <td class="is-size-4">{{ assignments.title }}</td>
@@ -50,13 +50,13 @@
                 </tr> -->
             </tbody>
         </table>
-        <br/>
-        <table class="table">
+        <br />
+        <table class="table is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th>Student</th>
+                    <th>Status</th>
                     <th>First</th>
-                    <th>Name</th>
+                    <th>Last</th>
                     <th>Email</th>
                 </tr>
             </thead>
@@ -138,4 +138,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
