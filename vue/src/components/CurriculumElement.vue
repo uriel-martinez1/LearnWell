@@ -1,23 +1,24 @@
 <template>
     <nav class="breadcrumb is-medium is-centered" aria-label="breadcrumbs">
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">{{ this.courseData.courseName }}</a></li>
+            <li><a v-on:click="backToDashboard">Dashboard</a></li>
+            <li><a v-on:click="backToCourse">{{ this.courseData.courseName }}</a></li>
             <li class="is-active"><a href="#" aria-current="page">{{ curriculum.description }}</a></li>
         </ul>
     </nav>
 
     <div class="box">
-        <h1 class="is-size-1"><strong>{{ this.courseData.courseName }} </strong></h1>
+        <h1 class="is-size-1"><strong>{{ this.curriculum.description }} </strong></h1>
 
         <div class="column is-one-quarter">
             <button class="button is-success" v-on:click="EditCourse(this.$store.state.user.userId, course.courseId)">Edit
                 curriculum</button>
         </div>
-
+        <hr>
+<br/>
         <div v-for="source in this.curriculum.sources" :key="source.sourceId">
+            <h2 class="title is-4">Lecture Content</h2>
             <div class="box has-background-link-light">
-                <h2 class="title is-4">Lecture Content</h2>
                 <p class="content">{{ curriculum.lectureContent }}</p>
                 <div class="content">
                     <p><strong>Source URL:</strong></p>
@@ -30,16 +31,16 @@
 
         <div class="card-content has-background-link-light">
             <div class="content">
-                <table class="table is-hoverable is-fullwidth">
+                <table class="table is-hoverable is-fullwidth has-background-link-light">
                     <h2 class="is-size-4">Assignments</h2>
                     <tbody>
-                        <tr class="has-background-link-light" v-for="assignment in this.curriculum.assignments"
+                        <tr v-for="assignment in this.curriculum.assignments"
                             :key="assignment.assignmentId">
-                            <td class="has-text has-background-primary-light">{{ assignment.title }}</td>
-                            <td class="has-text">{{ assignment.description }}</td>
-                            <td class="has-text">{{ assignment.createdDate.split("T")[0] }}</td>
+                            <td>{{ assignment.title }}</td>
+                            <td>{{ assignment.description }}</td>
+                            <td>{{ assignment.createdDate.split("T")[0] }}</td>
                             <td style="text-align: right; text-transform: capitalize;">
-                                <span class="tag is-light" :class="{
+                                <span class="tag" :class="{
                                     'is-link': assignment.assignmentType === 'homework',
                                     'is-primary': assignment.assignmentType === 'quiz',
                                     'has-background-info-light': assignment.assignmentType === 'essay'
@@ -75,9 +76,13 @@ export default {
 
     },
     methods: {
-        backToDashboard(userId)
+        backToDashboard()
         {
-            this.$router.push({ name: 'Dashboard', params: { 'id': userId,}})
+            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId}})
+        },
+        backToCourse()
+        {
+            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})
         },
     }
 
