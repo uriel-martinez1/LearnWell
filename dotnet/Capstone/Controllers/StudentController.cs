@@ -205,6 +205,57 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("{userId}/submittedAssignments")]
+        public ActionResult<List<SubmittedAssignment>> GetSubmittedAssignmentsByStudentId(int userId)
+        {
+            
+            try
+            {
+                List<SubmittedAssignment> assignment = submittedAssignmentDao.GetSubmittedAssignmentsByStudentId(userId);
+                return Ok(assignment);
+            }
+            catch (System.Exception)
+            {
+
+                return NotFound();
+            }
+        }
+
+        //getAssignmentByAssignmentId
+
+        [HttpGet("assignment/{assignmentId}")]
+        public ActionResult<Assignment> GetAssignmentByAssignmentId(int assignmentId)
+        {
+
+            try
+            {
+                Assignment assignment = assignmentDao.GetAssignmentByAssignmentId(assignmentId);
+                return Ok(assignment);
+            }
+            catch (System.Exception)
+            {
+
+                return NotFound();
+            }
+        }
+
+        //assignment/question/${questionId}/answer
+
+        [HttpGet("assignment/question/{questionId}/answer")]
+        public ActionResult<Answer> GetAnswerByQuestionId(int questionId)
+        {
+
+            try
+            {
+                Answer answer = answerDao.GetAnswerByQuestionId(questionId);
+                return Ok(answer);
+            }
+            catch (System.Exception)
+            {
+
+                return NotFound();
+            }
+        }
 
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 

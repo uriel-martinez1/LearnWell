@@ -93,6 +93,42 @@ namespace Capstone.DAO
             return assignments;
         }
 
+
+        public Assignment GetAssignmentByAssignmentId(int assignmentId)
+        {
+            Assignment assignment = null;
+
+            string sql = "SELECT assignment_id, curriculum_element_id, title, description, assignment_type, created_date, last_updated " +
+                "FROM assignments " +
+                "WHERE assignment_id = @assignmentId;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@assignmentId", assignmentId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        assignment = MapRowToAssignment(reader);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return assignment;
+        }
+
         public List<int> AddAssignmentsByCurriculumElement(CurriculumElementDTO incoming, int curriculumElementId)
         {
 

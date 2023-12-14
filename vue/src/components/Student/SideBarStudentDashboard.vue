@@ -18,15 +18,9 @@
           {{ course.courseName }}
         </router-link>
       </div>
-      <button class="button" v-on:click="routeAssignmentView(curriculumId)">Assignments</button>
-      <!-- <router-link :to="{ name: 'StudentAssignmentSummaryView' }" v-on:click="routeAssignmentView">Assignments</router-link> -->
-      <!-- <div v-show="displayAssignments">
-        <router-link :to="{ name: 'StudentAssignmentSummaryView', params: { assignmentId: assignment.assignmentId } }"
-          class="button is-link" id="assignmentButton" v-for="assignment in $store.state.sideBarData"
-          v-bind:key="assignment.assignmentId">
-          {{ assignment.title }}
-        </router-link>
-      </div> -->
+      <router-link class="button is-link" :to="{ name: 'StudentAssignmentsView', params: { userId: this.$store.state.user.userId } }">
+        Assignments
+      </router-link>
       <button type="button" class="button">Notifications</button>
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''">Logout</router-link>
@@ -117,6 +111,7 @@ nav {
   background-color: lightcyan;
   color: blueviolet;
 }
+
 /* #assignmentButton {
   background-color: rgb(128, 31, 128);
   border: none;

@@ -26,10 +26,22 @@ export default {
     //TODO: THINK ABOUT RESTFUL HERE AND RENAME ASSIGNMENTSS
     return axios.get(`/student/${id}/assignments`)
   },
+  getAssignmentByAssignmentId(assignmentId){
+    //TODO: THINK ABOUT RESTFUL HERE AND RENAME ASSIGNMENTSS
+    return axios.get(`/student/assignment/${assignmentId}`)
+  },
+  getAssignmentsByUserId(userId){
+    return axios.get(`/student/${userId}/submittedAssignments`)
+  },
   //TODO: CONNECT THIS TO THE DB ON THE BACKEND IN THE STUDENT CONTROLLER
   getQuestionsByAssignmentId(id){
     return axios.get(`/student/assignments/${id}/questions`)
   },
+
+  getAnswerByQuestionId(questionId){
+    return axios.get(`/student/assignment/question/${questionId}/answer`)
+  },
+
   submitHomeworkByAssignmentId(userId, courseId, curriculumId, answers){
     return axios.post(`/student/${userId}/courses/${courseId}/curriculum/${curriculumId}`, answers)
   },

@@ -10,6 +10,7 @@ namespace Capstone.DAO.SqlDaoInterfaces
     {
 
         List<Assignment> GetAssignmentsByCurriculumElementId(int id);
+        Assignment GetAssignmentByAssignmentId(int assignmentId);
         List<Assignment> GetAssignmentsByCourseId(int id);
         List<int> AddAssignmentsByCurriculumElement(CurriculumElementDTO incoming, int curriculumElementId);
         CompleteAssignment GetCompleteAssignmentsWithQuestions(CurriculumElementDTO incoming, Assignment incomingAssignment, IQuestionDao questionDao, int assignmentIndex);

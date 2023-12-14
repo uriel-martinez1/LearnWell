@@ -8,6 +8,7 @@ namespace Capstone.DAO.SqlDaoInterfaces
     {
         List<Answer> GetAnswersBySubmitedAssignmentId(int submitedAssignmentId);
         Answer AddSubmittedAnswer(Answer answer);
+        Answer GetAnswerByQuestionId(int questionId);
         Answer MapRowToAnswer(SqlDataReader reader);
 
     }

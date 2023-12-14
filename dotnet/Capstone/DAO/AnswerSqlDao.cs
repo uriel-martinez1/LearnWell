@@ -49,7 +49,9 @@ namespace Capstone.DAO
             }
 
             return answers;
-        }    public Answer GetAnswerByAnswerId(int answerId)
+        }
+        
+        public Answer GetAnswerByAnswerId(int answerId)
         {
             Answer answer = new Answer();
 
@@ -81,6 +83,41 @@ namespace Capstone.DAO
 
             return answer;
         }
+
+        //GetAnswerByQuestionId
+        public Answer GetAnswerByQuestionId(int questionId)
+        {
+            Answer answer = null;
+
+            string sql = "SELECT answer_id, submitted_assignment_id, question_type, answer_choice, answer_text, " +
+                "answer_external, isCorrect, last_updated, number_of_edits FROM answers " +
+                "WHERE question_id = @questionId;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@questionId", questionId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        answer = MapRowToAnswer(reader);
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return answer;
+        }
+
         public Answer AddSubmittedAnswer(Answer answer)
         {
             Answer outputAnswer = new Answer();
