@@ -1,7 +1,7 @@
 <template>
     <nav class="breadcrumb is-medium is-centered" aria-label="breadcrumbs">
         <ul>
-            <li><a href="#">Dashboard</a></li>
+            <li><a v-on:click="backToDashboard">Dashboard</a></li>
             <li class="is-active"><a href="#" aria-current="page">{{ course.courseName }}</a></li>
         </ul>
     </nav>
@@ -115,6 +115,10 @@ export default {
         EditCourse(userId,courseId) {
             this.$router.push({ name: 'EditCourseView', params: { 'id': userId,'courseId': courseId }, query: { action: 'edit' } })
         },
+        backToDashboard() {
+            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId } });
+        }
+    
     }
 }
 

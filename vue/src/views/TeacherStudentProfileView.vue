@@ -1,6 +1,6 @@
 <template>
-    <div style="width: 100vh;">
-        <student-profile></student-profile>
+    <div>
+        <student-profile style="width: 100vw;"></student-profile>
     </div>
 </template>
 
