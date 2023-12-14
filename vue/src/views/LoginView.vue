@@ -27,9 +27,6 @@
       </p>
     </form>
   </div>
-  <div class="footer">
-    <footer>Created by Learn Well. © 2023</footer>
-  </div>
 </template>
 
 <script>
@@ -92,6 +89,9 @@ export default {
 </script>
 
 <style scoped>
+#login{
+  height: 100%;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }
