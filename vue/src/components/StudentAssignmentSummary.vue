@@ -1,14 +1,14 @@
 <template>
   <div v-if="curriculumElement != undefined">
+    <lecture-details
+      :curriculumElement="curriculumElement"
+      :sources="sources"
+    ></lecture-details>
     <div
       v-for="assignment in assignmentElements"
       v-bind:key="assignment.assignmentId"
       class="box has-background-white-ter has-text-black"
     >
-      <lecture-details
-        :curriculumElement="curriculumElement"
-        :sources="sources"
-      ></lecture-details>
       <assignment-details :assignment="assignment"></assignment-details>
     </div>
   </div>
@@ -41,7 +41,6 @@ export default {
       this.$route.params.curriculumElementId
     ).then((sourceResponse) => {
       this.sources = sourceResponse.data;
-      console.log("SOURCES", this.sources)
     });
     StudentService.getCurriculumByCurriculumElementId(
       this.$route.params.curriculumElementId

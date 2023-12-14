@@ -60,7 +60,6 @@ export default {
     },
     showCourses() {
       this.displayCourses = !this.displayCourses
-      console.log(this.courses)
     },
     routeAssignmentView(curriculumId) {
       this.$router.push({ name: 'StudentAssignmentSummaryView', params: { 'curriculumId': storeKey.state } })
