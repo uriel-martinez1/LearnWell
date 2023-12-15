@@ -194,5 +194,10 @@ namespace Capstone.DAO
             answer.NubmerOfEdits = Convert.ToInt32(reader["number_of_edits"]);
             return answer;
         }
+
+        public Answer GetAnswerByQuestionAndAssignmentId(int questionId, int assignmentId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
