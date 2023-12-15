@@ -178,7 +178,7 @@ namespace Capstone.Controllers
                 // build a new SubmittedAssignment Object
                 output.StudentId = userId;
                 output.CourseId = courseId;
-                output.AssignmentId = incomingAssignmentQuestions.CurriculumElementId;
+                output.AssignmentId = incomingAssignmentQuestions.AssignmentId;
                 // fill in the data and pass to submittedAssignmentDAO
                 // get back the new submittedAssignment, 
                 SubmittedAssignment submit = submittedAssignmentDao.AddSubmittedAssignment(output);

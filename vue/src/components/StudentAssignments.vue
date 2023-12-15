@@ -3,12 +3,13 @@
         <h2><strong>Your Submitted Assignments:</strong></h2>
         <h2 class="box has-background-white-ter" v-for="assignment in assignments" v-bind:key="assignment.assignmentId">
             {{ assignment.data.title }}
+            <br/>
             {{ assignment.data.description }} 
-            <p v-for="question in assignment.questions" v-bind:key="question.questionId">{{ question.prompt }}
-                <div >
+            <div v-for="question in assignment.questions" v-bind:key="question.questionId">{{ question.prompt }}
+                <p>
                     {{ question.studentAnswer.answerText }}
-                </div>
-            </p>
+                </p>
+            </div>
         </h2>
     </div>
 </template>
