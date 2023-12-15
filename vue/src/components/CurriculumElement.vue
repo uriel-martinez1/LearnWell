@@ -11,7 +11,7 @@
         <h1 class="is-size-1"><strong>{{ this.curriculum.description }} </strong></h1>
 
         <div class="column is-one-quarter">
-            <button class="button is-success" v-on:click="EditCourse(this.$store.state.user.userId, course.courseId)">Edit
+            <button class="button is-success" v-on:click="goToEditCurriculum(courseData.courseId, this.curriculum.curriculumElementId)">Edit
                 curriculum</button>
         </div>
         <hr>
@@ -84,6 +84,9 @@ export default {
         {
             this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': id}})
         },
+        goToEditCurriculum(courseId, curriculumElementId){
+            this.$router.push({name: 'EditCurriculumView', params: {'courseId': courseId, 'elementId' : curriculumElementId}})
+        }
     } 
 // backToCourse(id){this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})}
             

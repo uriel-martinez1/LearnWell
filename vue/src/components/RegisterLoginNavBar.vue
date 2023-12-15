@@ -15,8 +15,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-link is-outlined"><router-link
-                            v-bind:to="{ name: 'home' }"><strong>Home</strong></router-link></a>
+                    <router-link class="button is-link is-outlined" v-bind:to="{ name: 'home' }"><strong>Home</strong></router-link>
 
                 </div>
             </div>

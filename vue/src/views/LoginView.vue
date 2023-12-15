@@ -21,7 +21,7 @@
         <input class="input is-success" type="password" id="password" placeholder="Enter your password"
           v-model="user.password" required autofocus />
       </div>
-      <button class="button is-link is-outlined" type="submit"><strong>Log in</strong></button>
+      <button class="button is-link" type="submit"><strong>Log in</strong></button>
       <p>
         <router-link v-bind:to="{ name: 'register' }">Need an account? Register here!</router-link>
       </p>
