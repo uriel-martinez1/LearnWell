@@ -11,13 +11,15 @@
         <h1 class="is-size-1"><strong>{{ this.curriculum.description }} </strong></h1>
 
         <div class="column is-one-quarter">
-            <button class="button is-success" v-on:click="goToEditCurriculum(courseData.courseId, this.curriculum.curriculumElementId)">Edit
+            <button class="button is-link"
+                v-on:click="goToEditCurriculum(courseData.courseId, this.curriculum.curriculumElementId)">Edit
                 curriculum</button>
         </div>
         <hr>
-<br/>
+        <br />
+        <h2 class="title is-4">Lecture Content</h2>
         <div v-for="source in this.curriculum.sources" :key="source.sourceId">
-            <h2 class="title is-4">Lecture Content</h2>
+
             <div class="box has-background-link-light">
                 <p class="content">{{ curriculum.lectureContent }}</p>
                 <div class="content">
@@ -25,6 +27,7 @@
                     <a :href="source.sourceUrl" target="_blank">{{ source.sourceUrl }}</a>
                 </div>
             </div>
+            <br />
         </div>
 
         <br />
@@ -34,8 +37,7 @@
                 <table class="table is-hoverable is-fullwidth has-background-link-light">
                     <h2 class="is-size-4">Assignments</h2>
                     <tbody>
-                        <tr v-for="assignment in this.curriculum.assignments"
-                            :key="assignment.assignmentId">
+                        <tr v-for="assignment in this.curriculum.assignments" :key="assignment.assignmentId">
                             <td>{{ assignment.title }}</td>
                             <td>{{ assignment.description }}</td>
                             <td>{{ assignment.createdDate.split("T")[0] }}</td>
@@ -76,21 +78,19 @@ export default {
 
     },
     methods: {
-        backToDashboard()
-        {
-            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId}})
+        backToDashboard() {
+            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId } })
         },
-        backToCourse(id)
-        {
-            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': id}})
+        backToCourse(id) {
+            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': id } })
         },
-        goToEditCurriculum(courseId, curriculumElementId){
-            this.$router.push({name: 'EditCurriculumView', params: {'courseId': courseId, 'elementId' : curriculumElementId}})
+        goToEditCurriculum(courseId, curriculumElementId) {
+            this.$router.push({ name: 'EditCurriculumView', params: { 'courseId': courseId, 'elementId': curriculumElementId } })
         }
-    } 
-// backToCourse(id){this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})}
-            
-        
+    }
+    // backToCourse(id){this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})}
+
+
     //     TeacherService.getCurriculumElementById(this.elementId)
     //         .then((response) => {
     //             this.content.curriculum = response.data;
@@ -101,7 +101,7 @@ export default {
     //             this.content.curriculum.assignments = response.data;
     //         })
     // }
-    }  
+}
 
 </script>
 

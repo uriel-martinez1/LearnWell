@@ -2,11 +2,12 @@
   <div v-if="$store.state.sideBarData">
     <div class="sidebar">
       <div class="header">
-        <a class="navbar-item">
+        <a class="navbar-item is-centered">
           <img class="icon" src="../../icon/icons8-books-64.png" />
           <p><strong>LEARNWELL</strong></p>
         </a>
-        <h2><strong>Teacher Dashboard</strong></h2>
+        <h2 class="is-size-3 has-text-weight-bold" style="color: black; text-align: center;">Teacher Dashboard</h2>
+        <br/>
       </div>
       <nav>
         <router-link class="button" :to="{
@@ -69,22 +70,22 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #04aa6d;
+  background-color: #485fc7;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 25px 32px;
   text-align: center;
   width: 10vw;
   text-decoration: none;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 7px 2px;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .sidebar .button:hover {
-  background-color: lightcyan;
-  color: blueviolet;
+  background-color: #243580;
+  color: white;
 }
 
 /* #courseButton {
@@ -109,7 +110,7 @@ nav {
   z-index: 1;
   top: 10;
   left: 0;
-  background-color: lightcyan;
+  background-color: #E7E8FA;
   overflow-x: hidden;
 }
 

@@ -1,7 +1,7 @@
 <template>
-    <div class="box has-background-white-ter">
-        <h2><strong>Your Submitted Assignments:</strong></h2>
-        <h2 class="box has-background-white-ter" v-for="assignment in assignments" v-bind:key="assignment.assignmentId">
+    <div class="box">
+        <h1 h1 class="title is-3 has-text-centered">Your Submitted Assignments:</h1>
+        <h2 class="box" v-for="assignment in assignments" v-bind:key="assignment.assignmentId">
             {{ assignment.data.title }}
             <br/>
             {{ assignment.data.description }} 

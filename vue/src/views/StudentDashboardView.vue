@@ -1,24 +1,33 @@
 <template>
   <div v-if="user.firstName" class="main-content">
-    <div class="box has-background-white-ter">
-      <section class="todayDate">
-        <h2 class="title is-5 has-text-centered">Welcome back, {{ user.firstName }} {{ user.lastName }}!
-          <div>
-            <span>{{ textContent }}</span>
-          </div>
-        </h2>
-      </section>
+    <div class="box">
+
+      <h1 class="title is-3 has-text-centered">Welcome back, {{ user.firstName }} {{ user.lastName }}!
+        <div>
+          <span>{{ textContent }}</span>
+        </div>
+      </h1>
+
+    </div>
+
+    <div class="box">
       <h1><strong>Overview</strong></h1>
       <p>LearnWell streamlines course organization and assignment management for teachers, while providing students with
         easy access to homework, submission, and teacher communication.
       </p>
     </div>
-    <div v-if="courses[0] != undefined">
-      <ul v-for="course in this.courses" v-bind:key="course.courseId">
-        <div v-on:click="goToCourse(course.courseId)" class="box has-background-white-ter has-text">
-          <li>{{ course.courseName }}</li>
-        </div>
-      </ul>
+
+  <div class="box">
+    <br/>
+    <h1 class="title is-2 has-text-centered">Courses Section</h1>
+      <div v-if="courses[0] != undefined">
+        <ul v-for="course in this.courses" v-bind:key="course.courseId">
+          <br/>
+          <div v-on:click="goToCourse(course.courseId)" class="box has-background-link-dark">
+            <li style="color: white; font-weight: 600;">{{ course.courseName }}</li>
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

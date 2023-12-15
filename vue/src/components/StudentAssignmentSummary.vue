@@ -1,4 +1,5 @@
 <template>
+
   <div v-if="curriculumElement != undefined">
     <lecture-details
       :curriculumElement="curriculumElement"
@@ -7,7 +8,7 @@
     <div
       v-for="assignment in assignmentElements"
       v-bind:key="assignment.assignmentId"
-      class="box has-background-white-ter has-text-black"
+      class="box has-background-link-light has-text-black"
     >
       <assignment-details :assignment="assignment"></assignment-details>
     </div>

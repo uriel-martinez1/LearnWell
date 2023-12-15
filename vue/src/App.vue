@@ -76,21 +76,28 @@ export default {
 }
 
 .logoutButton {
+  display: flex;
   position: fixed;
   z-index: 2;
   bottom: 0;
-  background-color: rgb(179, 184, 179);
+  background-color: #31A3C7;
   border: none;
-  color: black;
-  padding: 5px 5px;
+  color: white;
+  padding: 20px 65px;
   text-align: center;
-  width: 100px;
+  width: 1;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  font-weight: bold;
+  margin: 48px 2px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: #1d7996;
+  color: white;
 }
 
 div #capstone-app {

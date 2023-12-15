@@ -5,7 +5,7 @@
         <img class="icon" src="../../icon/icons8-books-64.png" />
         <p><strong>LEARNWELL</strong></p>
       </a>
-      <h2><strong>Student Dashboard</strong></h2>
+      <h2 class="is-size-3 has-text-weight-bold" style="color: black; text-align: center;">Student Dashboard</h2>
     </div>
     <nav>
       <router-link class="button"
@@ -21,7 +21,7 @@
       <router-link class="button is-link" :to="{ name: 'StudentAssignmentsView', params: { userId: this.$store.state.user.userId } }">
         Assignments
       </router-link>
-      <button type="button" class="button">Notifications</button>
+      <!-- <button type="button" class="button">Notifications</button> -->
       <router-link class="logoutButton" type="button" v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''">Logout</router-link>
     </nav>
@@ -96,22 +96,22 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #04aa6d;
+  background-color: #485fc7;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 25px 32px;
   text-align: center;
-  width: 200px;
+  width: 10vw;
   text-decoration: none;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 7px 2px;
   border-radius: 8px;
   cursor: pointer;
 }
 
-.button:hover {
-  background-color: lightcyan;
-  color: blueviolet;
+.sidebar .button:hover {
+  background-color: #243580;
+  color: white;
 }
 
 /* #assignmentButton {
@@ -136,7 +136,7 @@ nav {
   z-index: 1;
   top: 10;
   left: 0;
-  background-color: lightcyan;
+  background-color: #E7E8FA;
   overflow-x: hidden;
 }
 
