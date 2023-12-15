@@ -116,8 +116,40 @@ namespace Capstone.DAO
             }
 
             return answer;
-        }
+        }       
+        //public Answer GetAnswerByQuestionAndAssignmentId(int questionId, int assignmentId) //TODO I think this is the right way
+        //{
+        //    Answer answer = null;
 
+        //    string sql = "SELECT answer_id, submitted_assignment_id, question_type, answer_choice, answer_text, " +
+        //        "answer_external, isCorrect, last_updated, number_of_edits FROM answers " +
+        //        "WHERE submitted_assignment_id = @assignmentId and question_id = @questionId) or (submitted_assignment_id = @assignmentId and question_id = @questionId;";
+           
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+
+        //            SqlCommand cmd = new SqlCommand(sql, conn);
+        //            cmd.Parameters.AddWithValue("@questionId", questionId);
+        //            cmd.Parameters.AddWithValue("@assignmentId", assignmentId);
+        //            SqlDataReader reader = cmd.ExecuteReader();
+
+        //            if (reader.Read())
+        //            {
+        //                answer = MapRowToAnswer(reader);
+
+        //            }
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        throw new DaoException("SQL exception occurred", ex);
+        //    }
+
+        //    return answer;
+        //}
         public Answer AddSubmittedAnswer(Answer answer)
         {
             Answer outputAnswer = new Answer();

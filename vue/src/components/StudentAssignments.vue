@@ -40,7 +40,8 @@ export default {
                         .then((questionResponse) => {
                             assignment.questions = [...questionResponse.data]
                             assignment.questions.forEach((question) => {
-                                StudentService.getAnswerByQuestionId(question.questionId)
+                                StudentService.getAnswerByQuestionId(question.questionId) 
+                                // this is grabbing a question by question id front and back end but needs to be associated with submitted assignment or answerid^
                                     .then((answerResponse) => {
                                         question.studentAnswer = answerResponse.data
                                     })

@@ -41,7 +41,9 @@ export default {
   getAnswerByQuestionId(questionId){
     return axios.get(`/student/assignment/question/${questionId}/answer`)
   },
-
+  // getAnswerByQuestionAndAssignmentId(questionId, assignmentId){ TODO i think this is the right way
+  //   return axios.get(`/student/assignment/question/${questionId}/assignment/${assignmentId}/answer`)
+  // },
   submitHomeworkByAssignmentId(userId, courseId, curriculumId, answers){
     return axios.post(`/student/${userId}/courses/${courseId}/curriculum/${curriculumId}`, answers)
   },

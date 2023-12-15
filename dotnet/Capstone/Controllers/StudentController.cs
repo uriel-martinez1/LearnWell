@@ -255,8 +255,23 @@ namespace Capstone.Controllers
 
                 return NotFound();
             }
-        }
+        }    
+        [HttpGet("assignment/question/${questionId}/assignment/${assignmentId}/answer")]
+        public ActionResult<Answer> GetAnswerByQuestionAndAssignmentId(int questionId, int assignmentId)
+        {
 
+            try
+            {
+                Answer answer = answerDao.GetAnswerByQuestionAndAssignmentId(questionId, assignmentId);
+                return Ok(answer);
+            }
+            catch (System.Exception)
+            {
+
+                return NotFound();
+            }
+        }
+        // /student/
         //        [HttpGet("{courseId}/assignments/{assignmentId}")]
 
         //        public ActionResult<Assignment> GetAssignmentById(int assignmentId)
