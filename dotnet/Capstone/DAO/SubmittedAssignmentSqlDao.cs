@@ -49,6 +49,39 @@ namespace Capstone.DAO
             }
 
             return submittedAssignments;
+        }        
+        public List<SubmittedAssignment> GetSubmittedAssignmentsByStudentId(int studentId)
+        {
+            List<SubmittedAssignment> submittedAssignments = new List<SubmittedAssignment>();
+
+            string sql = "SELECT submitted_assignment_id, assignment_id, student_id, teacher_id, course_id, score, graded_date, "
+            + " created_date, last_updated, number_of_edits FROM submitted_assignments "
+             + " WHERE student_id = @studentId";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@studentId", studentId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        SubmittedAssignment individualsubmittedAssignment = MapRowToSubmittedAssignment(reader);
+                        submittedAssignments.Add(individualsubmittedAssignment);
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return submittedAssignments;
         }   
         public SubmittedAssignment GetSubmittedAssignmentByAssignmentId(int submittedassignmentId)
         {

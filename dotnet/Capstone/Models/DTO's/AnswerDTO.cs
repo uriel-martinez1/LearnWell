@@ -2,8 +2,6 @@
 {
     public class AnswerDTO : Answer
     {
-        public int submittedAssignmentId { get; set; }
-        public int questionId {get;set;}
-        public string answerText { get; set; }
+      public Question question { get; set; }
     }
 }

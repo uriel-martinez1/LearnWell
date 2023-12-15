@@ -16,6 +16,7 @@ import CreateCourseView from "../views/CreateCourseView.vue";
 import EditCourseView from "../views/EditCourseView.vue";
 import StudentCourseSummaryView from "../views/StudentCourseSummaryView.vue";
 import StudentAssignmentSummaryView from "../views/StudentAssignmentSummaryView.vue"
+import StudentAssignmentsView from "../views/StudentAssignmentsView.vue"
 
 import TeacherCourseSummaryView from "../views/TeacherCourseSummaryView.vue";
 import TeacherStudentProfileView from "../views/TeacherStudentProfileView.vue";
@@ -298,6 +299,15 @@ const routes = [
     path: '/student/course/:courseId/summary',
     component: StudentCourseSummaryView,
     name: 'StudentCourseSummaryView',
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  {
+    path: '/student/:userId/submittedAssignments',
+    component: StudentAssignmentsView,
+    name: 'StudentAssignmentsView',
     meta: {
       requiresAuth: true
     }
