@@ -1,7 +1,7 @@
 <template>
     <!--Table Design-->
     <div id="main" class="box has-background-white-ter has-text-black">
-        <h1 class="title has-text-centered">Courses</h1>
+        <h1 class="title has-text-centered">Course Sections</h1>
         <table class="table is-striped is-hoverable is-fullwidth" v-for="course in this.courses" :key="course.courseId">
             <thead>
                 <tr>
@@ -29,7 +29,7 @@
 
     <!--Card design-->
     <div class="box">
-        <h1 class="is-size-2 has-text-centered"><strong>Courses</strong></h1>
+        <h1 class="title has-text-centered">Courses</h1>
         <br/>
         <div>
             <div class="card mb-4" v-for="course in this.courses" :key="course.courseId">

@@ -1,78 +1,57 @@
 <template>
-    <!-- Add a button thats accessible only to the teacher (v-if user.role === teacher), to toggle editing on the curriculum element, otherwise it will be in the view only format -->
-    <div>
-        <!-- v-if to toggle the view vs the edit curriculum element -->
-        <!-- VIEW ONLY -->
-        <!-- Editable version ==> multiple inputs/rich text areas within a form -->
-        <!-- save button to save changes to the curriculum element ==> this will be our submit for the form -->
-        <!-- when you submit we call the editCurriculum endpoint on the server and pass it the new curriculum element -->
-        <!-- after you click the submit button we re-render the curriculum element view -->
-        <div class="ShowCurriculumView" v-if="show">
+    <nav class="breadcrumb is-medium is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li><a v-on:click="backToDashboard">Dashboard</a></li>
+            <li><a v-on:click="backToCourse(courseData.courseId)">{{ this.courseData.courseName }}</a></li>
+            <li class="is-active"><a href="#" aria-current="page">{{ curriculum.description }}</a></li>
+        </ul>
+    </nav>
+
+    <div class="box">
+        <h1 class="is-size-1"><strong>{{ this.curriculum.description }} </strong></h1>
+
+        <div class="column is-one-quarter">
+            <button class="button is-success" v-on:click="EditCourse(this.$store.state.user.userId, course.courseId)">Edit
+                curriculum</button>
         </div>
-
-    </div>
-    <div class="tile is-ancestor">
-        <div class="tile is-vertical is-8">
-            <div class="tile">
-                <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification is-success">
-                        <p class="title">{{ this.curriculum.description }}</p>
-                        <br/>
-                        <p class="subtitle">{{ this.curriculum.lectureContent }}</p>
-                        <!--This is for the sources-->
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="has-text-white">Sources</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="source in this.curriculum.sources" :key="source.sourceId">
-                                    <td>{{ source.sourceUrl }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br/>
-                        <table class="table has-background-success">
-                            <thead>
-                                <tr>
-                                    <th class="has-text-white">Title</th>
-                                    <th class="has-text-white">Description</th>
-                                    <th class="has-text-white">Created Date</th>
-                                    <th class="has-text-white">Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="assignment in this.curriculum.assignments" :key="assignment.assignmentId">
-                                    <td class="has-text-white">{{ assignment.title }}</td>
-                                    <td class="has-text-white">{{ assignment.description }}</td>
-                                    <td class="has-text-white">{{ assignment.createdDate }}</td>
-                                    <td class="has-text-white">{{ assignment.assignmentType }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </article>
-
-
-                    <!-- <article class="tile is-child notification is-warning">
-          <p class="title">{{ this.content.description }}</p>
-          <p class="subtitle">{{this.content.lectureContent}}</p>
-        </article> -->
+        <hr>
+<br/>
+        <div v-for="source in this.curriculum.sources" :key="source.sourceId">
+            <h2 class="title is-4">Lecture Content</h2>
+            <div class="box has-background-link-light">
+                <p class="content">{{ curriculum.lectureContent }}</p>
+                <div class="content">
+                    <p><strong>Source URL:</strong></p>
+                    <a :href="source.sourceUrl" target="_blank">{{ source.sourceUrl }}</a>
                 </div>
-
             </div>
         </div>
-        <!-- <div class="tile is-parent">
-    <article class="tile is-child notification is-success">
-      <div class="content">
-        <p class="title">{{ this.content.description }} *Tall tile*</p>
-        <p class="subtitle">{{this.content.lectureContent}}</p>
-        <div class="content">
+
+        <br />
+
+        <div class="card-content has-background-link-light">
+            <div class="content">
+                <table class="table is-hoverable is-fullwidth has-background-link-light">
+                    <h2 class="is-size-4">Assignments</h2>
+                    <tbody>
+                        <tr v-for="assignment in this.curriculum.assignments"
+                            :key="assignment.assignmentId">
+                            <td>{{ assignment.title }}</td>
+                            <td>{{ assignment.description }}</td>
+                            <td>{{ assignment.createdDate.split("T")[0] }}</td>
+                            <td style="text-align: right; text-transform: capitalize;">
+                                <span class="tag" :class="{
+                                    'is-link': assignment.assignmentType === 'homework',
+                                    'is-primary': assignment.assignmentType === 'quiz',
+                                    'has-background-info-light': assignment.assignmentType === 'essay'
+                                }">{{ assignment.assignmentType }}
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
-    </article>
-  </div> -->
     </div>
 </template>
 
@@ -87,21 +66,28 @@ export default {
             default() {
                 return {};
             },
-        }
-    },
-    data() {
-        return {
-            newContent: {
-                ...this.curriculum
+        },
+        courseData: {
+            type: Object,
+            default() {
+                return {};
             },
-        }
+        },
+
     },
-    // created() {
-    //     //order of grab info -- course, curriculum, sources, assignments, 
-    //     TeacherService.getCourseByCourseId(this.elementId)
-    //     .then((response)=> {
-    //         this.content = response.data;
-    //     })
+    methods: {
+        backToDashboard()
+        {
+            this.$router.push({ name: 'TeacherDashboardView', params: { 'id': this.$store.state.user.userId}})
+        },
+        backToCourse(id)
+        {
+            this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': id}})
+        },
+    } 
+// backToCourse(id){this.$router.push({ name: 'CourseSummaryView', params: { 'courseId': this.$route.course.courseId}})}
+            
+        
     //     TeacherService.getCurriculumElementById(this.elementId)
     //         .then((response) => {
     //             this.content.curriculum = response.data;
@@ -112,7 +98,7 @@ export default {
     //             this.content.curriculum.assignments = response.data;
     //         })
     // }
-}
+    }  
 
 </script>
 

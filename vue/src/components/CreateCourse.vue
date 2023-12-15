@@ -192,15 +192,7 @@ export default {
      padding: 10px;
  }
 
- .box {
-     max-width: 50%;
 
-     margin: 0 auto;
-     background-color: #ffffff;
-     padding: 20px;
-     border-radius: 8px;
-     box-shadow: 0 10px 8px rgba(107, 6, 154, 0.1);
- }
 </style>
 
 
