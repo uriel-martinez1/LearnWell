@@ -1,15 +1,15 @@
 <template>
   <div class="main-content">
-    <div class="box has-background-white-ter">
-      <h1 class="title is-5 has-text-centered has-text-black">
+    <div class="box">
+      <h1 class="title is-3 has-text-centered has-text-black">
         Welcome {{ user.firstName }} {{ user.lastName }}!
         <div><span>{{ textContent }}</span></div>
       </h1>
     </div>
-    <div class="box has-background-white-ter has-text-black has-text-centered">
+    <div class="box has-text-black has-text-centered">
 
       <div class="control">
-        <div class="tabs is-centered is-large">
+        <div class="tabs is-centered is-large has-text-weight-bold">
           <ul>
             <li :class="{ 'is-active': courseOrStudent === true }" v-on:click="courseOrStudent = true">
               <a>Courses</a>

@@ -9,12 +9,12 @@
             <!-- </div> -->
         <!-- </div>  -->
     
-    <div id="main" class="box has-background-white-ter has-text-black">
+    <div id="main" class="box  has-text-black">
         <h1 class="title has-text-centered">Students</h1>
         <table class="table is-striped is-hoverable is-fullwidth" v-for="student in this.students" :key="student.userId">
             <thead>
                 <tr>
-                    <th v-on:click="studentSummary(student.userId)" class="title is-5 is-success">{{ student.firstName }} {{ student.lastName }}</th>
+                    <th v-on:click="studentSummary(student.userId)" class="title is-5 is-link">{{ student.firstName }} {{ student.lastName }}</th>
 
                 </tr>
             </thead>

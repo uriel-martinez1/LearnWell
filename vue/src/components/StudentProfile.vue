@@ -5,7 +5,9 @@
             <li class="is-active"><a href="#" aria-current="page">{{ student.firstName }} {{ student.lastName }}</a></li>
         </ul>
     </nav>
-    <div class="box smallBox has-background-link-light">
+    <br/>
+    <br/>
+    <div class="box smallBox box has-background-white-ter">
         <section class="studentProfile">
             <h1 class="is-size-2"><strong>Student Profile</strong></h1>
         </section>

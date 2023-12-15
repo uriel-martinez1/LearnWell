@@ -1,8 +1,15 @@
 <template>
-    <div v-if="curriculumElements[0] != undefined">
-        <ul v-for="element in curriculumElements" v-bind:key="element.courseId" class="box has-background-white-ter has-text-black">
-            <li v-on:click="goToCurriculumElement(element.curriculumElementId)">{{ element.description }}</li>
-        </ul>
+    <div class="box">
+        <br />
+        <h1 class="title is-2 has-text-centered">Modules Section</h1>
+        <div v-if="curriculumElements[0] != undefined">
+            <ul v-for="element in curriculumElements" v-bind:key="element.courseId">
+                <br />
+                <div v-on:click="goToCurriculumElement(element.curriculumElementId)" class="box has-background-link-dark">
+                    <li style="color: white; font-weight: 600;">{{ element.description }}</li>
+                </div>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -23,9 +30,10 @@ export default {
             })
     },
     methods: {
-        goToCurriculumElement(curriculumElementId){
-        this.$router.push({name: 'StudentAssignmentSummaryView', params: {courseId: this.$route.params.courseId,'curriculumElementId': curriculumElementId}})
-        }      
+        goToCurriculumElement(curriculumElementId) {
+            this.$router.push({ name: 'StudentAssignmentSummaryView', params: { courseId: this.$route.params.courseId, 'curriculumElementId': curriculumElementId } })
+        }
+        
     },
 }
 </script>

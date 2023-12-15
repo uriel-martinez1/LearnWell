@@ -84,7 +84,7 @@
       <label for="teacher-no">Student</label>
       <div v-show="user.teacher" class="field">
         <label class="label"></label>
-        <div class="control">
+        <div class="control is-expanded">
           <div class="control has-icons-right">
             <input class="input" type="text" placeholder="Enter your teacher key" v-model="user.teacherKey">
             <span class="icon is-small is-right">
@@ -94,14 +94,12 @@
         </div>
       </div>
       <div>
-        <button class="button is-link is-outlined" type="submit" v-if="!user.teacher"><strong>Register</strong></button>
+        <br />
+        <button class="button is-link" type="submit" v-if="!user.teacher"><strong>Register</strong></button>
         <button class="button is-link is-outlined" type="submit" v-else
           v-bind:disabled="!user.teacherKey"><strong>Register</strong></button>
-        <div>
-
-        </div>
       </div>
-      <p class="mt-6"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p class="mt-3"><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>

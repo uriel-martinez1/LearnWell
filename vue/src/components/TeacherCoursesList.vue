@@ -1,34 +1,35 @@
 <template>
     <!--Table Design-->
-    <div id="main" class="box has-background-white-ter has-text-black">
-        <h1 class="title has-text-centered">Course Sections</h1>
+    <div id="main" class="box  has-text-black">
+        <h1 class="title is-3 has-text-centered">Courses Section</h1>
         <table class="table is-striped is-hoverable is-fullwidth" v-for="course in this.courses" :key="course.courseId">
             <thead>
                 <tr>
-                    <th @click="EditCourse(course.courseId)" class="title is-5 is-success">{{ course.courseName }}</th>
-                    <th style="text-align: right;" class="is-success"><button @click="EditCourse(course.courseId)"
+                    <th v-on:click="GoToCourse(course.courseId)" class="title is-5 is-link"><strong>{{ course.courseName }}</strong></th>
+                    <th style="text-align: right;" class="is-link"><button @click="EditCourse(course.courseId)"
                             class="button is-link is-light is-small ">Edit
                             Course</button></th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="curricula in course.curriculum" :key="curricula.curriculumElementId">
-                    <td @click="selectCurriculumElement(curricula.curriculumElementId)">{{ curricula.description }}</td>
+                    <td class="" @click="selectCurriculumElement(curricula.curriculumElementId)"><strong>{{ curricula.description }}</strong></td>
                     <td style="text-align: right;"><button
                             @click="EditCurriculumView(curricula.curriculumElementId, course.courseId)"
                             class="button is-link is-outlined is-small">Edit</button></td>
                 </tr>
             </tbody>
-            <button @click="CreateCurriculumView(course.courseId)" class="button is-success is-outlined">Add
+            <button @click="CreateCurriculumView(course.courseId)" class="button is-link is-outlined is-large">Add
                 curriculum</button>
         </table>
+        <br/>
         <div class="mt-4">
-            <button v-on:click="AddCourse" class="button is-success is-default">Add Course</button>
+            <button v-on:click="AddCourse" class="button is-link is-default is-large">Add Course</button>
         </div>
     </div>
 
     <!--Card design-->
-    <div class="box">
+    <!-- <div class="box">
         <h1 class="title has-text-centered">Courses</h1>
         <br/>
         <div>
@@ -49,9 +50,9 @@
 
         </div>
         <div class="mt-4">
-            <button v-on:click="AddCourse" class="button is-success is-default">Add Course</button>
+            <button v-on:click="AddCourse" class="button is-link is-default">Add Course</button>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
