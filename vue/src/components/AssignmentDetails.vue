@@ -5,8 +5,9 @@
             <div v-show="showQuestions" v-for="(question) in answers.questions" v-bind:key="question.question_id">
                 <p>{{ question.prompt }}</p>
                 <textarea class="textarea" placeholder="Fill in Answer here." v-model="question.studentanswer"> </textarea>
+                <!-- :disabled="" -->
+                <button v-if="showQuestions" type="submit" >Submit Assignment</button>
             </div>
-            <button v-if="showQuestions" type="submit">Submit Assignment</button>
         </form>
     </div>
 </template>
