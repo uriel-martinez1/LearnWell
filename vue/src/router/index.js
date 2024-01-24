@@ -17,7 +17,6 @@ import EditCourseView from "../views/EditCourseView.vue";
 import StudentCourseSummaryView from "../views/StudentCourseSummaryView.vue";
 import StudentAssignmentSummaryView from "../views/StudentAssignmentSummaryView.vue"
 import StudentAssignmentsView from "../views/StudentAssignmentsView.vue"
-
 import TeacherCourseSummaryView from "../views/TeacherCourseSummaryView.vue";
 import TeacherStudentProfileView from "../views/TeacherStudentProfileView.vue";
 
