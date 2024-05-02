@@ -232,6 +232,7 @@ label {
 
 .field {
   width: 55%;
+  margin: 0 auto;
 }
 
 
@@ -243,4 +244,5 @@ label {
 button:disabled {
   opacity: 50%;
 }
+
 </style>
